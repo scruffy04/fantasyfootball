@@ -473,6 +473,31 @@ body.draft-mode header{box-shadow:0 10px 25px rgba(0,0,0,.28)}
 .pos-rank-tier.pos-DB{color:#9fd5da}
 .pos-rank-tier.pos-K{color:#d4cdaa}
 
+
+/* ===== draft slot locked to 1.04 ===== */
+.draft-slot-fixed{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:11px;
+  font-weight:800;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+.draft-slot-fixed strong{
+  display:flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 11px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--text);
+  font-size:14px;
+  font-weight:750;
+  letter-spacing:0;
+}
+
 </style>
 </head>
 <body>
@@ -542,7 +567,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div class="panel-body">
 <div class="setup">
 <label>Teams<input id="teams" max="20" min="2" step="1" type="number"/></label>
-<label>Your slot<input id="slot" max="20" min="1" step="1" type="number"/></label>
+<div class="draft-slot-fixed">Your slot <strong>1.04</strong><input id="slot" type="hidden" value="4"/></div>
 <button class="btn" id="undo">Undo last pick</button>
 <button class="btn danger" id="reset">Reset draft</button>
 </div>
@@ -3583,18 +3608,19 @@ applyTierPositionalRanks();
 const teamsInput = document.getElementById('teams');
 const slotInput  = document.getElementById('slot');
 teamsInput.value = draft.teams;
-slotInput.value  = draft.slot;
+draft.slot = 4;
+slotInput.value = 4;
 let boardFilter = '';
 let boardPos = 'ALL';
 
 function clampSetup(){
   let t = parseInt(teamsInput.value, 10); if(!(t >= 2 && t <= 20)) t = 12;
-  let s = parseInt(slotInput.value, 10);  if(!(s >= 1 && s <= t)) s = 1;
+  const s = 4;
   teamsInput.value = t; slotInput.value = s;
   draft.teams = t; draft.slot = s; saveDraft(); renderBoard();
 }
 teamsInput.addEventListener('change', clampSetup);
-slotInput.addEventListener('change', clampSetup);
+
 
 /* Snake order: which team owns pick number n (1-indexed) */
 function teamOnClock(n){
@@ -3810,8 +3836,8 @@ function applySave(data){
   Object.keys(data.players).forEach(k => { state[k] = data.players[k]; });
   saveState(state);
   if(data.draft && Array.isArray(data.draft.picks)){
-    draft = { teams: data.draft.teams || 12, slot: data.draft.slot || 1, picks: data.draft.picks };
-    teamsInput.value = draft.teams; slotInput.value = draft.slot;
+    draft = { teams: data.draft.teams || 12, slot: 4, picks: data.draft.picks };
+    draft.slot = 4; teamsInput.value = draft.teams; slotInput.value = 4;
     saveDraft();
   }
   repaintAll();
