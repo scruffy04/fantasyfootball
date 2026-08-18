@@ -727,7 +727,9 @@ body.draft-mode header{box-shadow:0 10px 25px rgba(0,0,0,.28)}
 /* ===== personal RB watch highlights ===== */
 li.player-row[data-player="Jonathon Brooks"],
 li.player-row[data-player="Chris Rodriguez Jr."],
-li.player-row[data-player="Keaton Mitchell"]{
+li.player-row[data-player="Keaton Mitchell"],
+li.player-row[data-player="Jadarian Price"],
+li.player-row[data-player="Tyler Allgeier"]{
   border-radius:8px;
   box-shadow:
     inset 3px 0 0 rgba(126,166,205,.62),
@@ -745,6 +747,290 @@ li.player-row[data-player="Keaton Mitchell"]{
   box-shadow:
     inset 3px 0 0 rgba(143,187,229,.78),
     inset 0 0 0 1px rgba(143,187,229,.28);
+}
+
+
+/* ===== priority late-RB watch panel ===== */
+.priority-watch-panel .panel-body{display:flex;flex-direction:column;gap:10px}
+.priority-watch-list{
+  margin:0;
+  padding-left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.priority-watch-list li{
+  color:var(--text);
+}
+.priority-watch-list li strong{
+  color:var(--text);
+}
+.priority-watch-note{
+  margin:0;
+  font-size:12px;
+  line-height:1.45;
+  color:var(--muted);
+}
+
+
+/* ===== Jordyn Tyson injury watch ===== */
+li.player-row[data-player="Jordyn Tyson"]{
+  border-radius:8px;
+  box-shadow:
+    inset 3px 0 0 rgba(201,92,109,.82),
+    inset 0 0 0 1px rgba(201,92,109,.28);
+  background:rgba(153,55,70,.08);
+}
+.avail-row.injury-watch{
+  border-radius:8px;
+  box-shadow:
+    inset 3px 0 0 rgba(201,92,109,.82),
+    inset 0 0 0 1px rgba(201,92,109,.28);
+  background:rgba(153,55,70,.08);
+}
+.avail-row.injury-watch:hover{
+  box-shadow:
+    inset 3px 0 0 rgba(220,119,134,.92),
+    inset 0 0 0 1px rgba(220,119,134,.36);
+}
+.badge.b-tyson-watch{
+  background:#4b2028;
+  color:#f0bfc7;
+  border:1px solid #8b4c57;
+}
+
+
+/* ===== major injury watch styling ===== */
+li.player-row[data-player="Jeremiyah Love"],
+li.player-row[data-player="Jordyn Tyson"],
+li.player-row[data-player="Kyle Monangai"]{
+  border-radius:8px;
+  box-shadow:
+    inset 3px 0 0 rgba(201,92,109,.88),
+    inset 0 0 0 1px rgba(201,92,109,.30);
+  background:rgba(153,55,70,.085);
+}
+.avail-row.major-injury-watch{
+  border-radius:8px;
+  box-shadow:
+    inset 3px 0 0 rgba(201,92,109,.88),
+    inset 0 0 0 1px rgba(201,92,109,.30);
+  background:rgba(153,55,70,.085);
+}
+.avail-row.major-injury-watch:hover{
+  box-shadow:
+    inset 3px 0 0 rgba(220,119,134,.95),
+    inset 0 0 0 1px rgba(220,119,134,.38);
+}
+.badge.b-major-injury{
+  background:#4b2028 !important;
+  color:#f0bfc7 !important;
+  border:1px solid #8b4c57 !important;
+}
+
+/* ===== Draft Board Health Watch panel ===== */
+.health-watch-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.health-watch-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:7px 8px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(255,255,255,.018);
+  font-size:12px;
+  line-height:1.35;
+}
+.health-dot{
+  flex:0 0 auto;
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  margin-top:4px;
+  background:#d86779;
+  box-shadow:0 0 0 2px rgba(216,103,121,.14);
+}
+.health-dot.med{background:#d3a84b;box-shadow:0 0 0 2px rgba(211,168,75,.13)}
+.health-watch-name{font-weight:800;color:var(--text)}
+.health-watch-detail{color:var(--muted)}
+.health-watch-foot{
+  margin:9px 0 0;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+
+/* ===== position priority watch highlights ===== */
+li.player-row[data-priority-watch]{
+  border-radius:8px;
+  box-shadow:
+    inset 3px 0 0 rgba(126,166,205,.62),
+    inset 0 0 0 1px rgba(126,166,205,.20);
+  background:rgba(83,120,157,.055);
+}
+li.player-row[data-priority-watch]:hover{
+  box-shadow:
+    inset 3px 0 0 rgba(143,187,229,.78),
+    inset 0 0 0 1px rgba(143,187,229,.28);
+}
+
+/* ===== expanded Priority Watch panel ===== */
+.priority-watch-panel .panel-body{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.priority-watch-group{
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+.priority-watch-group:last-of-type{
+  padding-bottom:0;
+  border-bottom:0;
+}
+.priority-watch-group h4{
+  margin:0 0 6px;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.priority-watch-list{
+  margin:0;
+  padding-left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.priority-watch-list li{
+  color:var(--text);
+  font-size:12px;
+  line-height:1.35;
+}
+.priority-watch-list li strong{
+  color:var(--text);
+}
+
+
+/* ===== Draft Board lower-left utility panels ===== */
+.draftboard-lower-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:12px;
+  margin-top:12px;
+  align-items:start;
+}
+.draftboard-lower-grid .panel{
+  margin:0;
+}
+.draftboard-lower-grid .panel-body{
+  max-height:300px;
+  overflow:auto;
+}
+@media(max-width:700px){
+  .draftboard-lower-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ===== responsive 3-column Draft Board ===== */
+#BOARD .board-grid{
+  display:grid;
+  grid-template-columns:minmax(190px,.72fr) minmax(500px,2.05fr) minmax(280px,1.35fr);
+  gap:14px;
+  align-items:start;
+}
+.draft-left-rail,
+.draft-center-col,
+.draft-right-rail{
+  min-width:0;
+}
+.draft-left-rail,
+.draft-right-rail{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.draft-left-rail .panel,
+.draft-right-rail .panel{
+  margin:0;
+}
+.draft-left-rail #scarcity{
+  max-height:330px;
+  overflow:auto;
+}
+.draft-left-rail #log{
+  max-height:260px;
+  overflow:auto;
+}
+
+/* Tablet / smaller landscape: keep the board readable in two columns.
+   Sidebar stays on the right; utility panels move under Best Available. */
+@media (min-width:800px) and (max-width:1099px){
+  #BOARD .board-grid{
+    grid-template-columns:minmax(0,1.65fr) minmax(250px,.95fr);
+  }
+  .draft-left-rail{
+    grid-column:1;
+    grid-row:2;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:12px;
+  }
+  .draft-center-col{
+    grid-column:1;
+    grid-row:1;
+  }
+  .draft-right-rail{
+    grid-column:2;
+    grid-row:1 / span 2;
+  }
+  .draft-left-rail #scarcity,
+  .draft-left-rail #log{
+    max-height:260px;
+  }
+}
+
+/* Phone / portrait tablet: stack cleanly. */
+@media (max-width:799px){
+  #BOARD .board-grid{
+    grid-template-columns:1fr;
+  }
+  .draft-center-col{order:1;}
+  .draft-right-rail{order:2;}
+  .draft-left-rail{order:3;}
+  .draft-left-rail{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .draft-left-rail #scarcity,
+  .draft-left-rail #log{
+    max-height:none;
+  }
+}
+
+/* Let Best Available make good use of landscape height. */
+@media (min-width:1100px){
+  #BOARD #available{
+    max-height:calc(100vh - 205px);
+    overflow:auto;
+  }
+}
+
+
+.badge.b-ir-stash{
+  background:#183148;
+  color:#b9d8ef;
+  border:1px solid #416784;
 }
 
 </style>
@@ -806,7 +1092,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </details>
 <details class="changes">
 <summary>What changed since the last version</summary>
-<ul><li><strong>Personal RB watch highlights.</strong> Jonathon Brooks, Chris Rodriguez Jr., and Keaton Mitchell now have a subtle outline on both their tier rows and Draft Board rows; rankings and tiers are unchanged.</li><li><strong>OVERPRICED tags recalibrated to our draft slots.</strong> Removed OVERPRICED from Saquon Barkley, Josh Jacobs, and TreVeyon Henderson. Jeremiyah Love now carries WAIT: target 3.04, not 2.09.</li><li><strong>Walker/Hampton price tags updated.</strong> Removed OVERPRICED from Kenneth Walker III and Omarion Hampton. Walker is now treated as a 2.09 target; Hampton is preferred at 3.04.</li><li><strong>Travis Hunter two-way update.</strong> Hunter moves from DB5 to DB3 after camp reporting confirmed a significant role on both sides of the ball. He now carries a TWO-WAY tag and highest-ceiling note.</li><li><strong>ESPN DB production audit.</strong> Rebuilt DB tiers using 2025 actual ESPN production plus 2026 ESPN projections. Hamilton and Tykee lead the elite group; Lassiter and Chinn rise; Nick Cross moves back to Tier 2; Hufanga, Curl and Jordan Battle move up; Emmanwori remains PUP.</li><li><strong>ESPN DL production audit.</strong> Rebuilt DL tiers using 2025 actual ESPN production plus 2026 ESPN projections. Garrett remains DL1; Crosby rises to DL2; Simmons jumps into Tier 1; Bosa, Turner and Tuli rise; Byron Young and Bonitto move back.</li><li><strong>ESPN LB production audit.</strong> Rebuilt LB tiers using 2025 actual ESPN fantasy production plus 2026 ESPN projections. Brooks/Cashman/Campbell/Warner lead Tier 1; Bolton, Gray and Schwesinger stay premium; Dean rebounds into Tier 2; Roquan and Baun move down.</li><li><strong>Broader IDP consensus audit.</strong> Elite DL core stays intact; Andrew Van Ginkel is added, with Bonitto and Byron Young nudged up. LB now centers on Brooks/Campbell/Schwesinger, with Baun up and Cedric Gray/Nakobe Dean down. DB now starts Derwin/Nick Cross/Quentin Lake/Kyle Hamilton, while Emmanwori remains PUP.</li><li><strong>Kicker board audit.</strong> Added Jason Myers and Cam Little; moved Tyler Loop and Will Reichard up; moved Jake Bates and Harrison Butker down; removed Jason Sanders and Brandon McManus from the core draft list.</li><li><strong>RB Tier 5-9 Boone + Draft Sharks audit.</strong> Montgomery and Chuba rise; Harvey slides; Chris Rodriguez and Tyrone Tracy rise; Kamara moves up; Jaydon Blue falls. Late tiers now emphasize role certainty plus independent contingency upside.</li><li><strong>Pittsburgh RB committee adjustment.</strong> Rico Dowdle and Jaylen Warren are now ranked back-to-back, with Dowdle slightly ahead. Dowdle gets RISER + SLEEPER; Warren gets WATCH.</li><li><strong>Boone + Draft Sharks RB/WR/TE calibration.</strong> Saquon rises; Chase Brown slides; Jeremiyah Love rises with a new ankle WATCH. A.J. Brown is normalized to WR8 while Waddle/Watson rise and Egbuka returns to Tier 4. Kittle/Andrews move up, Pitts/Kincaid/Ferguson slide slightly, and Kenyon Sadiq drops to the late TE group.</li><li><strong>Draft Sharks / Boone calibration.</strong> Waddle moves to WR Tier 4; KC Concepcion to Tier 8; Quentin Johnston rises within Tier 7 with WATCH; Carnell Tate moves up within Tier 6. Tight ends are realigned to the Draft Sharks tier structure, including Hockenson's move to the late streaming group.</li><li><strong>Full-list calibration.</strong> Historical ADP/production review nudges Mahomes and Stafford up within QB Tier 4, Davante Adams and Michael Wilson up within their WR tiers, Tucker Kraft ahead of Tyler Warren in TE Tier 2, and moves David Montgomery and Ladd McConkey slightly down within their existing tiers. No first-round tier is changed solely to fit the 1.04 draft slot.</li><li><strong>Full-board audit completed.</strong> Rebuilt every QB/RB/WR/TE/LB/DL/DB tier and the within-tier order for this league format. Added T.J. Watt, Travis Hunter, Devon Witherspoon and Kamari Lassiter; expanded the elite LB/DL groups; and rebuilt Best Available so promotions land in the established draft range for their new tier.</li><li><strong>Ranking review.</strong> Gibbs moves slightly ahead of Bijan at 1.01; Javonte Williams rises to RB Tier 4; Caleb Williams and Malik Nabers move down within their existing tiers; Cedric Gray rises to LB Tier 1; Nakobe Dean is added to LB Tier 2; and Nick Emmanwori rises to DB Tier 1 after passing his physical.</li><li><strong>Out or badly delayed.</strong> Micah Parsons opens on PUP with a mid-October target. George Kittle (Achilles) and Zach Charbonnet (ACL) are both on PUP. Brian Branch could open on Reserve/PUP and miss four games. Coby Bryant is out four to six months and has been removed from the draftable pool.</li><li><strong>Injury calibration.</strong> Luther Burden's groin strain will cost him the preseason, but the Week 1 outlook and strong pre-injury camp move him back up to WR Tier 4 with a WATCH tag. Josh Jacobs remains a WATCH with his groin issue; Christian McCaffrey remains a WATCH after camp tightness; Nick Bosa remains week to week with knee tendinitis; Makai Lemon stays downgraded because of repeat hamstring issues.</li><li><strong>Aug. 14 camp audit.</strong> Saquon Barkley, Cam Skattebo, Brian Burns and Cooper DeJean receive WATCH tags without major ranking drops. Tank Bigsby, Jalyx Hunt and Kaleb Elarms-Orr receive RISER tags. The Patriots backfield has stabilized as a committee, so the prior Henderson FADE and Stevenson RISER tags are removed.</li><li><strong>Late-round pool refresh.</strong> Added Zachariah Branch, Jonah Coleman, MarShawn Lloyd, Malachi Fields, Arvell Reese and Demond Claiborne; removed Coby Bryant; moved Makai Lemon to WR Tier 9; and upgraded KC Concepcion and Denzel Boston to RISER. Claiborne enters RB Tier 9 as a SLEEPER stash.</li><li><strong>WR tier calibration.</strong> Wan'Dale Robinson, Jayden Higgins and Jalen Coker move to WR Tier 7; Jalen McMillan moves to WR Tier 8 to better match their current draft windows and role upside.</li><li><strong>Sleeper refresh.</strong> Jonathon Brooks and AJ Barner receive SLEEPER callouts based on late cost versus upside, while retaining their existing rankings and RISER status.</li><li><strong>Sleeper notes.</strong> Gainwell, Chris Rodriguez, Kyle Monangai and Jordan Mason join the SLEEPER pool. Every SLEEPER now includes a one-line draft-day reminder of the upside case.</li><li><strong>Consolidated callouts.</strong> SLEEPER marks late-cost players with outsized upside; RISER/WATCH/FADE/PUP/OUT are STATUS flags describing current stock, health or availability. Personal pick-window guidance now lives on the Draft Board instead of the tier cards.</li><li><strong>Draft-room pricing layer.</strong> VALUE marks players whose expert consensus sits materially ahead of their host-site draft-room placement; OVERPRICED marks players the room may surface earlier than expert consensus. These badges do not change the underlying rankings or tiers, and platform-specific signals are noted in the tooltip.</li><li><strong>Health news that helped.</strong> Malik Nabers is practicing and tracking to Week 1. Tucker Kraft is off PUP and running routes, moving into the Tier 2 tight ends. Alec Pierce should be ready for Week 1. Myles Garrett is back at practice.</li><li><strong>Role and camp buzz.</strong> Kyler Murray was named the Vikings' starter. Stefon Diggs signed in Washington, which pushes Terry McLaurin and Chig Okonkwo down. Parker Washington and Jonathon Brooks are the biggest risers on offense. Zack Baun has the Eagles' green dot. Antoine Winfield Jr. is being moved around the formation again.</li><li><strong>Teams and byes added.</strong> Every player now shows their 2026 team and bye week. Check the defenders in particular - Myles Garrett is a Ram, Jared Verse a Brown, Trey Hendrickson a Raven, Nick Cross a Commander, Quay Walker a Raider, and Jeremy Chinn a Raider. Daiyan Henley and Kevin Winston Jr. show a dash because no source confirmed their team.</li></ul>
+<ul><li><strong>Jordyn Tyson IR-stash adjustment.</strong> Tyson moves back to WR Tier 8 because the league has two IR slots. He keeps the OUT/major-injury treatment but now carries an IR STASH badge and a late-round 14-16 stash window.</li><li><strong>Aug. 17 injury / backfield update.</strong> Monangai returns to the bottom of RB Tier 7 while keeping the major-injury warning; Henderson/Stevenson notes now reflect the projected 50/50 split; Puka's lingering groin soreness gets a stronger WATCH note; Jordyn Tyson drops to WR Tier 9/OUT after the roughly two-month timetable.</li><li><strong>Kyle Monangai injury downgrade.</strong> Monangai moves from RB Tier 7 to Tier 8 after the hyperextended-knee report and expected multi-week absence. He now gets the major-injury highlight on the tier list and Draft Board, and his Health Watch indicator changes to red.</li><li><strong>Draft Board switched to responsive 3-column layout.</strong> Desktop and large landscape tablets now show Tier Scarcity + Pick Log on the left, Best Available in the center, and Roster/Priority Watch/Health Watch on the right. Smaller tablets fall back to two columns and phones stack.</li><li><strong>Draft Board layout tightened.</strong> Tier Scarcity and Pick Log moved beneath the available-player board on the left and display side-by-side on desktop, reducing the height of the right sidebar.</li><li><strong>Priority Watch expanded.</strong> Added QB, WR, TE, DL, LB and DB target lists to the Draft Board sidebar and applied the same subtle target outline used for the late-RB watch list. Rankings and tiers are unchanged.</li><li><strong>Full health sweep.</strong> Love is downgraded into RB Tier 4 with a major-injury highlight; Tyson retains the same major callout. Egbuka, Monangai and Chris Rodriguez receive WATCH notes; CJ Allen moves to PUP; and a Health Watch panel is added to the Draft Board.</li><li><strong>Jordyn Tyson injury downgrade.</strong> Tyson moved down into WR Tier 7, now carries a WATCH badge, and gets a special injury-watch highlight on both the tier list and Draft Board due to the hamstring concern and reported second opinions.</li><li><strong>Late-RB watch panel updated.</strong> Tyler Allgeier joins the subtle watch highlight group, and the Draft Board now shows a live side-panel priority list: Jonathon Brooks, Tyler Allgeier, Jadarian Price, Chris Rodriguez Jr., and Keaton Mitchell.</li><li><strong>Personal RB watch highlights.</strong> Jonathon Brooks, Chris Rodriguez Jr., Keaton Mitchell, and Jadarian Price now have a subtle outline on both their tier rows and Draft Board rows; rankings and tiers are unchanged.</li><li><strong>OVERPRICED tags recalibrated to our draft slots.</strong> Removed OVERPRICED from Saquon Barkley, Josh Jacobs, and TreVeyon Henderson. Jeremiyah Love now carries WAIT: target 3.04, not 2.09.</li><li><strong>Walker/Hampton price tags updated.</strong> Removed OVERPRICED from Kenneth Walker III and Omarion Hampton. Walker is now treated as a 2.09 target; Hampton is preferred at 3.04.</li><li><strong>Travis Hunter two-way update.</strong> Hunter moves from DB5 to DB3 after camp reporting confirmed a significant role on both sides of the ball. He now carries a TWO-WAY tag and highest-ceiling note.</li><li><strong>ESPN DB production audit.</strong> Rebuilt DB tiers using 2025 actual ESPN production plus 2026 ESPN projections. Hamilton and Tykee lead the elite group; Lassiter and Chinn rise; Nick Cross moves back to Tier 2; Hufanga, Curl and Jordan Battle move up; Emmanwori remains PUP.</li><li><strong>ESPN DL production audit.</strong> Rebuilt DL tiers using 2025 actual ESPN production plus 2026 ESPN projections. Garrett remains DL1; Crosby rises to DL2; Simmons jumps into Tier 1; Bosa, Turner and Tuli rise; Byron Young and Bonitto move back.</li><li><strong>ESPN LB production audit.</strong> Rebuilt LB tiers using 2025 actual ESPN fantasy production plus 2026 ESPN projections. Brooks/Cashman/Campbell/Warner lead Tier 1; Bolton, Gray and Schwesinger stay premium; Dean rebounds into Tier 2; Roquan and Baun move down.</li><li><strong>Broader IDP consensus audit.</strong> Elite DL core stays intact; Andrew Van Ginkel is added, with Bonitto and Byron Young nudged up. LB now centers on Brooks/Campbell/Schwesinger, with Baun up and Cedric Gray/Nakobe Dean down. DB now starts Derwin/Nick Cross/Quentin Lake/Kyle Hamilton, while Emmanwori remains PUP.</li><li><strong>Kicker board audit.</strong> Added Jason Myers and Cam Little; moved Tyler Loop and Will Reichard up; moved Jake Bates and Harrison Butker down; removed Jason Sanders and Brandon McManus from the core draft list.</li><li><strong>RB Tier 5-9 Boone + Draft Sharks audit.</strong> Montgomery and Chuba rise; Harvey slides; Chris Rodriguez and Tyrone Tracy rise; Kamara moves up; Jaydon Blue falls. Late tiers now emphasize role certainty plus independent contingency upside.</li><li><strong>Pittsburgh RB committee adjustment.</strong> Rico Dowdle and Jaylen Warren are now ranked back-to-back, with Dowdle slightly ahead. Dowdle gets RISER + SLEEPER; Warren gets WATCH.</li><li><strong>Boone + Draft Sharks RB/WR/TE calibration.</strong> Saquon rises; Chase Brown slides; Jeremiyah Love rises with a new ankle WATCH. A.J. Brown is normalized to WR8 while Waddle/Watson rise and Egbuka returns to Tier 4. Kittle/Andrews move up, Pitts/Kincaid/Ferguson slide slightly, and Kenyon Sadiq drops to the late TE group.</li><li><strong>Draft Sharks / Boone calibration.</strong> Waddle moves to WR Tier 4; KC Concepcion to Tier 8; Quentin Johnston rises within Tier 7 with WATCH; Carnell Tate moves up within Tier 6. Tight ends are realigned to the Draft Sharks tier structure, including Hockenson's move to the late streaming group.</li><li><strong>Full-list calibration.</strong> Historical ADP/production review nudges Mahomes and Stafford up within QB Tier 4, Davante Adams and Michael Wilson up within their WR tiers, Tucker Kraft ahead of Tyler Warren in TE Tier 2, and moves David Montgomery and Ladd McConkey slightly down within their existing tiers. No first-round tier is changed solely to fit the 1.04 draft slot.</li><li><strong>Full-board audit completed.</strong> Rebuilt every QB/RB/WR/TE/LB/DL/DB tier and the within-tier order for this league format. Added T.J. Watt, Travis Hunter, Devon Witherspoon and Kamari Lassiter; expanded the elite LB/DL groups; and rebuilt Best Available so promotions land in the established draft range for their new tier.</li><li><strong>Ranking review.</strong> Gibbs moves slightly ahead of Bijan at 1.01; Javonte Williams rises to RB Tier 4; Caleb Williams and Malik Nabers move down within their existing tiers; Cedric Gray rises to LB Tier 1; Nakobe Dean is added to LB Tier 2; and Nick Emmanwori rises to DB Tier 1 after passing his physical.</li><li><strong>Out or badly delayed.</strong> Micah Parsons opens on PUP with a mid-October target. George Kittle (Achilles) and Zach Charbonnet (ACL) are both on PUP. Brian Branch could open on Reserve/PUP and miss four games. Coby Bryant is out four to six months and has been removed from the draftable pool.</li><li><strong>Injury calibration.</strong> Luther Burden's groin strain will cost him the preseason, but the Week 1 outlook and strong pre-injury camp move him back up to WR Tier 4 with a WATCH tag. Josh Jacobs remains a WATCH with his groin issue; Christian McCaffrey remains a WATCH after camp tightness; Nick Bosa remains week to week with knee tendinitis; Makai Lemon stays downgraded because of repeat hamstring issues.</li><li><strong>Aug. 14 camp audit.</strong> Saquon Barkley, Cam Skattebo, Brian Burns and Cooper DeJean receive WATCH tags without major ranking drops. Tank Bigsby, Jalyx Hunt and Kaleb Elarms-Orr receive RISER tags. The Patriots backfield has stabilized as a committee, so the prior Henderson FADE and Stevenson RISER tags are removed.</li><li><strong>Late-round pool refresh.</strong> Added Zachariah Branch, Jonah Coleman, MarShawn Lloyd, Malachi Fields, Arvell Reese and Demond Claiborne; removed Coby Bryant; moved Makai Lemon to WR Tier 9; and upgraded KC Concepcion and Denzel Boston to RISER. Claiborne enters RB Tier 9 as a SLEEPER stash.</li><li><strong>WR tier calibration.</strong> Wan'Dale Robinson, Jayden Higgins and Jalen Coker move to WR Tier 7; Jalen McMillan moves to WR Tier 8 to better match their current draft windows and role upside.</li><li><strong>Sleeper refresh.</strong> Jonathon Brooks and AJ Barner receive SLEEPER callouts based on late cost versus upside, while retaining their existing rankings and RISER status.</li><li><strong>Sleeper notes.</strong> Gainwell, Chris Rodriguez, Kyle Monangai and Jordan Mason join the SLEEPER pool. Every SLEEPER now includes a one-line draft-day reminder of the upside case.</li><li><strong>Consolidated callouts.</strong> SLEEPER marks late-cost players with outsized upside; RISER/WATCH/FADE/PUP/OUT are STATUS flags describing current stock, health or availability. Personal pick-window guidance now lives on the Draft Board instead of the tier cards.</li><li><strong>Draft-room pricing layer.</strong> VALUE marks players whose expert consensus sits materially ahead of their host-site draft-room placement; OVERPRICED marks players the room may surface earlier than expert consensus. These badges do not change the underlying rankings or tiers, and platform-specific signals are noted in the tooltip.</li><li><strong>Health news that helped.</strong> Malik Nabers is practicing and tracking to Week 1. Tucker Kraft is off PUP and running routes, moving into the Tier 2 tight ends. Alec Pierce should be ready for Week 1. Myles Garrett is back at practice.</li><li><strong>Role and camp buzz.</strong> Kyler Murray was named the Vikings' starter. Stefon Diggs signed in Washington, which pushes Terry McLaurin and Chig Okonkwo down. Parker Washington and Jonathon Brooks are the biggest risers on offense. Zack Baun has the Eagles' green dot. Antoine Winfield Jr. is being moved around the formation again.</li><li><strong>Teams and byes added.</strong> Every player now shows their 2026 team and bye week. Check the defenders in particular - Myles Garrett is a Ram, Jared Verse a Brown, Trey Hendrickson a Raven, Nick Cross a Commander, Quay Walker a Raider, and Jeremy Chinn a Raider. Daiyan Henley and Kevin Winston Jr. show a dash because no source confirmed their team.</li></ul>
 </details>
 </section>
 <section aria-label="Live draft cockpit" id="BOARD">
@@ -822,9 +1108,13 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 </div>
-<div class="board-grid">
-<div>
-<div class="panel">
+<div class="board-grid"><div class="draft-left-rail"><div class="panel">
+<h3>Tier scarcity</h3>
+<div class="panel-body scarcity" id="scarcity"></div>
+</div><div class="panel">
+<h3>Pick log</h3>
+<div class="panel-body" id="log"></div>
+</div></div><div class="draft-center-col"><div class="panel">
 <h3>Best available <span class="count-pill" id="avail-count"></span></h3>
 <div class="pick-window-key"><span class="pick-window-swatch"></span><span>Blue outline = candidate for one of your draft slots; stronger blue = your next pick window.</span></div>
 <div class="pos-filter">
@@ -839,23 +1129,24 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button class="chip" data-bpos="K">K</button>
 </div>
 <div id="available"></div>
-</div>
-</div>
-<div>
-<div class="panel">
+</div></div><div class="draft-right-rail"><div class="panel">
 <h3>Your roster</h3>
 <div class="panel-body" id="roster"></div>
+</div><div class="panel priority-watch-panel"><h3>Priority Watch</h3><div class="panel-body"><div class="priority-watch-group"><h4>Late-RB</h4><ol class="priority-watch-list"><li><strong>Jonathon Brooks</strong></li><li><strong>Tyler Allgeier</strong></li><li>Jadarian Price</li><li>Chris Rodriguez</li><li>Keaton Mitchell</li></ol></div><div class="priority-watch-group"><h4>QB</h4><ol class="priority-watch-list"><li><strong>Trevor Lawrence</strong></li><li><strong>Patrick Mahomes</strong></li><li>Dak Prescott</li><li>Bo Nix</li><li>Jaxson Dart</li></ol></div><div class="priority-watch-group"><h4>WR</h4><ol class="priority-watch-list"><li><strong>Jayden Reed</strong></li><li><strong>Josh Downs</strong></li><li>Jalen Coker</li><li>KC Concepcion</li><li>Denzel Boston</li></ol></div><div class="priority-watch-group"><h4>TE</h4><ol class="priority-watch-list"><li><strong>Mark Andrews</strong></li><li><strong>Dalton Kincaid</strong></li><li>AJ Barner</li><li>Terrance Ferguson</li><li>Greg Dulcich</li></ol></div><div class="priority-watch-group"><h4>DL</h4><ol class="priority-watch-list"><li><strong>Myles Garrett</strong></li><li><strong>Maxx Crosby</strong></li><li>Aidan Hutchinson</li><li>Brian Burns</li><li>Will Anderson Jr.</li></ol></div><div class="priority-watch-group"><h4>LB</h4><ol class="priority-watch-list"><li><strong>Jordyn Brooks</strong></li><li><strong>Blake Cashman</strong></li><li>Fred Warner</li><li>Jack Campbell</li><li>Nick Bolton</li></ol></div><div class="priority-watch-group"><h4>DB</h4><ol class="priority-watch-list"><li><strong>Kyle Hamilton</strong></li><li><strong>Tykee Smith</strong></li><li>Travis Hunter</li><li>Derwin James Jr.</li><li>Quentin Lake</li></ol></div><p class="priority-watch-note">Subtle blue-gray outline = personal target to notice. Rankings and tiers are unchanged.</p></div></div><div class="panel health-watch-panel">
+<h3>Health Watch</h3>
+<div class="panel-body">
+<ul class="health-watch-list">
+<li><span class="health-dot"></span><span><span class="health-watch-name">Jeremiyah Love</span><br/><span class="health-watch-detail">High ankle · major downgrade</span></span></li>
+<li><span class="health-dot"></span><span><span class="health-watch-name">Jordyn Tyson</span><br/><span class="health-watch-detail">Hamstring · ~2 months · IR stash</span></span></li>
+<li><span class="health-dot"></span><span><span class="health-watch-name">Kyle Monangai</span><br/><span class="health-watch-detail">Knee · multi-week absence · Tier 7 value</span></span></li>
+<li><span class="health-dot med"></span><span><span class="health-watch-name">Emeka Egbuka</span><br/><span class="health-watch-detail">Toe · Week 1 optimism</span></span></li>
+<li><span class="health-dot med"></span><span><span class="health-watch-name">Puka Nacua</span><br/><span class="health-watch-detail">Groin soreness · still not practicing</span></span></li>
+<li><span class="health-dot"></span><span><span class="health-watch-name">George Kittle</span><br/><span class="health-watch-detail">Achilles/PUP</span></span></li>
+<li><span class="health-dot med"></span><span><span class="health-watch-name">Chris Rodriguez</span><br/><span class="health-watch-detail">Foot surgery · ramp-up</span></span></li>
+</ul>
+<p class="health-watch-foot">Red = material draft concern. Gold = monitor without a ranking change yet.</p>
 </div>
-<div class="panel">
-<h3>Tier scarcity</h3>
-<div class="panel-body scarcity" id="scarcity"></div>
-</div>
-<div class="panel">
-<h3>Pick log</h3>
-<div class="panel-body" id="log"></div>
-</div>
-</div>
-</div>
+</div></div></div>
 </section>
 <p class="empty-msg" id="empty-msg">No players match that search.</p>
 <section class="position-section" data-pos="QB" id="QB">
@@ -941,7 +1232,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Justin Herbert" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Trevor Lawrence" data-pos="QB" data-search="trevor lawrence jax">
+</li><li class="player-row" data-player="Trevor Lawrence" data-pos="QB" data-priority-watch="QB" data-search="trevor lawrence jax">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Trevor Lawrence</span></label>
 <span class="team" title="Bye week 7">JAX<i>7</i></span>
@@ -951,7 +1242,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Parker Washington chemistry has been the story of Jaguars camp.</p>
-</li><li class="player-row" data-player="Dak Prescott" data-pos="QB" data-search="dak prescott dal">
+</li><li class="player-row" data-player="Dak Prescott" data-pos="QB" data-priority-watch="QB" data-search="dak prescott dal">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Dak Prescott</span></label>
 <span class="team" title="Bye week 14">DAL<i>14</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -977,7 +1268,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div><h3>Tier 4</h3><p>Wait-and-draft QB1s</p></div>
 <span class="draft-window">Rounds 9-12</span>
 </div>
-<ul><li class="player-row" data-player="Patrick Mahomes" data-pos="QB" data-search="patrick mahomes kc">
+<ul><li class="player-row" data-player="Patrick Mahomes" data-pos="QB" data-priority-watch="QB" data-search="patrick mahomes kc">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Patrick Mahomes</span></label>
 <span class="team" title="Bye week 5">KC<i>5</i></span>
@@ -987,7 +1278,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Fully cleared for camp after the knee issue; watch workload, not availability.</p>
-</li><li class="player-row" data-player="Jaxson Dart" data-pos="QB" data-search="jaxson dart nyg">
+</li><li class="player-row" data-player="Jaxson Dart" data-pos="QB" data-priority-watch="QB" data-search="jaxson dart nyg">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jaxson Dart</span></label>
 <span class="team" title="Bye week 8">NYG<i>8</i></span>
@@ -1016,7 +1307,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Fading. Last year's 7%+ TD rate is unsustainable and he carries more injury risk than the QBs going near him.</p>
-</li><li class="player-row" data-player="Bo Nix" data-pos="QB" data-search="bo nix den">
+</li><li class="player-row" data-player="Bo Nix" data-pos="QB" data-priority-watch="QB" data-search="bo nix den">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Bo Nix</span></label>
 <span class="team" title="Bye week 10">DEN<i>10</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -1250,16 +1541,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Derrick Henry" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-overpriced="1" data-player="Jeremiyah Love" data-pos="RB" data-search="jeremiyah love ari">
-<div class="row-main">
-<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jeremiyah Love</span></label>
-<span class="team" title="Bye week 14">ARI<i>14</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span>
-<span class="badge b-wait" title="Prefer at 3.04; do not chase at 2.09">WAIT</span><div class="player-actions">
-<button aria-label="Favorite Jeremiyah Love" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
-<button aria-label="Avoid Jeremiyah Love" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
-</div>
-</div>
-<p class="note">WAIT — prefer at 3.04 rather than chasing at 2.09. Keep the ankle/health context in mind.</p></li><li class="player-row" data-player="Breece Hall" data-pos="RB" data-search="breece hall nyj">
+</li><li class="player-row" data-player="Breece Hall" data-pos="RB" data-search="breece hall nyj">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Breece Hall</span></label>
 <span class="team" title="Bye week 13">NYJ<i>13</i></span>
@@ -1332,7 +1614,16 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Being ramped up after the ankle injury that ended last season. The Giants have described the current limitation as conditioning-related rather than a new serious injury.</p>
-</li><li class="player-row" data-player="Quinshon Judkins" data-pos="RB" data-search="quinshon judkins cle">
+</li><li class="player-row" data-overpriced="1" data-player="Jeremiyah Love" data-pos="RB" data-search="jeremiyah love ari">
+<div class="row-main">
+<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jeremiyah Love</span></label>
+<span class="team" title="Bye week 14">ARI<i>14</i></span><span class="badge b-q b-major-injury" title="High ankle sprain; major injury watch.">WATCH</span>
+<div class="player-actions">
+<button aria-label="Favorite Jeremiyah Love" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
+<button aria-label="Avoid Jeremiyah Love" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
+</div>
+</div>
+<p class="note">Major injury watch — high ankle sprain, out for the rest of preseason and Week 1 is uncertain. No longer a 3.04 target; only consider at a meaningful discount.</p></li><li class="player-row" data-player="Quinshon Judkins" data-pos="RB" data-search="quinshon judkins cle">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Quinshon Judkins</span></label>
 <span class="team" title="Bye week 11">CLE<i>11</i></span>
@@ -1376,7 +1667,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid TreVeyon Henderson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">No longer tagged overpriced. Around 6.09 he fits his market cost and offers useful RB3/FLEX upside.</p>
+<p class="note">Projected near a 50/50 split with Stevenson if pass protection holds. Higher explosive-play ceiling, but third-down work is less secure. Best target at 6.09 or later.</p>
 </li><li class="player-row" data-player="Bhayshul Tuten" data-pos="RB" data-search="bhayshul tuten jax">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Bhayshul Tuten</span></label>
@@ -1396,7 +1687,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Rhamondre Stevenson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">Still sharing the backfield with TreVeyon Henderson. Stable role, but the committee makes the prior RISER label unnecessary.</p>
+<p class="note">Projected near a 50/50 split with Henderson. Safer pass-protection/high-value-touch role; preferable when priced materially cheaper than Henderson.</p>
 </li><li class="player-row" data-player="Rico Dowdle" data-pos="RB" data-search="rico dowdle pit">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Rico Dowdle</span></label>
@@ -1432,7 +1723,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Tony Pollard" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Jadarian Price" data-pos="RB" data-search="jadarian price sea">
+</li><li class="player-row" data-player="Jadarian Price" data-pos="RB" data-priority-watch="RB" data-search="jadarian price sea">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jadarian Price</span></label>
 <span class="team" title="Bye week 11">SEA<i>11</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span>
@@ -1469,7 +1760,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Passing-down role plus strong Bucky Irving contingency upside.</p>
-</li><li class="player-row" data-player="Jonathon Brooks" data-pos="RB" data-search="jonathon brooks car" data-sleeper="1">
+</li><li class="player-row" data-player="Jonathon Brooks" data-pos="RB" data-priority-watch="RB" data-search="jonathon brooks car" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jonathon Brooks</span></label>
 <span class="team" title="Bye week 5">CAR<i>5</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span>
@@ -1513,16 +1804,6 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Established No. 2 behind Kyren; could inherit a major workload if Williams misses time.</p>
-</li><li class="player-row" data-player="Kyle Monangai" data-pos="RB" data-search="kyle monangai chi" data-sleeper="1">
-<div class="row-main">
-<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Kyle Monangai</span></label>
-<span class="team" title="Bye week 10">CHI<i>10</i></span><span class="badge b-q" title="Monitor current availability / role">WATCH</span>
-<span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions">
-<button aria-label="Favorite Kyle Monangai" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
-<button aria-label="Avoid Kyle Monangai" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
-</div>
-</div>
-<p class="note">Late-season 1B role; RB1/2 upside if Swift misses time.</p>
 </li><li class="player-row" data-player="Rachaad White" data-pos="RB" data-search="rachaad white was">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Rachaad White</span></label>
@@ -1578,22 +1859,32 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">MCL sprain, but Dan Campbell expects him ready for Week 1. Still the Gibbs handcuff to target.</p>
+</li><li class="player-row" data-player="Kyle Monangai" data-pos="RB" data-search="kyle monangai chi" data-sleeper="1">
+<div class="row-main">
+<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Kyle Monangai</span></label>
+<span class="team" title="Bye week 10">CHI<i>10</i></span><span class="badge b-q b-major-injury" title="Hyperextended knee; expected to miss multiple weeks.">WATCH</span>
+<span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions">
+<button aria-label="Favorite Kyle Monangai" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
+<button aria-label="Avoid Kyle Monangai" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
+</div>
+</div>
+<p class="note">Major injury watch — hyperextended knee and expected to miss multiple weeks. Talent/role remain Tier 7 quality, but draft only at a discount until he returns to practice.</p>
 </li></ul>
 </article><article class="tier-card tier-8" data-tier="8">
 <div class="tier-head">
 <div><h3>Tier 8</h3><p>Late upside, handcuffs and ambiguous backfields</p></div>
 <span class="draft-window">Rounds 10-15</span>
 </div>
-<ul><li class="player-row" data-player="Chris Rodriguez" data-pos="RB" data-search="chris rodriguez jax" data-sleeper="1">
+<ul><li class="player-row" data-player="Chris Rodriguez" data-pos="RB" data-priority-watch="RB" data-search="chris rodriguez jax" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Chris Rodriguez</span></label>
-<span class="team" title="Bye week 7">JAX<i>7</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
+<span class="team" title="Bye week 7">JAX<i>7</i></span><span class="badge b-q" title="Recovering from offseason left-foot surgery/ramp-up.">WATCH</span>
 <span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions">
 <button aria-label="Favorite Chris Rodriguez" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
 <button aria-label="Avoid Chris Rodriguez" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">Boone + Draft Sharks both had him materially above our old rank; early-down and goal-line path fits half-PPR.</p>
+<p class="note">Late-RB target remains, but WATCH the foot. Recovering from offseason left-foot surgery and a cautious camp ramp-up.</p>
 </li><li class="player-row" data-player="Tyrone Tracy" data-pos="RB" data-search="tyrone tracy nyg">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Tyrone Tracy</span></label>
@@ -1622,7 +1913,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">On PUP after a torn ACL. Macdonald says he's getting closer - a stash, not a starter.</p>
-</li><li class="player-row" data-player="Tyler Allgeier" data-pos="RB" data-search="tyler allgeier ari">
+</li><li class="player-row" data-player="Tyler Allgeier" data-pos="RB" data-priority-watch="RB" data-search="tyler allgeier ari">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Tyler Allgeier</span></label>
 <span class="team" title="Bye week 14">ARI<i>14</i></span>
@@ -1631,7 +1922,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Tyler Allgeier" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Brian Robinson" data-pos="RB" data-search="brian robinson atl">
+<p class="note">Jeremiyah Love's high-ankle sprain creates early-season opportunity. Strong late-round watch target if the price stays reasonable.</p></li><li class="player-row" data-player="Brian Robinson" data-pos="RB" data-search="brian robinson atl">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Brian Robinson</span></label>
 <span class="team" title="Bye week 11">ATL<i>11</i></span>
@@ -1640,7 +1931,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Brian Robinson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Keaton Mitchell" data-pos="RB" data-search="keaton mitchell lac" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Keaton Mitchell</span></label><span class="team" title="Bye week 7">LAC<i>7</i></span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Keaton Mitchell" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Keaton Mitchell" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Elite speed; competing for the RB2 role with strong contingent upside.</p></li><li class="player-row" data-player="Jonah Coleman" data-pos="RB" data-search="jonah coleman den" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jonah Coleman</span></label><span class="team" title="Bye week 10">DEN<i>10</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Jonah Coleman" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Jonah Coleman" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Goal-line and receiving upside in an unsettled Denver backfield.</p></li><li class="player-row" data-player="MarShawn Lloyd" data-pos="RB" data-search="marshawn lloyd gb" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">MarShawn Lloyd</span></label><span class="team" title="Bye week 11">GB<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-q" title="Durability and health remain worth monitoring">WATCH</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite MarShawn Lloyd" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid MarShawn Lloyd" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Explosive Jacobs backup with huge contingent upside.</p></li><li class="player-row" data-player="Tank Bigsby" data-pos="RB" data-search="tank bigsby phi" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Tank Bigsby</span></label><span class="team" title="Bye week 10">PHI<i>10</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Tank Bigsby" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Tank Bigsby" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Saquon handcuff with a growing complementary role.</p></li><li class="player-row" data-player="Jaydon Blue" data-pos="RB" data-search="jaydon blue dal">
+</li><li class="player-row" data-player="Keaton Mitchell" data-pos="RB" data-priority-watch="RB" data-search="keaton mitchell lac" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Keaton Mitchell</span></label><span class="team" title="Bye week 7">LAC<i>7</i></span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Keaton Mitchell" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Keaton Mitchell" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Elite speed; competing for the RB2 role with strong contingent upside.</p></li><li class="player-row" data-player="Jonah Coleman" data-pos="RB" data-search="jonah coleman den" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jonah Coleman</span></label><span class="team" title="Bye week 10">DEN<i>10</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Jonah Coleman" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Jonah Coleman" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Goal-line and receiving upside in an unsettled Denver backfield.</p></li><li class="player-row" data-player="MarShawn Lloyd" data-pos="RB" data-search="marshawn lloyd gb" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">MarShawn Lloyd</span></label><span class="team" title="Bye week 11">GB<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-q" title="Durability and health remain worth monitoring">WATCH</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite MarShawn Lloyd" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid MarShawn Lloyd" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Explosive Jacobs backup with huge contingent upside.</p></li><li class="player-row" data-player="Tank Bigsby" data-pos="RB" data-search="tank bigsby phi" data-sleeper="1"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Tank Bigsby</span></label><span class="team" title="Bye week 10">PHI<i>10</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span><div class="player-actions"><button aria-label="Favorite Tank Bigsby" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Tank Bigsby" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Saquon handcuff with a growing complementary role.</p></li><li class="player-row" data-player="Jaydon Blue" data-pos="RB" data-search="jaydon blue dal">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jaydon Blue</span></label>
 <span class="team" title="Bye week 14">DAL<i>14</i></span><span class="badge b-new" title="New to this board">NEW</span>
@@ -1687,13 +1978,13 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </li><li class="player-row" data-player="Puka Nacua" data-pos="WR" data-search="puka nacua lar">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Puka Nacua</span></label>
-<span class="team" title="Bye week 11">LAR<i>11</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span>
+<span class="team" title="Bye week 11">LAR<i>11</i></span><span class="badge b-q" title="Groin soreness persists; still no indication Week 1 is in doubt.">WATCH</span>
 <div class="player-actions">
 <button aria-label="Favorite Puka Nacua" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
 <button aria-label="Avoid Puka Nacua" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">Groin soreness is worth monitoring; keep the elite ranking unless the Week 1 outlook changes.</p></li><li class="player-row" data-player="Jaxon Smith-Njigba" data-pos="WR" data-search="jaxon smith-njigba sea">
+<p class="note">Groin soreness has lingered for nearly a week and he missed Monday practice. Still the 1.04 choice for now, but flip to JSN if normal practice does not resume or Week 1 becomes uncertain.</p></li><li class="player-row" data-player="Jaxon Smith-Njigba" data-pos="WR" data-search="jaxon smith-njigba sea">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jaxon Smith-Njigba</span></label>
 <span class="team" title="Bye week 11">SEA<i>11</i></span>
@@ -1890,13 +2181,13 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </li><li class="player-row" data-player="Emeka Egbuka" data-pos="WR" data-search="emeka egbuka tb">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Emeka Egbuka</span></label>
-<span class="team" title="Bye week 10">TB<i>10</i></span><span class="badge b-up" title="Stock rising in camp / role">RISER</span>
+<span class="team" title="Bye week 10">TB<i>10</i></span><span class="badge b-q" title="Stable toe sprain; Week 1 optimism, but monitor.">WATCH</span>
 <div class="player-actions">
 <button aria-label="Favorite Emeka Egbuka" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
 <button aria-label="Avoid Emeka Egbuka" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Jameson Williams" data-pos="WR" data-search="jameson williams det">
+<p class="note">Toe sprain is considered stable and Week 1 optimism remains. WATCH only — no ranking downgrade unless recovery stalls.</p></li><li class="player-row" data-player="Jameson Williams" data-pos="WR" data-search="jameson williams det">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jameson Williams</span></label>
 <span class="team" title="Bye week 6">DET<i>6</i></span>
@@ -2032,16 +2323,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid DK Metcalf" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Jordyn Tyson" data-pos="WR" data-search="jordyn tyson no">
-<div class="row-main">
-<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jordyn Tyson</span></label>
-<span class="team" title="Bye week 8">NO<i>8</i></span>
-<div class="player-actions">
-<button aria-label="Favorite Jordyn Tyson" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
-<button aria-label="Avoid Jordyn Tyson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
-</div>
-</div>
-</li><li class="player-row" data-player="Josh Downs" data-pos="WR" data-search="josh downs ind">
+</li><li class="player-row" data-player="Josh Downs" data-pos="WR" data-priority-watch="WR" data-search="josh downs ind">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Josh Downs</span></label>
 <span class="team" title="Bye week 13">IND<i>13</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -2103,7 +2385,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Michael Pittman Jr." class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Jayden Reed" data-pos="WR" data-search="jayden reed gb">
+</li><li class="player-row" data-player="Jayden Reed" data-pos="WR" data-priority-watch="WR" data-search="jayden reed gb">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jayden Reed</span></label>
 <span class="team" title="Bye week 11">GB<i>11</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span>
@@ -2178,7 +2460,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Jayden Higgins" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Jalen Coker" data-pos="WR" data-search="jalen coker car">
+</li><li class="player-row" data-player="Jalen Coker" data-pos="WR" data-priority-watch="WR" data-search="jalen coker car">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jalen Coker</span></label>
 <span class="team" title="Bye week 5">CAR<i>5</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -2251,7 +2533,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Knee.</p>
-</li><li class="player-row" data-player="KC Concepcion" data-pos="WR" data-search="kc concepcion cle" data-sleeper="1">
+</li><li class="player-row" data-player="KC Concepcion" data-pos="WR" data-priority-watch="WR" data-search="kc concepcion cle" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">KC Concepcion</span></label>
 <span class="team" title="Bye week 11">CLE<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -2261,7 +2543,16 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">First-team flashes in an unsettled Browns WR room.</p>
-</li></ul>
+</li><li class="player-row" data-player="Jordyn Tyson" data-pos="WR" data-search="jordyn tyson no">
+<div class="row-main">
+<label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jordyn Tyson</span></label>
+<span class="team" title="Bye week 8">NO<i>8</i></span><span class="badge b-out b-major-injury" title="Hamstring; expected to miss roughly two months.">OUT</span><span class="badge b-ir-stash" title="Two IR slots make him a viable late-round stash if ESPN grants IR eligibility.">IR STASH</span>
+<div class="player-actions">
+<button aria-label="Favorite Jordyn Tyson" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
+<button aria-label="Avoid Jordyn Tyson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
+</div>
+</div>
+<p class="note">IR STASH — expected to miss roughly two months, but two IR slots make the absence easier to absorb. High-upside late pick if ESPN grants IR eligibility; avoid using a normal bench spot if he cannot be moved to IR.</p></li></ul>
 </article><article class="tier-card tier-9" data-tier="9">
 <div class="tier-head">
 <div><h3>Tier 9</h3><p>Final picks / waiver watch</p></div>
@@ -2334,7 +2625,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Repeat hamstring issues have clouded his early-season role. Still talented enough to stash, but no longer a Tier 8 draft priority.</p>
-</li><li class="player-row" data-player="Denzel Boston" data-pos="WR" data-search="denzel boston cle" data-sleeper="1">
+</li><li class="player-row" data-player="Denzel Boston" data-pos="WR" data-priority-watch="WR" data-search="denzel boston cle" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Denzel Boston</span></label>
 <span class="team" title="Bye week 11">CLE<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span>
@@ -2468,7 +2759,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div><h3>Tier 5</h3><p>Platoon partners / matchup starters</p></div>
 <span class="draft-window">Rounds 10-13</span>
 </div>
-<ul><li class="player-row" data-player="Mark Andrews" data-pos="TE" data-search="mark andrews bal">
+<ul><li class="player-row" data-player="Mark Andrews" data-pos="TE" data-priority-watch="TE" data-search="mark andrews bal">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Mark Andrews</span></label>
 <span class="team" title="Bye week 13">BAL<i>13</i></span>
@@ -2477,7 +2768,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Mark Andrews" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Dalton Kincaid" data-pos="TE" data-search="dalton kincaid buf">
+</li><li class="player-row" data-player="Dalton Kincaid" data-pos="TE" data-priority-watch="TE" data-search="dalton kincaid buf">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Dalton Kincaid</span></label>
 <span class="team" title="Bye week 7">BUF<i>7</i></span>
@@ -2615,7 +2906,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Setback in his hernia recovery and no timetable. Was already a slow-burn rookie.</p>
-</li><li class="player-row" data-player="AJ Barner" data-pos="TE" data-search="aj barner sea" data-sleeper="1">
+</li><li class="player-row" data-player="AJ Barner" data-pos="TE" data-priority-watch="TE" data-search="aj barner sea" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">AJ Barner</span></label>
 <span class="team" title="Bye week 11">SEA<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><span class="badge b-sleeper" title="Late-round player with outsized upside at current cost">SLEEPER</span>
@@ -2625,7 +2916,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Primary TE with a cheap path to TE1 volume if the role holds.</p>
-</li><li class="player-row" data-player="Greg Dulcich" data-pos="TE" data-search="greg dulcich mia" data-sleeper="1">
+</li><li class="player-row" data-player="Greg Dulcich" data-pos="TE" data-priority-watch="TE" data-search="greg dulcich mia" data-sleeper="1">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Greg Dulcich</span></label>
 <span class="team" title="Bye week 6">MIA<i>6</i></span>
@@ -2652,7 +2943,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Pat Freiermuth" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Terrance Ferguson" data-pos="TE" data-search="terrance ferguson lar"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Terrance Ferguson</span></label><span class="team" title="Bye week 11">LAR<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><div class="player-actions"><button aria-label="Favorite Terrance Ferguson" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Terrance Ferguson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Expanded role and versatility in camp strengthen the late-round upside case.</p></li></ul>
+</li><li class="player-row" data-player="Terrance Ferguson" data-pos="TE" data-priority-watch="TE" data-search="terrance ferguson lar"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Terrance Ferguson</span></label><span class="team" title="Bye week 11">LAR<i>11</i></span><span class="badge b-up" title="Stock rising in camp">RISER</span><div class="player-actions"><button aria-label="Favorite Terrance Ferguson" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Terrance Ferguson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Expanded role and versatility in camp strengthen the late-round upside case.</p></li></ul>
 </article></div>
 </section><section class="position-section" data-pos="LB" id="LB">
 <div class="section-title"><h2>LB</h2><p>Solo tackles at 1.5 make every-down snap counts the whole game. Draft the role, not the name; the top Tier 1 linebackers become strong values around Rounds 9-10.</p></div>
@@ -2661,7 +2952,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div><h3>Tier 1</h3><p>Elite tackle anchors</p></div>
 <span class="draft-window">Top four: Rounds 9-10</span>
 </div>
-<ul><li class="player-row" data-player="Jordyn Brooks" data-pos="LB" data-search="jordyn brooks mia">
+<ul><li class="player-row" data-player="Jordyn Brooks" data-pos="LB" data-priority-watch="LB" data-search="jordyn brooks mia">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jordyn Brooks</span></label>
 <span class="team" title="Bye week 6">MIA<i>6</i></span>
@@ -2671,7 +2962,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">The only completely safe every-down projection in a muddled Miami room.</p>
-</li><li class="player-row" data-player="Blake Cashman" data-pos="LB" data-search="blake cashman min">
+</li><li class="player-row" data-player="Blake Cashman" data-pos="LB" data-priority-watch="LB" data-search="blake cashman min">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Blake Cashman</span></label>
 <span class="team" title="Bye week 6">MIN<i>6</i></span>
@@ -2680,7 +2971,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Blake Cashman" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">ESPN projects the highest LB total in this group (243.3); proven 13.0 PPG floor when active.</p></li><li class="player-row" data-player="Jack Campbell" data-pos="LB" data-search="jack campbell det">
+<p class="note">ESPN projects the highest LB total in this group (243.3); proven 13.0 PPG floor when active.</p></li><li class="player-row" data-player="Jack Campbell" data-pos="LB" data-priority-watch="LB" data-search="jack campbell det">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Jack Campbell</span></label>
 <span class="team" title="Bye week 6">DET<i>6</i></span>
@@ -2690,7 +2981,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">The LB1 and it isn't close. Signed a four-year, $81M extension and will play nearly every snap.</p>
-</li><li class="player-row" data-player="Fred Warner" data-pos="LB" data-search="fred warner sf">
+</li><li class="player-row" data-player="Fred Warner" data-pos="LB" data-priority-watch="LB" data-search="fred warner sf">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Fred Warner</span></label>
 <span class="team" title="Bye week 8">SF<i>8</i></span>
@@ -2699,7 +2990,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Fred Warner" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">2025 total was injury-suppressed; ESPN projects a return to 225.9 points / 13.3 PPG.</p></li><li class="player-row" data-player="Nick Bolton" data-pos="LB" data-search="nick bolton kc">
+<p class="note">2025 total was injury-suppressed; ESPN projects a return to 225.9 points / 13.3 PPG.</p></li><li class="player-row" data-player="Nick Bolton" data-pos="LB" data-priority-watch="LB" data-search="nick bolton kc">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Nick Bolton</span></label>
 <span class="team" title="Bye week 5">KC<i>5</i></span>
@@ -2971,13 +3262,13 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </li><li class="player-row" data-player="CJ Allen" data-pos="LB" data-search="cj allen ind">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">CJ Allen</span></label>
-<span class="team" title="Bye week 13">IND<i>13</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span>
+<span class="team" title="Bye week 13">IND<i>13</i></span><span class="badge b-pup" title="On PUP with a calf injury.">PUP</span>
 <div class="player-actions">
 <button aria-label="Favorite CJ Allen" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button>
 <button aria-label="Avoid CJ Allen" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">Excellent opportunity in Indianapolis, but a calf and now a hamstring have cost him practice time.</p>
+<p class="note">On PUP with a calf injury. Avoid paying for him until he is activated and practicing.</p>
 </li></ul>
 </article><article class="tier-card tier-5" data-tier="5">
 <div class="tier-head">
@@ -3053,7 +3344,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div><h3>Tier 1</h3><p>Premium positional advantage</p></div>
 <span class="draft-window">Rounds 7-9</span>
 </div>
-<ul><li class="player-row" data-player="Myles Garrett" data-pos="DL" data-search="myles garrett lar">
+<ul><li class="player-row" data-player="Myles Garrett" data-pos="DL" data-priority-watch="DL" data-search="myles garrett lar">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Myles Garrett</span></label>
 <span class="team" title="Bye week 11">LAR<i>11</i></span><span class="badge b-q" title="Health or role worth monitoring">WATCH</span><div class="player-actions">
@@ -3062,7 +3353,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Knee swelling is being managed cautiously; keep him elite but monitor his practice participation.</p>
-</li><li class="player-row" data-player="Maxx Crosby" data-pos="DL" data-search="maxx crosby lv">
+</li><li class="player-row" data-player="Maxx Crosby" data-pos="DL" data-priority-watch="DL" data-search="maxx crosby lv">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Maxx Crosby</span></label>
 <span class="team" title="Bye week 13">LV<i>13</i></span>
@@ -3071,7 +3362,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Maxx Crosby" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Aidan Hutchinson" data-pos="DL" data-search="aidan hutchinson det">
+</li><li class="player-row" data-player="Aidan Hutchinson" data-pos="DL" data-priority-watch="DL" data-search="aidan hutchinson det">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Aidan Hutchinson</span></label>
 <span class="team" title="Bye week 6">DET<i>6</i></span>
@@ -3080,7 +3371,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Aidan Hutchinson" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Brian Burns" data-pos="DL" data-search="brian burns nyg">
+</li><li class="player-row" data-player="Brian Burns" data-pos="DL" data-priority-watch="DL" data-search="brian burns nyg">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Brian Burns</span></label>
 <span class="team" title="Bye week 8">NYG<i>8</i></span><span class="badge b-q" title="Monitor health / availability">WATCH</span>
@@ -3090,7 +3381,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 <p class="note">Managing an ankle issue and has had reps monitored. Elite production keeps him in DL Tier 1, but health is worth watching.</p>
-</li><li class="player-row" data-player="Will Anderson Jr." data-pos="DL" data-search="will anderson jr. hou">
+</li><li class="player-row" data-player="Will Anderson Jr." data-pos="DL" data-priority-watch="DL" data-search="will anderson jr. hou">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Will Anderson Jr.</span></label>
 <span class="team" title="Bye week 8">HOU<i>8</i></span>
@@ -3334,7 +3625,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <div><h3>Tier 1</h3><p>Elite DB profiles</p></div>
 <span class="draft-window">Only at a discount</span>
 </div>
-<ul><li class="player-row" data-player="Kyle Hamilton" data-pos="DB" data-search="kyle hamilton bal">
+<ul><li class="player-row" data-player="Kyle Hamilton" data-pos="DB" data-priority-watch="DB" data-search="kyle hamilton bal">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Kyle Hamilton</span></label>
 <span class="team" title="Bye week 13">BAL<i>13</i></span>
@@ -3343,7 +3634,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Kyle Hamilton" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">Best blend of 2025 production and 2026 ESPN projection; diversified tackle/sack/turnover profile.</p></li><li class="player-row" data-player="Tykee Smith" data-pos="DB" data-search="tykee smith tb">
+<p class="note">Best blend of 2025 production and 2026 ESPN projection; diversified tackle/sack/turnover profile.</p></li><li class="player-row" data-player="Tykee Smith" data-pos="DB" data-priority-watch="DB" data-search="tykee smith tb">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Tykee Smith</span></label>
 <span class="team" title="Bye week 10">TB<i>10</i></span>
@@ -3352,7 +3643,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Tykee Smith" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-<p class="note">161.3 points in 2025 and 178.8 projected in 2026; moved into the elite DB tier.</p></li><li class="player-row" data-player="Travis Hunter" data-pos="DB" data-search="travis hunter jax"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Travis Hunter</span></label><span class="team" title="Bye week 7">JAX<i>7</i></span><span class="badge b-two-way" title="Significant role on both defense and offense">TWO-WAY</span><span class="badge b-new" title="New to the audited board">NEW</span><div class="player-actions"><button aria-label="Favorite Travis Hunter" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Travis Hunter" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Highest-ceiling DB: Jacksonville is using him significantly on both defense and offense. If ESPN credits offensive production in a DB slot, he has true DB1 overall upside.</p></li><li class="player-row" data-player="Derwin James Jr." data-pos="DB" data-search="derwin james jr. lac">
+<p class="note">161.3 points in 2025 and 178.8 projected in 2026; moved into the elite DB tier.</p></li><li class="player-row" data-player="Travis Hunter" data-pos="DB" data-priority-watch="DB" data-search="travis hunter jax"><div class="row-main"><label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Travis Hunter</span></label><span class="team" title="Bye week 7">JAX<i>7</i></span><span class="badge b-two-way" title="Significant role on both defense and offense">TWO-WAY</span><span class="badge b-new" title="New to the audited board">NEW</span><div class="player-actions"><button aria-label="Favorite Travis Hunter" class="icon-btn favorite-btn" title="Favorite player" type="button">★</button><button aria-label="Avoid Travis Hunter" class="icon-btn avoid-btn" title="Avoid player" type="button">!</button></div></div><p class="note">Highest-ceiling DB: Jacksonville is using him significantly on both defense and offense. If ESPN credits offensive production in a DB slot, he has true DB1 overall upside.</p></li><li class="player-row" data-player="Derwin James Jr." data-pos="DB" data-priority-watch="DB" data-search="derwin james jr. lac">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Derwin James Jr.</span></label>
 <span class="team" title="Bye week 7">LAC<i>7</i></span>
@@ -3361,7 +3652,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button aria-label="Avoid Derwin James Jr." class="icon-btn avoid-btn" title="Avoid player" type="button">!</button>
 </div>
 </div>
-</li><li class="player-row" data-player="Quentin Lake" data-pos="DB" data-search="quentin lake lar">
+</li><li class="player-row" data-player="Quentin Lake" data-pos="DB" data-priority-watch="DB" data-search="quentin lake lar">
 <div class="row-main">
 <label class="draft-check"><input class="drafted" type="checkbox"/> <span class="player-name">Quentin Lake</span></label>
 <span class="team" title="Bye week 11">LAR<i>11</i></span>
@@ -3741,7 +4032,7 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <footer>Tiers fully audited August 15, 2026 for 12-team half-PPR, 6-point passing TDs and custom IDP scoring · offense-first overall board with current camp injury/role adjustments</footer>
 <script>
 
-const BOARD_DATA = [{"n":"Jahmyr Gibbs","p":"RB","t":1,"tl":"Tier 1","o":1.0,"s":"","w":"Top 2 overall","tm":"DET","b":6,"r":1},{"n":"Bijan Robinson","p":"RB","t":1,"tl":"Tier 1","o":2.0,"s":"","w":"Top 2 overall","tm":"ATL","b":11,"r":2},{"n":"Ja'Marr Chase","p":"WR","t":1,"tl":"Tier 1","o":3.0,"s":"","w":"Round 1","tm":"CIN","b":6,"r":3},{"n":"Puka Nacua","p":"WR","t":1,"tl":"Tier 1","o":4.0,"s":"q","w":"Round 1","tm":"LAR","b":11,"r":4},{"n":"Christian McCaffrey","p":"RB","t":2,"tl":"Tier 2","o":5.0,"s":"q","w":"Round 1","tm":"SF","b":8,"r":5},{"n":"Jaxon Smith-Njigba","p":"WR","t":1,"tl":"Tier 1","o":6.0,"s":"","w":"Round 1","tm":"SEA","b":11,"r":6},{"n":"Jonathan Taylor","p":"RB","t":2,"tl":"Tier 2","o":7.0,"s":"","w":"Round 1","tm":"IND","b":13,"r":7},{"n":"Amon-Ra St. Brown","p":"WR","t":1,"tl":"Tier 1","o":8.0,"s":"","w":"Round 1","tm":"DET","b":6,"r":8},{"n":"James Cook","p":"RB","t":2,"tl":"Tier 2","o":9.0,"s":"","w":"Round 1","tm":"BUF","b":7,"r":9},{"n":"Ashton Jeanty","p":"RB","t":2,"tl":"Tier 2","o":10.0,"s":"","w":"Round 1","tm":"LV","b":13,"r":10},{"n":"CeeDee Lamb","p":"WR","t":2,"tl":"Tier 2","o":11.0,"s":"","w":"Rounds 1-2","tm":"DAL","b":14,"r":11},{"n":"De'Von Achane","p":"RB","t":2,"tl":"Tier 2","o":12.0,"s":"","w":"Round 1","tm":"MIA","b":6,"r":12},{"n":"Saquon Barkley","p":"RB","t":2,"tl":"Tier 2","o":13.0,"s":"q","w":"Strong value at 2.09 if available","tm":"PHI","b":10,"r":13,"ov":1,"osrc":"Yahoo"},{"n":"Chase Brown","p":"RB","t":2,"tl":"Tier 2","o":14.0,"s":"","w":"Rounds 1-2","tm":"CIN","b":6,"r":14},{"n":"Kenneth Walker III","p":"RB","t":3,"tl":"Tier 3","o":15.0,"s":"","w":"2.09 target; smash value at 3.04","tm":"KC","b":5,"r":15,"ov":1,"osrc":"Yahoo"},{"n":"Omarion Hampton","p":"RB","t":3,"tl":"Tier 3","o":16.0,"s":"q","w":"Prefer 3.04; strong value if he falls","tm":"LAC","b":7,"r":16,"ov":1,"osrc":"Yahoo"},{"n":"Derrick Henry","p":"RB","t":3,"tl":"Tier 3","o":17.0,"s":"","w":"Rounds 1-2","tm":"BAL","b":13,"r":17},{"n":"Jeremiyah Love","p":"RB","t":3,"tl":"Tier 3","o":18.0,"s":"WAIT","w":"Prefer 3.04; do not chase at 2.09","tm":"ARI","b":14,"r":18,"ov":1,"osrc":"ESPN, Yahoo, Sleeper","sl":"WAIT"},{"n":"Breece Hall","p":"RB","t":3,"tl":"Tier 3","o":19.0,"s":"","w":"Rounds 1-2","tm":"NYJ","b":13,"r":19},{"n":"Kyren Williams","p":"RB","t":3,"tl":"Tier 3","o":20.0,"s":"","w":"Rounds 1-2","tm":"LAR","b":11,"r":20,"note":"Corum is pushing for more work; monitor whether the backfield shifts closer to a committee."},{"n":"Drake London","p":"WR","t":2,"tl":"Tier 2","o":21.0,"s":"","w":"Rounds 1-2","tm":"ATL","b":11,"r":21},{"n":"Justin Jefferson","p":"WR","t":2,"tl":"Tier 2","o":22.0,"s":"","w":"Rounds 1-2","tm":"MIN","b":6,"r":22},{"n":"A.J. Brown","p":"WR","t":2,"tl":"Tier 2","o":23.0,"s":"","w":"Rounds 2-3","tm":"NE","b":11,"r":23,"val":1,"vsrc":"ESPN, Yahoo, Sleeper"},{"n":"Nico Collins","p":"WR","t":3,"tl":"Tier 3","o":24.0,"s":"","w":"Rounds 2-3","tm":"HOU","b":8,"r":24},{"n":"Josh Allen","p":"QB","t":1,"tl":"Tier 1","o":25.0,"s":"","w":"Late Round 2 to Round 3","tm":"BUF","b":7,"r":25},{"n":"George Pickens","p":"WR","t":3,"tl":"Tier 3","o":26.0,"s":"","w":"Rounds 2-3","tm":"DAL","b":14,"r":26,"val":1,"vsrc":"Sleeper"},{"n":"Brock Bowers","p":"TE","t":1,"tl":"Tier 1","o":27.0,"s":"","w":"Late Round 2-3","tm":"LV","b":13,"r":27},{"n":"Chris Olave","p":"WR","t":3,"tl":"Tier 3","o":28.0,"s":"","w":"Rounds 2-3","tm":"NO","b":8,"r":28},{"n":"Rashee Rice","p":"WR","t":3,"tl":"Tier 3","o":29.0,"s":"","w":"Rounds 2-3","tm":"KC","b":5,"r":29},{"n":"Zay Flowers","p":"WR","t":3,"tl":"Tier 3","o":30.0,"s":"","w":"Rounds 2-3","tm":"BAL","b":13,"r":30,"val":1,"vsrc":"Sleeper"},{"n":"Malik Nabers","p":"WR","t":3,"tl":"Tier 3","o":31.0,"s":"up","w":"Rounds 2-3","tm":"NYG","b":8,"r":31},{"n":"Josh Jacobs","p":"RB","t":4,"tl":"Tier 4","o":32.0,"s":"q","w":"Good at 3.04; excellent at 4.09","tm":"GB","b":11,"r":32,"ov":1,"osrc":"Sleeper"},{"n":"DeVonta Smith","p":"WR","t":3,"tl":"Tier 3","o":33.0,"s":"q","w":"Rounds 2-3","tm":"PHI","b":10,"r":33,"val":1,"vsrc":"Sleeper"},{"n":"Garrett Wilson","p":"WR","t":4,"tl":"Tier 4","o":34.0,"s":"","w":"Rounds 3-5","tm":"NYJ","b":13,"r":34},{"n":"Davante Adams","p":"WR","t":4,"tl":"Tier 4","o":35.0,"s":"","w":"Rounds 3-5","tm":"LAR","b":11,"r":35},{"n":"Tee Higgins","p":"WR","t":4,"tl":"Tier 4","o":36.0,"s":"","w":"Rounds 3-5","tm":"CIN","b":6,"r":36,"val":1,"vsrc":"ESPN"},{"n":"Jaylen Waddle","p":"WR","t":4,"tl":"Tier 4","o":37.0,"s":"q","w":"Rounds 3-5","tm":"DEN","b":10,"r":37},{"n":"Christian Watson","p":"WR","t":4,"tl":"Tier 4","o":38.0,"s":"","w":"Rounds 3-5","tm":"GB","b":11,"r":38},{"n":"Tetairoa McMillan","p":"WR","t":4,"tl":"Tier 4","o":39.0,"s":"","w":"Rounds 3-5","tm":"CAR","b":5,"r":39},{"n":"Emeka Egbuka","p":"WR","t":4,"tl":"Tier 4","o":40.0,"s":"up","w":"Rounds 3-5","tm":"TB","b":10,"r":40},{"n":"Jameson Williams","p":"WR","t":4,"tl":"Tier 4","o":41.0,"s":"","w":"Rounds 3-5","tm":"DET","b":6,"r":41},{"n":"Luther Burden","p":"WR","t":4,"tl":"Tier 4","o":42.0,"s":"q","w":"Rounds 4-6","tm":"CHI","b":10,"r":42},{"n":"Ladd McConkey","p":"WR","t":4,"tl":"Tier 4","o":43.0,"s":"","w":"Rounds 3-5","tm":"LAC","b":7,"r":43},{"n":"Mike Evans","p":"WR","t":5,"tl":"Tier 5","o":44.0,"s":"q","w":"Rounds 5-7","tm":"SF","b":8,"r":44},{"n":"Javonte Williams","p":"RB","t":4,"tl":"Tier 4","o":45.0,"s":"","w":"Rounds 2-4","tm":"DAL","b":14,"r":45},{"n":"Trey McBride","p":"TE","t":1,"tl":"Tier 1","o":46.0,"s":"","w":"Late Round 2-3","tm":"ARI","b":14,"r":46},{"n":"Travis Etienne Jr.","p":"RB","t":4,"tl":"Tier 4","o":47.0,"s":"","w":"Rounds 2-4","tm":"NO","b":8,"r":47},{"n":"D'Andre Swift","p":"RB","t":4,"tl":"Tier 4","o":48.0,"s":"","w":"Rounds 2-4","tm":"CHI","b":10,"r":48},{"n":"Cam Skattebo","p":"RB","t":4,"tl":"Tier 4","o":49.0,"s":"q","w":"Rounds 2-4","tm":"NYG","b":8,"r":49},{"n":"Lamar Jackson","p":"QB","t":2,"tl":"Tier 2","o":50.0,"s":"","w":"Rounds 4-6","tm":"BAL","b":13,"r":50},{"n":"Quinshon Judkins","p":"RB","t":4,"tl":"Tier 4","o":51.0,"s":"","w":"Rounds 2-4","tm":"CLE","b":11,"r":51},{"n":"Colston Loveland","p":"TE","t":2,"tl":"Tier 2","o":52.0,"s":"","w":"Rounds 4-5","tm":"CHI","b":10,"r":52},{"n":"Bucky Irving","p":"RB","t":5,"tl":"Tier 5","o":53.0,"s":"","w":"Rounds 5-7","tm":"TB","b":10,"r":53},{"n":"Drake Maye","p":"QB","t":2,"tl":"Tier 2","o":54.0,"s":"","w":"Rounds 4-6","tm":"NE","b":11,"r":54},{"n":"Tyler Warren","p":"TE","t":2,"tl":"Tier 2","o":55.0,"s":"","w":"Rounds 4-5","tm":"IND","b":13,"r":55},{"n":"Joe Burrow","p":"QB","t":2,"tl":"Tier 2","o":56.0,"s":"","w":"Rounds 4-6","tm":"CIN","b":6,"r":56},{"n":"Tucker Kraft","p":"TE","t":3,"tl":"Tier 3","o":57.0,"s":"up","w":"Rounds 6-8","tm":"GB","b":11,"r":57,"val":1,"vsrc":"ESPN"},{"n":"David Montgomery","p":"RB","t":5,"tl":"Tier 5","o":58.0,"s":"","w":"Rounds 5-7","tm":"HOU","b":8,"r":58},{"n":"Parker Washington","p":"WR","t":5,"tl":"Tier 5","o":59.0,"s":"up","w":"Rounds 5-7","tm":"JAX","b":7,"r":59},{"n":"Jalen Hurts","p":"QB","t":2,"tl":"Tier 2","o":60.0,"s":"","w":"Rounds 4-6","tm":"PHI","b":10,"r":60},{"n":"TreVeyon Henderson","p":"RB","t":5,"tl":"Tier 5","o":61.0,"s":"","w":"Good around 6.09","tm":"NE","b":11,"r":61,"ov":1,"osrc":"Sleeper"},{"n":"Jayden Daniels","p":"QB","t":2,"tl":"Tier 2","o":62.0,"s":"","w":"Rounds 4-6","tm":"WAS","b":7,"r":62},{"n":"Bhayshul Tuten","p":"RB","t":5,"tl":"Tier 5","o":63.0,"s":"q","w":"Rounds 5-7","tm":"JAX","b":7,"r":63},{"n":"Rhamondre Stevenson","p":"RB","t":5,"tl":"Tier 5","o":64.0,"s":"","w":"Rounds 5-7","tm":"NE","b":11,"r":64},{"n":"Rico Dowdle","p":"RB","t":5,"tl":"Tier 5","o":65.0,"s":"up","w":"Rounds 5-7","tm":"PIT","b":9,"r":65,"sl":true},{"n":"Jaylen Warren","p":"RB","t":5,"tl":"Tier 5","o":66.0,"s":"q","w":"Rounds 5-7","tm":"PIT","b":9,"r":66},{"n":"Terry McLaurin","p":"WR","t":5,"tl":"Tier 5","o":67.0,"s":"","w":"Rounds 5-7","tm":"WAS","b":7,"r":67},{"n":"Justin Herbert","p":"QB","t":3,"tl":"Tier 3","o":68.0,"s":"","w":"Rounds 6-8","tm":"LAC","b":7,"r":68},{"n":"Tony Pollard","p":"RB","t":6,"tl":"Tier 6","o":69.0,"s":"","w":"Rounds 6-9","tm":"TEN","b":9,"r":69},{"n":"Sam LaPorta","p":"TE","t":3,"tl":"Tier 3","o":70.0,"s":"","w":"Rounds 6-8","tm":"DET","b":6,"r":70},{"n":"D.J. Moore","p":"WR","t":5,"tl":"Tier 5","o":71.0,"s":"","w":"Rounds 5-7","tm":"BUF","b":7,"r":71},{"n":"Rome Odunze","p":"WR","t":5,"tl":"Tier 5","o":72.0,"s":"up","w":"Rounds 5-7","tm":"CHI","b":10,"r":72},{"n":"Trevor Lawrence","p":"QB","t":3,"tl":"Tier 3","o":73.0,"s":"","w":"Rounds 6-8","tm":"JAX","b":7,"r":73},{"n":"Stefon Diggs","p":"WR","t":5,"tl":"Tier 5","o":74.0,"s":"new","w":"Rounds 5-7","tm":"WAS","b":7,"r":74},{"n":"Harold Fannin Jr.","p":"TE","t":3,"tl":"Tier 3","o":75.0,"s":"","w":"Rounds 6-8","tm":"CLE","b":11,"r":75},{"n":"George Kittle","p":"TE","t":4,"tl":"Tier 4","o":76.0,"s":"pup","w":"Rounds 8-10","tm":"SF","b":8,"r":76},{"n":"Kyle Pitts","p":"TE","t":4,"tl":"Tier 4","o":77.0,"s":"","w":"Rounds 8-10","tm":"ATL","b":11,"r":77},{"n":"Travis Kelce","p":"TE","t":4,"tl":"Tier 4","o":78.0,"s":"","w":"Rounds 8-10","tm":"KC","b":5,"r":78},{"n":"Mark Andrews","p":"TE","t":5,"tl":"Tier 5","o":79.0,"s":"","w":"Rounds 10-13","tm":"BAL","b":13,"r":79},{"n":"Dalton Kincaid","p":"TE","t":5,"tl":"Tier 5","o":80.0,"s":"","w":"Rounds 10-13","tm":"BUF","b":7,"r":80},{"n":"Dallas Goedert","p":"TE","t":5,"tl":"Tier 5","o":81.0,"s":"","w":"Rounds 10-13","tm":"PHI","b":10,"r":81},{"n":"Brenton Strange","p":"TE","t":5,"tl":"Tier 5","o":82.0,"s":"","w":"Rounds 10-13","tm":"JAX","b":7,"r":82},{"n":"Jake Ferguson","p":"TE","t":5,"tl":"Tier 5","o":83.0,"s":"","w":"Rounds 10-13","tm":"DAL","b":14,"r":83},{"n":"Isaiah Likely","p":"TE","t":5,"tl":"Tier 5","o":84.0,"s":"","w":"Rounds 10-13","tm":"NYG","b":8,"r":84},{"n":"Hunter Henry","p":"TE","t":5,"tl":"Tier 5","o":85.0,"s":"","w":"Rounds 10-13","tm":"NE","b":11,"r":85},{"n":"Jadarian Price","p":"RB","t":6,"tl":"Tier 6","o":86.0,"s":"q","w":"Rounds 6-9","tm":"SEA","b":11,"r":86},{"n":"Carnell Tate","p":"WR","t":6,"tl":"Tier 6","o":87.0,"s":"","w":"Rounds 7-10","tm":"TEN","b":9,"r":87},{"n":"Myles Garrett","p":"DL","t":1,"tl":"Tier 1","o":88.0,"s":"q","w":"Rounds 7-9","tm":"LAR","b":11,"r":88},{"n":"Brian Thomas Jr.","p":"WR","t":6,"tl":"Tier 6","o":89.0,"s":"","w":"Rounds 7-10","tm":"JAX","b":7,"r":89},{"n":"Chuba Hubbard","p":"RB","t":6,"tl":"Tier 6","o":90.0,"s":"down","w":"Rounds 6-9","tm":"CAR","b":5,"r":90},{"n":"Maxx Crosby","p":"DL","t":1,"tl":"Tier 1","o":91.0,"s":"","w":"Rounds 7-9","tm":"LV","b":13,"r":91},{"n":"Michael Wilson","p":"WR","t":6,"tl":"Tier 6","o":92.0,"s":"up","w":"Rounds 7-10","tm":"ARI","b":14,"r":92},{"n":"Dak Prescott","p":"QB","t":3,"tl":"Tier 3","o":93.0,"s":"up","w":"Rounds 6-8","tm":"DAL","b":14,"r":93},{"n":"Aidan Hutchinson","p":"DL","t":1,"tl":"Tier 1","o":94.0,"s":"","w":"Rounds 7-9","tm":"DET","b":6,"r":94},{"n":"J.K. Dobbins","p":"RB","t":6,"tl":"Tier 6","o":95.0,"s":"q","w":"Rounds 6-9","tm":"DEN","b":10,"r":95},{"n":"DK Metcalf","p":"WR","t":6,"tl":"Tier 6","o":96.0,"s":"","w":"Rounds 7-10","tm":"PIT","b":9,"r":96},{"n":"Kenneth Gainwell","p":"RB","t":6,"tl":"Tier 6","o":97.0,"s":"","w":"Rounds 6-9","tm":"TB","b":10,"r":97,"sl":1,"sn":"Passing-down role plus strong Bucky Irving contingency upside."},{"n":"Brian Burns","p":"DL","t":1,"tl":"Tier 1","o":98.0,"s":"q","w":"Rounds 7-9","tm":"NYG","b":8,"r":98},{"n":"Caleb Williams","p":"QB","t":3,"tl":"Tier 3","o":99.0,"s":"up","w":"Rounds 6-8","tm":"CHI","b":10,"r":99},{"n":"Jordyn Tyson","p":"WR","t":6,"tl":"Tier 6","o":100.0,"s":"","w":"Rounds 7-10","tm":"NO","b":8,"r":100},{"n":"Will Anderson Jr.","p":"DL","t":1,"tl":"Tier 1","o":101.0,"s":"","w":"Rounds 7-9","tm":"HOU","b":8,"r":101},{"n":"Jonathon Brooks","p":"RB","t":6,"tl":"Tier 6","o":102.0,"s":"up","w":"Rounds 6-9","tm":"CAR","b":5,"r":102,"sl":1,"sn":"Post-ACL upside with a path to Carolina lead-back work."},{"n":"RJ Harvey","p":"RB","t":6,"tl":"Tier 6","o":103.0,"s":"up","w":"Rounds 6-9","tm":"DEN","b":10,"r":103},{"n":"Jeffery Simmons","p":"DL","t":1,"tl":"Tier 1","o":104.0,"s":"","w":"Rounds 7-9","tm":"TEN","b":9,"r":104},{"n":"Josh Downs","p":"WR","t":6,"tl":"Tier 6","o":105.0,"s":"up","w":"Rounds 7-10","tm":"IND","b":13,"r":105},{"n":"Aaron Jones","p":"RB","t":6,"tl":"Tier 6","o":106.0,"s":"down","w":"Rounds 6-9","tm":"MIN","b":6,"r":106},{"n":"Nick Bosa","p":"DL","t":2,"tl":"Tier 2","o":107.0,"s":"q","w":"Rounds 8-10","tm":"SF","b":8,"r":107},{"n":"Patrick Mahomes","p":"QB","t":4,"tl":"Tier 4","o":108.0,"s":"","w":"Rounds 9-12","tm":"KC","b":5,"r":108},{"n":"Jaxson Dart","p":"QB","t":4,"tl":"Tier 4","o":109.0,"s":"","w":"Rounds 9-12","tm":"NYG","b":8,"r":109},{"n":"Jordyn Brooks","p":"LB","t":1,"tl":"Tier 1","o":110.0,"s":"","w":"Rounds 9-11","tm":"MIA","b":6,"r":110},{"n":"Romeo Doubs","p":"WR","t":6,"tl":"Tier 6","o":111.0,"s":"up","w":"Rounds 7-10","tm":"NE","b":11,"r":111},{"n":"Blake Cashman","p":"LB","t":1,"tl":"Tier 1","o":112.0,"s":"","w":"Rounds 9-11","tm":"MIN","b":6,"r":112},{"n":"Blake Corum","p":"RB","t":7,"tl":"Tier 7","o":113.0,"s":"","w":"Rounds 8-11","tm":"LAR","b":11,"r":113},{"n":"Brock Purdy","p":"QB","t":4,"tl":"Tier 4","o":114.0,"s":"","w":"Rounds 9-12","tm":"SF","b":8,"r":114},{"n":"Jack Campbell","p":"LB","t":1,"tl":"Tier 1","o":115.0,"s":"","w":"Rounds 9-11","tm":"DET","b":6,"r":115},{"n":"Quentin Johnston","p":"WR","t":7,"tl":"Tier 7","o":116.0,"s":"q","w":"Rounds 9-13","tm":"LAC","b":7,"r":116},{"n":"Matthew Stafford","p":"QB","t":4,"tl":"Tier 4","o":117.0,"s":"down","w":"Rounds 9-12","tm":"LAR","b":11,"r":117},{"n":"Chris Godwin","p":"WR","t":7,"tl":"Tier 7","o":118.0,"s":"","w":"Rounds 9-13","tm":"TB","b":10,"r":118,"val":1,"vsrc":"ESPN"},{"n":"Fred Warner","p":"LB","t":1,"tl":"Tier 1","o":119.0,"s":"","w":"Rounds 9-11","tm":"SF","b":8,"r":119},{"n":"Marvin Harrison Jr.","p":"WR","t":7,"tl":"Tier 7","o":120.0,"s":"","w":"Rounds 9-13","tm":"ARI","b":14,"r":120},{"n":"Kyle Monangai","p":"RB","t":7,"tl":"Tier 7","o":121.0,"s":"q","w":"Rounds 8-11","tm":"CHI","b":10,"r":121,"sl":1,"sn":"Late-season 1B role; RB1/2 upside if Swift misses time."},{"n":"Wan'Dale Robinson","p":"WR","t":7,"tl":"Tier 7","o":122.0,"s":"up","w":"Rounds 9-13","tm":"TEN","b":9,"r":122},{"n":"Michael Pittman Jr.","p":"WR","t":7,"tl":"Tier 7","o":123.0,"s":"","w":"Rounds 9-13","tm":"PIT","b":9,"r":123},{"n":"Jayden Reed","p":"WR","t":7,"tl":"Tier 7","o":124.0,"s":"q","w":"Rounds 9-13","tm":"GB","b":11,"r":124},{"n":"Bo Nix","p":"QB","t":4,"tl":"Tier 4","o":125.0,"s":"up","w":"Rounds 9-12","tm":"DEN","b":10,"r":125},{"n":"Rachaad White","p":"RB","t":7,"tl":"Tier 7","o":126.0,"s":"","w":"Rounds 8-11","tm":"WAS","b":7,"r":126},{"n":"Courtland Sutton","p":"WR","t":7,"tl":"Tier 7","o":127.0,"s":"down","w":"Rounds 9-13","tm":"DEN","b":10,"r":127},{"n":"Kyler Murray","p":"QB","t":4,"tl":"Tier 4","o":128.0,"s":"up","w":"Rounds 9-12","tm":"MIN","b":6,"r":128},{"n":"Jacory Croskey-Merritt","p":"RB","t":7,"tl":"Tier 7","o":129.0,"s":"up","w":"Rounds 8-11","tm":"WAS","b":7,"r":129},{"n":"Deebo Samuel","p":"WR","t":7,"tl":"Tier 7","o":130.0,"s":"up","w":"Rounds 9-13","tm":"SF","b":8,"r":130},{"n":"Jakobi Meyers","p":"WR","t":7,"tl":"Tier 7","o":131.0,"s":"","w":"Rounds 9-13","tm":"JAX","b":7,"r":131},{"n":"Jared Goff","p":"QB","t":4,"tl":"Tier 4","o":132.0,"s":"","w":"Rounds 9-12","tm":"DET","b":6,"r":132},{"n":"Jordan Addison","p":"WR","t":7,"tl":"Tier 7","o":133.0,"s":"","w":"Rounds 9-13","tm":"MIN","b":6,"r":133},{"n":"Jordan Mason","p":"RB","t":7,"tl":"Tier 7","o":134.0,"s":"up","w":"Rounds 8-11","tm":"MIN","b":6,"r":134,"sl":1,"sn":"Efficient runner with starter upside behind Aaron Jones."},{"n":"Khalil Shakir","p":"WR","t":7,"tl":"Tier 7","o":135.0,"s":"","w":"Rounds 9-13","tm":"BUF","b":7,"r":135},{"n":"Alec Pierce","p":"WR","t":8,"tl":"Tier 8","o":136.0,"s":"pup","w":"Late rounds","tm":"IND","b":13,"r":136},{"n":"Tyjae Spears","p":"RB","t":7,"tl":"Tier 7","o":137.0,"s":"","w":"Rounds 8-11","tm":"TEN","b":9,"r":137},{"n":"Danielle Hunter","p":"DL","t":2,"tl":"Tier 2","o":138.0,"s":"","w":"Rounds 8-10","tm":"HOU","b":8,"r":138},{"n":"Jordan Love","p":"QB","t":4,"tl":"Tier 4","o":139.0,"s":"","w":"Rounds 9-12","tm":"GB","b":11,"r":139},{"n":"Nick Bolton","p":"LB","t":1,"tl":"Tier 1","o":140.0,"s":"","w":"Rounds 9-11","tm":"KC","b":5,"r":140},{"n":"Matthew Golden","p":"WR","t":8,"tl":"Tier 8","o":141.0,"s":"up","w":"Late rounds","tm":"GB","b":11,"r":141,"sl":1,"sn":"Cheap explosive upside in an unsettled Packers WR room."},{"n":"Andrew Van Ginkel","p":"DL","t":2,"tl":"Tier 2","o":142.0,"s":"","w":"Rounds 8-10","tm":"MIN","b":6,"r":142,"sl":false,"v":""},{"n":"Foyesade Oluokun","p":"LB","t":1,"tl":"Tier 1","o":143.0,"s":"","w":"Rounds 9-11","tm":"JAX","b":7,"r":143},{"n":"Mason Taylor","p":"TE","t":6,"tl":"Tier 6","o":144.0,"s":"new","w":"Final rounds / waivers","tm":"NYJ","b":13,"r":144},{"n":"Jayden Higgins","p":"WR","t":7,"tl":"Tier 7","o":145.0,"s":"up","w":"Rounds 9-13","tm":"HOU","b":8,"r":145},{"n":"Cedric Gray","p":"LB","t":1,"tl":"Tier 1","o":146.0,"s":"","w":"Rounds 9-11","tm":"TEN","b":9,"r":146},{"n":"Kyle Hamilton","p":"DB","t":1,"tl":"Tier 1","o":147.0,"s":"","w":"Rounds 11+","tm":"BAL","b":13,"r":147},{"n":"Woody Marks","p":"RB","t":7,"tl":"Tier 7","o":148.0,"s":"","w":"Rounds 8-11","tm":"HOU","b":8,"r":148},{"n":"Juwan Johnson","p":"TE","t":6,"tl":"Tier 6","o":149.0,"s":"","w":"Final rounds / waivers","tm":"NO","b":8,"r":149},{"n":"Carson Schwesinger","p":"LB","t":1,"tl":"Tier 1","o":150.0,"s":"","w":"Rounds 9-11","tm":"CLE","b":11,"r":150},{"n":"T.J. Watt","p":"DL","t":2,"tl":"Tier 2","o":151.0,"s":"new","w":"Rounds 8-10","tm":"PIT","b":9,"r":151},{"n":"Jalen Coker","p":"WR","t":7,"tl":"Tier 7","o":152.0,"s":"up","w":"Rounds 9-13","tm":"CAR","b":5,"r":152},{"n":"Chigoziem Okonkwo","p":"TE","t":6,"tl":"Tier 6","o":153.0,"s":"down","w":"Final rounds / waivers","tm":"WAS","b":7,"r":153},{"n":"Tykee Smith","p":"DB","t":1,"tl":"Tier 1","o":154.0,"s":"","w":"Rounds 11+","tm":"TB","b":10,"r":154},{"n":"Baker Mayfield","p":"QB","t":4,"tl":"Tier 4","o":155.0,"s":"","w":"Rounds 9-12","tm":"TB","b":10,"r":155},{"n":"Ernest Jones IV","p":"LB","t":2,"tl":"Tier 2","o":156.0,"s":"","w":"Rounds 10-12","tm":"SEA","b":11,"r":156},{"n":"Travis Hunter","p":"DB","t":1,"tl":"Tier 1","o":157.0,"s":"new","w":"Rounds 11+","tm":"JAX","b":7,"r":157},{"n":"Jake Tonges","p":"TE","t":6,"tl":"Tier 6","o":158.0,"s":"new","w":"Final rounds / waivers","tm":"SF","b":8,"r":158},{"n":"Nate Landman","p":"LB","t":2,"tl":"Tier 2","o":159.0,"s":"","w":"Rounds 10-12","tm":"LAR","b":11,"r":159},{"n":"Dallas Turner","p":"DL","t":2,"tl":"Tier 2","o":160.0,"s":"","w":"Rounds 8-10","tm":"MIN","b":6,"r":160},{"n":"Derwin James Jr.","p":"DB","t":1,"tl":"Tier 1","o":161.0,"s":"","w":"Rounds 11+","tm":"LAC","b":7,"r":161},{"n":"KC Concepcion","p":"WR","t":8,"tl":"Tier 8","o":162.0,"s":"up","w":"Rounds 12-16","tm":"CLE","b":11,"r":162,"sl":1,"sn":"First-team flashes in an unsettled Browns WR room."},{"n":"Jamien Sherwood","p":"LB","t":2,"tl":"Tier 2","o":163.0,"s":"","w":"Rounds 10-12","tm":"NYJ","b":13,"r":163},{"n":"T.J. Hockenson","p":"TE","t":6,"tl":"Tier 6","o":164.0,"s":"","w":"Final rounds / waivers","tm":"MIN","b":6,"r":164},{"n":"Isiah Pacheco","p":"RB","t":7,"tl":"Tier 7","o":165.0,"s":"q","w":"Rounds 8-11","tm":"DET","b":6,"r":165,"val":1,"vsrc":"Sleeper"},{"n":"Quentin Lake","p":"DB","t":1,"tl":"Tier 1","o":166.0,"s":"","w":"Rounds 11+","tm":"LAR","b":11,"r":166},{"n":"Jalen McMillan","p":"WR","t":8,"tl":"Tier 8","o":167.0,"s":"q","w":"Late rounds","tm":"TB","b":10,"r":167},{"n":"C.J. Stroud","p":"QB","t":5,"tl":"Tier 5","o":168.0,"s":"","w":"Late rounds / waivers","tm":"HOU","b":8,"r":168},{"n":"Dalton Schultz","p":"TE","t":6,"tl":"Tier 6","o":169.0,"s":"","w":"Final rounds / waivers","tm":"HOU","b":8,"r":169},{"n":"Nakobe Dean","p":"LB","t":2,"tl":"Tier 2","o":170.0,"s":"new","w":"Rounds 10-12","tm":"LV","b":13,"r":170},{"n":"Tuli Tuipulotu","p":"DL","t":2,"tl":"Tier 2","o":171.0,"s":"","w":"Rounds 8-10","tm":"LAC","b":7,"r":171},{"n":"Kamari Lassiter","p":"DB","t":1,"tl":"Tier 1","o":172.0,"s":"new","w":"Rounds 11+","tm":"HOU","b":8,"r":172},{"n":"Byron Young","p":"DL","t":3,"tl":"Tier 3","o":173.0,"s":"","w":"Rounds 10+","tm":"LAR","b":11,"r":173},{"n":"Quay Walker","p":"LB","t":2,"tl":"Tier 2","o":174.0,"s":"","w":"Rounds 10-12","tm":"LV","b":13,"r":174},{"n":"Oronde Gadsden","p":"TE","t":6,"tl":"Tier 6","o":175.0,"s":"","w":"Final rounds / waivers","tm":"LAC","b":7,"r":175},{"n":"Nick Emmanwori","p":"DB","t":1,"tl":"Tier 1","o":176.0,"s":"pup","w":"Rounds 11+","tm":"SEA","b":11,"r":176},{"n":"Xavier Worthy","p":"WR","t":8,"tl":"Tier 8","o":177.0,"s":"q","w":"Late rounds","tm":"KC","b":5,"r":177},{"n":"Alex Highsmith","p":"DL","t":3,"tl":"Tier 3","o":178.0,"s":"","w":"Rounds 10+","tm":"PIT","b":9,"r":178,"sl":false,"v":""},{"n":"Tyler Shough","p":"QB","t":5,"tl":"Tier 5","o":179.0,"s":"","w":"Late rounds / waivers","tm":"NO","b":8,"r":179},{"n":"Alex Singleton","p":"LB","t":2,"tl":"Tier 2","o":180.0,"s":"","w":"Rounds 10-12","tm":"DEN","b":10,"r":180},{"n":"Nik Bonitto","p":"DL","t":3,"tl":"Tier 3","o":181.0,"s":"","w":"Rounds 10+","tm":"DEN","b":10,"r":181},{"n":"Chris Rodriguez","p":"RB","t":8,"tl":"Tier 8","o":182.0,"s":"up","w":"Rounds 10-15","tm":"JAX","b":7,"r":182,"sl":true,"sn":"Early-down contender with a real path to leading Jacksonville in carries."},{"n":"Jeremy Chinn","p":"DB","t":1,"tl":"Tier 1","o":183.0,"s":"","w":"Rounds 11+","tm":"LV","b":13,"r":183},{"n":"Jared Verse","p":"DL","t":3,"tl":"Tier 3","o":184.0,"s":"","w":"Rounds 10+","tm":"CLE","b":11,"r":184},{"n":"Tremaine Edmunds","p":"LB","t":3,"tl":"Tier 3","o":185.0,"s":"","w":"Rounds 11+","tm":"NYG","b":14,"r":185,"sl":false,"v":""},{"n":"Chase Young","p":"DL","t":3,"tl":"Tier 3","o":186.0,"s":"","w":"Rounds 10+","tm":"NO","b":8,"r":186,"sl":false,"v":""},{"n":"Tyrone Tracy","p":"RB","t":8,"tl":"Tier 8","o":187.0,"s":"","w":"Rounds 10-15","tm":"NYG","b":8,"r":187},{"n":"Sam Darnold","p":"QB","t":5,"tl":"Tier 5","o":188.0,"s":"","w":"Late rounds / waivers","tm":"SEA","b":11,"r":188},{"n":"Talanoa Hufanga","p":"DB","t":2,"tl":"Tier 2","o":189.0,"s":"","w":"Rounds 11+","tm":"DEN","b":10,"r":189},{"n":"Alvin Kamara","p":"RB","t":8,"tl":"Tier 8","o":190.0,"s":"","w":"Rounds 10-15","tm":"NO","b":8,"r":190},{"n":"Rashid Shaheed","p":"WR","t":8,"tl":"Tier 8","o":191.0,"s":"","w":"Late rounds","tm":"SEA","b":11,"r":191},{"n":"De'Zhaun Stribling","p":"WR","t":8,"tl":"Tier 8","o":192.0,"s":"up","w":"Late rounds","tm":"SF","b":8,"r":192,"sl":1,"sn":"Second-round rookie with strong camp and preseason production; immediate role upside in San Francisco."},{"n":"Roquan Smith","p":"LB","t":3,"tl":"Tier 3","o":193.0,"s":"","w":"Rounds 11+","tm":"BAL","b":13,"r":193},{"n":"Montez Sweat","p":"DL","t":3,"tl":"Tier 3","o":194.0,"s":"","w":"Rounds 10+","tm":"CHI","b":5,"r":194,"sl":false,"v":""},{"n":"DeForest Buckner","p":"DL","t":4,"tl":"Tier 4","o":195.0,"s":"up","w":"Rounds 10+","tm":"IND","b":13,"r":195},{"n":"Kamren Curl","p":"DB","t":2,"tl":"Tier 2","o":196.0,"s":"","w":"Rounds 11+","tm":"LAR","b":11,"r":196},{"n":"Zach Charbonnet","p":"RB","t":8,"tl":"Tier 8","o":197.0,"s":"pup","w":"Rounds 10-15","tm":"SEA","b":11,"r":197},{"n":"Malik Willis","p":"QB","t":5,"tl":"Tier 5","o":198.0,"s":"","w":"Late rounds / waivers","tm":"MIA","b":6,"r":198},{"n":"Trey Hendrickson","p":"DL","t":4,"tl":"Tier 4","o":199.0,"s":"","w":"Rounds 10+","tm":"BAL","b":13,"r":199},{"n":"Robert Spillane","p":"LB","t":3,"tl":"Tier 3","o":200.0,"s":"","w":"Rounds 11+","tm":"NE","b":11,"r":200},{"n":"Makai Lemon","p":"WR","t":9,"tl":"Tier 9","o":201.0,"s":"down","w":"Waivers / final picks","tm":"PHI","b":10,"r":201},{"n":"Nick Cross","p":"DB","t":2,"tl":"Tier 2","o":202.0,"s":"","w":"Rounds 11+","tm":"WAS","b":7,"r":202},{"n":"Tyler Allgeier","p":"RB","t":8,"tl":"Tier 8","o":203.0,"s":"","w":"Rounds 10-15","tm":"ARI","b":14,"r":203},{"n":"T.J. Edwards","p":"LB","t":3,"tl":"Tier 3","o":204.0,"s":"","w":"Rounds 11+","tm":"CHI","b":7,"r":204,"sl":false,"v":""},{"n":"Daniel Jones","p":"QB","t":5,"tl":"Tier 5","o":205.0,"s":"q","w":"Late rounds / waivers","tm":"IND","b":13,"r":205},{"n":"Budda Baker","p":"DB","t":2,"tl":"Tier 2","o":206.0,"s":"","w":"Rounds 11+","tm":"ARI","b":14,"r":206},{"n":"Brian Robinson","p":"RB","t":8,"tl":"Tier 8","o":207.0,"s":"","w":"Rounds 10-15","tm":"ATL","b":11,"r":207},{"n":"Zachariah Branch","p":"WR","t":8,"tl":"Tier 8","o":208.0,"s":"up","w":"Late rounds","tm":"ATL","b":11,"sl":1,"r":208,"sn":"Camp breakout with a path to immediate Atlanta snaps."},{"n":"Chamarri Conner","p":"DB","t":2,"tl":"Tier 2","o":209.0,"s":"","w":"Rounds 11+","tm":"KC","b":5,"r":209},{"n":"Demario Davis","p":"LB","t":3,"tl":"Tier 3","o":210.0,"s":"","w":"Rounds 11+","tm":"NYJ","b":9,"r":210,"sl":false,"v":""},{"n":"Keaton Mitchell","p":"RB","t":8,"tl":"Tier 8","o":211.0,"s":"","w":"Rounds 10-15","tm":"LAC","b":7,"r":211,"sl":1,"sn":"Elite speed; competing for the RB2 role with strong contingent upside."},{"n":"Jonah Coleman","p":"RB","t":8,"tl":"Tier 8","o":212.0,"s":"up","w":"Rounds 10-15","tm":"DEN","b":10,"sl":1,"r":212,"sn":"Goal-line and receiving upside in an unsettled Denver backfield."},{"n":"MarShawn Lloyd","p":"RB","t":8,"tl":"Tier 8","o":213.0,"s":"up","w":"Rounds 10-15","tm":"GB","b":11,"sl":1,"r":213,"sn":"Explosive Jacobs backup with huge contingent upside."},{"n":"Tank Bigsby","p":"RB","t":8,"tl":"Tier 8","o":214.0,"s":"up","w":"Rounds 10-15","tm":"PHI","b":10,"r":214,"sl":1,"sn":"Saquon handcuff with a growing complementary role."},{"n":"Jaydon Blue","p":"RB","t":8,"tl":"Tier 8","o":215.0,"s":"new","w":"Rounds 10-15","tm":"DAL","b":14,"r":215},{"n":"Xavier McKinney","p":"DB","t":2,"tl":"Tier 2","o":216.0,"s":"","w":"Rounds 11+","tm":"GB","b":11,"r":216,"sl":false,"v":""},{"n":"Zack Baun","p":"LB","t":3,"tl":"Tier 3","o":217.0,"s":"up","w":"Rounds 11+","tm":"PHI","b":10,"r":217},{"n":"Demond Claiborne","p":"RB","t":9,"tl":"Tier 9","o":218.0,"s":"","w":"Final rounds","tm":"MIN","b":6,"sl":1,"r":218,"sn":"4.37 speed; RB3 stash behind veteran backs."},{"n":"Jalyx Hunt","p":"DL","t":4,"tl":"Tier 4","o":219.0,"s":"up","w":"Rounds 10+","tm":"PHI","b":10,"r":219},{"n":"Jordan Battle","p":"DB","t":2,"tl":"Tier 2","o":220.0,"s":"","w":"Rounds 11+","tm":"CIN","b":6,"r":220},{"n":"Demarcus Robinson","p":"WR","t":9,"tl":"Tier 9","o":221.0,"s":"new","w":"Waivers / final picks","tm":"SF","b":8,"r":221},{"n":"Barrett Carter","p":"LB","t":4,"tl":"Tier 4","o":222.0,"s":"","w":"Rounds 11+","tm":"CIN","b":10,"r":222,"sl":false,"v":""},{"n":"Kenyon Sadiq","p":"TE","t":6,"tl":"Tier 6","o":223.0,"s":"down","w":"Final rounds / waivers","tm":"NYJ","b":13,"r":223},{"n":"AJ Barner","p":"TE","t":6,"tl":"Tier 6","o":224.0,"s":"up","w":"Final rounds / waivers","tm":"SEA","b":11,"sl":1,"r":224,"sn":"Primary TE with a cheap path to TE1 volume if the role holds."},{"n":"Devon Witherspoon","p":"DB","t":2,"tl":"Tier 2","o":225.0,"s":"new","w":"Rounds 11+","tm":"SEA","b":11,"r":225},{"n":"Devin Bush","p":"LB","t":4,"tl":"Tier 4","o":226.0,"s":"","w":"Rounds 11+","tm":"CHI","b":5,"r":226,"sl":false,"v":""},{"n":"Darius Cooper","p":"WR","t":9,"tl":"Tier 9","o":227.0,"s":"up","w":"Waivers / final picks","tm":"PHI","b":10,"r":227},{"n":"Pat Bryant","p":"WR","t":9,"tl":"Tier 9","o":228.0,"s":"up","w":"Waivers / final picks","tm":"DEN","b":10,"r":228},{"n":"Malachi Fields","p":"WR","t":9,"tl":"Tier 9","o":229.0,"s":"up","w":"Waivers / final picks","tm":"NYG","b":8,"r":229},{"n":"Greg Dulcich","p":"TE","t":6,"tl":"Tier 6","o":230.0,"s":"","w":"Final rounds / waivers","tm":"MIA","b":6,"r":230,"sl":1,"sn":"Starting TE candidate with a real chance to be one of Miami's top targets."},{"n":"Jalen Nailor","p":"WR","t":9,"tl":"Tier 9","o":231.0,"s":"up","w":"Waivers / final picks","tm":"LV","b":13,"sl":1,"r":231,"sn":"Cheap path to becoming Las Vegas\u2019 top wide receiver."},{"n":"Terrance Ferguson","p":"TE","t":6,"tl":"Tier 6","o":232.0,"s":"up","w":"Final rounds / waivers","tm":"LAR","b":11,"r":232},{"n":"Jalen Pitre","p":"DB","t":2,"tl":"Tier 2","o":233.0,"s":"","w":"Rounds 11+","tm":"HOU","b":8,"r":233},{"n":"Mack Wilson Sr.","p":"LB","t":4,"tl":"Tier 4","o":234.0,"s":"","w":"Rounds 11+","tm":"ARI","b":8,"r":234,"sl":false,"v":""},{"n":"Tre Tucker","p":"WR","t":9,"tl":"Tier 9","o":235.0,"s":"","w":"Waivers / final picks","tm":"LV","b":13,"r":235},{"n":"Deshon Elliott","p":"DB","t":2,"tl":"Tier 2","o":236.0,"s":"","w":"Rounds 11+","tm":"PIT","b":9,"r":236},{"n":"Gunnar Helm","p":"TE","t":6,"tl":"Tier 6","o":237.0,"s":"","w":"Final rounds / waivers","tm":"TEN","b":9,"r":237},{"n":"Azeez Al-Shaair","p":"LB","t":4,"tl":"Tier 4","o":238.0,"s":"","w":"Rounds 11+","tm":"HOU","b":8,"r":238,"sl":false,"v":""},{"n":"Cooper DeJean","p":"DB","t":3,"tl":"Tier 3","o":239.0,"s":"q","w":"Final rounds / waivers","tm":"PHI","b":10,"r":239},{"n":"Adonai Mitchell","p":"WR","t":9,"tl":"Tier 9","o":240.0,"s":"","w":"Waivers / final picks","tm":"NYJ","b":13,"r":240},{"n":"DeMarvion Overshown","p":"LB","t":4,"tl":"Tier 4","o":241.0,"s":"new","w":"Rounds 11+","tm":"DAL","b":14,"r":241},{"n":"Pat Freiermuth","p":"TE","t":6,"tl":"Tier 6","o":242.0,"s":"","w":"Final rounds / waivers","tm":"PIT","b":9,"r":242},{"n":"Jonathan Greenard","p":"DL","t":4,"tl":"Tier 4","o":243.0,"s":"down","w":"Rounds 10+","tm":"PHI","b":10,"r":243},{"n":"Trent McDuffie","p":"DB","t":3,"tl":"Tier 3","o":244.0,"s":"","w":"Final rounds / waivers","tm":"LAR","b":11,"r":244,"sl":false,"v":""},{"n":"Daiyan Henley","p":"LB","t":4,"tl":"Tier 4","o":245.0,"s":"","w":"Rounds 11+","tm":"LAC","b":7,"r":245},{"n":"Tyson Campbell","p":"DB","t":3,"tl":"Tier 3","o":246.0,"s":"","w":"Final rounds / waivers","tm":"CLE","b":11,"r":246,"sl":false,"v":""},{"n":"Micah Parsons","p":"DL","t":5,"tl":"Tier 5","o":247.0,"s":"pup","w":"Rounds 10+","tm":"GB","b":11,"r":247},{"n":"Tyrel Dodson","p":"LB","t":4,"tl":"Tier 4","o":248.0,"s":"down","w":"Rounds 11+","tm":"MIA","b":6,"r":248},{"n":"Sonny Styles","p":"LB","t":4,"tl":"Tier 4","o":249.0,"s":"new","w":"Rounds 11+","tm":"WAS","b":7,"r":249},{"n":"Christian Gonzalez","p":"DB","t":3,"tl":"Tier 3","o":250.0,"s":"","w":"Final rounds / waivers","tm":"NE","b":11,"r":250,"sl":false,"v":""},{"n":"Mykel Williams","p":"DL","t":5,"tl":"Tier 5","o":251.0,"s":"pup","w":"Rounds 10+","tm":"SF","b":8,"r":251},{"n":"Jauan Jennings","p":"WR","t":9,"tl":"Tier 9","o":252.0,"s":"","w":"Waivers / final picks","tm":"MIN","b":6,"r":252},{"n":"Paulson Adebo","p":"DB","t":3,"tl":"Tier 3","o":253.0,"s":"","w":"Final rounds / waivers","tm":"NYG","b":8,"r":253,"sl":false,"v":""},{"n":"CJ Allen","p":"LB","t":4,"tl":"Tier 4","o":254.0,"s":"q","w":"Rounds 11+","tm":"IND","b":13,"r":254},{"n":"Denzel Boston","p":"WR","t":9,"tl":"Tier 9","o":255.0,"s":"up","w":"Waivers / final picks","tm":"CLE","b":11,"r":255,"sl":1,"sn":"Big-bodied rookie pushing for immediate Browns snaps."},{"n":"Jessie Bates III","p":"DB","t":3,"tl":"Tier 3","o":256.0,"s":"up","w":"Final rounds / waivers","tm":"ATL","b":11,"r":256},{"n":"Tre'von Moehrig","p":"DB","t":3,"tl":"Tier 3","o":257.0,"s":"","w":"Final rounds / waivers","tm":"CAR","b":5,"r":257},{"n":"Arvell Reese","p":"LB","t":5,"tl":"Tier 5","o":258.0,"s":"up","w":"Rounds 11+","tm":"NYG","b":8,"r":258},{"n":"Josiah Trotter","p":"LB","t":5,"tl":"Tier 5","o":259.0,"s":"new","w":"Rounds 11+","tm":"TB","b":10,"r":259},{"n":"Anthony Hill Jr.","p":"LB","t":5,"tl":"Tier 5","o":260.0,"s":"new","w":"Rounds 11+","tm":"TEN","b":9,"r":260},{"n":"Devin White","p":"LB","t":5,"tl":"Tier 5","o":261.0,"s":"new","w":"Rounds 11+","tm":"DET","b":6,"r":261},{"n":"Brandon Aubrey","p":"K","t":1,"tl":"Tier 1","o":262.0,"s":"","w":"Final round only","tm":"DAL","b":14,"r":262},{"n":"Cameron Dicker","p":"K","t":1,"tl":"Tier 1","o":263.0,"s":"","w":"Final round only","tm":"LAC","b":7,"r":263},{"n":"Ka'imi Fairbairn","p":"K","t":2,"tl":"Tier 2","o":264.0,"s":"","w":"Final round","tm":"HOU","b":8,"r":264},{"n":"Jason Myers","p":"K","t":2,"tl":"Tier 2","o":265.0,"s":"","w":"Final round","tm":"SEA","b":8,"r":265,"sl":false,"v":""},{"n":"Cam Little","p":"K","t":2,"tl":"Tier 2","o":266.0,"s":"","w":"Final round","tm":"JAX","b":8,"r":266,"sl":false,"v":""},{"n":"Tyler Loop","p":"K","t":2,"tl":"Tier 2","o":267.0,"s":"","w":"Final round","tm":"BAL","b":13,"r":267},{"n":"Will Reichard","p":"K","t":2,"tl":"Tier 2","o":268.0,"s":"","w":"Final round","tm":"MIN","b":6,"r":268},{"n":"Chase McLaughlin","p":"K","t":2,"tl":"Tier 2","o":269.0,"s":"","w":"Final round","tm":"TB","b":10,"r":269},{"n":"Jake Bates","p":"K","t":2,"tl":"Tier 2","o":270.0,"s":"","w":"Final round","tm":"DET","b":6,"r":270},{"n":"Harrison Butker","p":"K","t":2,"tl":"Tier 2","o":271.0,"s":"","w":"Final round","tm":"KC","b":5,"r":271},{"n":"Evan McPherson","p":"K","t":3,"tl":"Tier 3","o":272.0,"s":"","w":"Final round / waivers","tm":"CIN","b":6,"r":272},{"n":"Jake Elliott","p":"K","t":3,"tl":"Tier 3","o":273.0,"s":"","w":"Final round / waivers","tm":"PHI","b":10,"r":273},{"n":"Vita Vea","p":"DL","t":5,"tl":"Tier 5","o":274.0,"s":"q","w":"Rounds 10+","tm":"TB","b":10,"r":274},{"n":"Jacob Rodriguez","p":"LB","t":5,"tl":"Tier 5","o":275.0,"s":"new","w":"Rounds 11+","tm":"MIA","b":6,"r":275},{"n":"Kaleb Elarms-Orr","p":"LB","t":5,"tl":"Tier 5","o":276.0,"s":"up","w":"Rounds 11+","tm":"BUF","b":7,"r":276},{"n":"Jaishawn Barham","p":"LB","t":5,"tl":"Tier 5","o":277.0,"s":"new","w":"Rounds 11+","tm":"DAL","b":14,"r":277},{"n":"Edgerrin Cooper","p":"LB","t":2,"tl":"Tier 2","o":278.0,"s":"","w":"Rounds 9-11","tm":"GB","b":11,"r":278},{"n":"Frankie Luvu","p":"LB","t":2,"tl":"Tier 2","o":279.0,"s":"new","w":"Rounds 9-11","tm":"WAS","b":7,"r":279},{"n":"Zaire Franklin","p":"LB","t":3,"tl":"Tier 3","o":280.0,"s":"","w":"Rounds 11+","tm":"GB","b":11,"r":280},{"n":"Drake Thomas","p":"LB","t":4,"tl":"Tier 4","o":281.0,"s":"down","w":"Rounds 11+","tm":"SEA","b":11,"r":281},{"n":"Josh Hines-Allen","p":"DL","t":2,"tl":"Tier 2","o":282.0,"s":"","w":"Rounds 7-10","tm":"JAX","b":7,"r":282},{"n":"Abdul Carter","p":"DL","t":3,"tl":"Tier 3","o":283.0,"s":"down","w":"Rounds 10+","tm":"NYG","b":8,"r":283},{"n":"Josh Sweat","p":"DL","t":3,"tl":"Tier 3","o":284.0,"s":"","w":"Rounds 10+","tm":"ARI","b":14,"r":284},{"n":"Dillon Thieneman","p":"DB","t":4,"tl":"Tier 4","o":285.0,"s":"new","w":"Final rounds / waivers","tm":"CHI","b":10,"r":285},{"n":"Kevin Winston Jr.","p":"DB","t":4,"tl":"Tier 4","o":286.0,"s":"","w":"Final rounds / waivers","tm":"TEN","b":9,"r":286},{"n":"Brian Branch","p":"DB","t":4,"tl":"Tier 4","o":287.0,"s":"pup","w":"Final rounds / waivers","tm":"DET","b":6,"r":287},{"n":"Kerby Joseph","p":"DB","t":4,"tl":"Tier 4","o":288.0,"s":"pup","w":"Final rounds / waivers","tm":"DET","b":6,"r":288},{"n":"Antoine Winfield Jr.","p":"DB","t":4,"tl":"Tier 4","o":289.0,"s":"","w":"Final rounds / waivers","tm":"TB","b":10,"r":289}];
+const BOARD_DATA = [{"n":"Jahmyr Gibbs","p":"RB","t":1,"tl":"Tier 1","o":1.0,"s":"","w":"Top 2 overall","tm":"DET","b":6,"r":1},{"n":"Bijan Robinson","p":"RB","t":1,"tl":"Tier 1","o":2.0,"s":"","w":"Top 2 overall","tm":"ATL","b":11,"r":2},{"n":"Ja'Marr Chase","p":"WR","t":1,"tl":"Tier 1","o":3.0,"s":"","w":"Round 1","tm":"CIN","b":6,"r":3},{"n":"Puka Nacua","p":"WR","t":1,"tl":"Tier 1","o":4.0,"s":"q","w":"Round 1","tm":"LAR","b":11,"r":4,"note":"Groin soreness persists; keep 1.04 unless normal practice fails to resume or Week 1 becomes uncertain."},{"n":"Christian McCaffrey","p":"RB","t":2,"tl":"Tier 2","o":5.0,"s":"q","w":"Round 1","tm":"SF","b":8,"r":5},{"n":"Jaxon Smith-Njigba","p":"WR","t":1,"tl":"Tier 1","o":6.0,"s":"","w":"Round 1","tm":"SEA","b":11,"r":6},{"n":"Jonathan Taylor","p":"RB","t":2,"tl":"Tier 2","o":7.0,"s":"","w":"Round 1","tm":"IND","b":13,"r":7},{"n":"Amon-Ra St. Brown","p":"WR","t":1,"tl":"Tier 1","o":8.0,"s":"","w":"Round 1","tm":"DET","b":6,"r":8},{"n":"James Cook","p":"RB","t":2,"tl":"Tier 2","o":9.0,"s":"","w":"Round 1","tm":"BUF","b":7,"r":9},{"n":"Ashton Jeanty","p":"RB","t":2,"tl":"Tier 2","o":10.0,"s":"","w":"Round 1","tm":"LV","b":13,"r":10},{"n":"CeeDee Lamb","p":"WR","t":2,"tl":"Tier 2","o":11.0,"s":"","w":"Rounds 1-2","tm":"DAL","b":14,"r":11},{"n":"De'Von Achane","p":"RB","t":2,"tl":"Tier 2","o":12.0,"s":"","w":"Round 1","tm":"MIA","b":6,"r":12},{"n":"Saquon Barkley","p":"RB","t":2,"tl":"Tier 2","o":13.0,"s":"q","w":"Strong value at 2.09 if available","tm":"PHI","b":10,"r":13,"ov":1,"osrc":"Yahoo"},{"n":"Chase Brown","p":"RB","t":2,"tl":"Tier 2","o":14.0,"s":"","w":"Rounds 1-2","tm":"CIN","b":6,"r":14},{"n":"Kenneth Walker III","p":"RB","t":3,"tl":"Tier 3","o":15.0,"s":"","w":"2.09 target; smash value at 3.04","tm":"KC","b":5,"r":15,"ov":1,"osrc":"Yahoo"},{"n":"Omarion Hampton","p":"RB","t":3,"tl":"Tier 3","o":16.0,"s":"q","w":"Prefer 3.04; strong value if he falls","tm":"LAC","b":7,"r":16,"ov":1,"osrc":"Yahoo"},{"n":"Derrick Henry","p":"RB","t":3,"tl":"Tier 3","o":17.0,"s":"","w":"Rounds 1-2","tm":"BAL","b":13,"r":17},{"n":"Breece Hall","p":"RB","t":3,"tl":"Tier 3","o":18.0,"s":"","w":"Rounds 1-2","tm":"NYJ","b":13,"r":18},{"n":"Kyren Williams","p":"RB","t":3,"tl":"Tier 3","o":19.0,"s":"","w":"Rounds 1-2","tm":"LAR","b":11,"r":19,"note":"Corum is pushing for more work; monitor whether the backfield shifts closer to a committee."},{"n":"Drake London","p":"WR","t":2,"tl":"Tier 2","o":20.0,"s":"","w":"Rounds 1-2","tm":"ATL","b":11,"r":20},{"n":"Justin Jefferson","p":"WR","t":2,"tl":"Tier 2","o":21.0,"s":"","w":"Rounds 1-2","tm":"MIN","b":6,"r":21},{"n":"A.J. Brown","p":"WR","t":2,"tl":"Tier 2","o":22.0,"s":"","w":"Rounds 2-3","tm":"NE","b":11,"r":22,"val":1,"vsrc":"ESPN, Yahoo, Sleeper"},{"n":"Nico Collins","p":"WR","t":3,"tl":"Tier 3","o":23.0,"s":"","w":"Rounds 2-3","tm":"HOU","b":8,"r":23},{"n":"Josh Allen","p":"QB","t":1,"tl":"Tier 1","o":24.0,"s":"","w":"Late Round 2 to Round 3","tm":"BUF","b":7,"r":24},{"n":"George Pickens","p":"WR","t":3,"tl":"Tier 3","o":25.0,"s":"","w":"Rounds 2-3","tm":"DAL","b":14,"r":25,"val":1,"vsrc":"Sleeper"},{"n":"Brock Bowers","p":"TE","t":1,"tl":"Tier 1","o":26.0,"s":"","w":"Late Round 2-3","tm":"LV","b":13,"r":26},{"n":"Chris Olave","p":"WR","t":3,"tl":"Tier 3","o":27.0,"s":"","w":"Rounds 2-3","tm":"NO","b":8,"r":27},{"n":"Rashee Rice","p":"WR","t":3,"tl":"Tier 3","o":28.0,"s":"","w":"Rounds 2-3","tm":"KC","b":5,"r":28},{"n":"Zay Flowers","p":"WR","t":3,"tl":"Tier 3","o":29.0,"s":"","w":"Rounds 2-3","tm":"BAL","b":13,"r":29,"val":1,"vsrc":"Sleeper"},{"n":"Malik Nabers","p":"WR","t":3,"tl":"Tier 3","o":30.0,"s":"up","w":"Rounds 2-3","tm":"NYG","b":8,"r":30},{"n":"Josh Jacobs","p":"RB","t":4,"tl":"Tier 4","o":31.0,"s":"q","w":"Good at 3.04; excellent at 4.09","tm":"GB","b":11,"r":31,"ov":1,"osrc":"Sleeper"},{"n":"DeVonta Smith","p":"WR","t":3,"tl":"Tier 3","o":32.0,"s":"q","w":"Rounds 2-3","tm":"PHI","b":10,"r":32,"val":1,"vsrc":"Sleeper"},{"n":"Garrett Wilson","p":"WR","t":4,"tl":"Tier 4","o":33.0,"s":"","w":"Rounds 3-5","tm":"NYJ","b":13,"r":33},{"n":"Davante Adams","p":"WR","t":4,"tl":"Tier 4","o":34.0,"s":"","w":"Rounds 3-5","tm":"LAR","b":11,"r":34},{"n":"Tee Higgins","p":"WR","t":4,"tl":"Tier 4","o":35.0,"s":"","w":"Rounds 3-5","tm":"CIN","b":6,"r":35,"val":1,"vsrc":"ESPN"},{"n":"Jaylen Waddle","p":"WR","t":4,"tl":"Tier 4","o":36.0,"s":"q","w":"Rounds 3-5","tm":"DEN","b":10,"r":36},{"n":"Christian Watson","p":"WR","t":4,"tl":"Tier 4","o":37.0,"s":"","w":"Rounds 3-5","tm":"GB","b":11,"r":37},{"n":"Tetairoa McMillan","p":"WR","t":4,"tl":"Tier 4","o":38.0,"s":"","w":"Rounds 3-5","tm":"CAR","b":5,"r":38},{"n":"Emeka Egbuka","p":"WR","t":4,"tl":"Tier 4","o":39.0,"s":"q","w":"Rounds 3-5","tm":"TB","b":10,"r":39,"note":"Stable toe sprain; Week 1 optimism. Monitor without a ranking downgrade."},{"n":"Jameson Williams","p":"WR","t":4,"tl":"Tier 4","o":40.0,"s":"","w":"Rounds 3-5","tm":"DET","b":6,"r":40},{"n":"Luther Burden","p":"WR","t":4,"tl":"Tier 4","o":41.0,"s":"q","w":"Rounds 4-6","tm":"CHI","b":10,"r":41},{"n":"Ladd McConkey","p":"WR","t":4,"tl":"Tier 4","o":42.0,"s":"","w":"Rounds 3-5","tm":"LAC","b":7,"r":42},{"n":"Mike Evans","p":"WR","t":5,"tl":"Tier 5","o":43.0,"s":"q","w":"Rounds 5-7","tm":"SF","b":8,"r":43},{"n":"Javonte Williams","p":"RB","t":4,"tl":"Tier 4","o":44.0,"s":"","w":"Rounds 2-4","tm":"DAL","b":14,"r":44},{"n":"Trey McBride","p":"TE","t":1,"tl":"Tier 1","o":45.0,"s":"","w":"Late Round 2-3","tm":"ARI","b":14,"r":45},{"n":"Travis Etienne Jr.","p":"RB","t":4,"tl":"Tier 4","o":46.0,"s":"","w":"Rounds 2-4","tm":"NO","b":8,"r":46},{"n":"D'Andre Swift","p":"RB","t":4,"tl":"Tier 4","o":47.0,"s":"","w":"Rounds 2-4","tm":"CHI","b":10,"r":47},{"n":"Cam Skattebo","p":"RB","t":4,"tl":"Tier 4","o":48.0,"s":"q","w":"Rounds 2-4","tm":"NYG","b":8,"r":48},{"n":"Jeremiyah Love","p":"RB","t":4,"tl":"Tier 4","o":49.0,"s":"q","w":"Rounds 4-6","tm":"ARI","b":14,"r":49,"ov":1,"osrc":"ESPN, Yahoo, Sleeper","sl":"WAIT","note":"High ankle sprain; major injury watch. No longer a 3.04 target; discount only."},{"n":"Lamar Jackson","p":"QB","t":2,"tl":"Tier 2","o":50.0,"s":"","w":"Rounds 4-6","tm":"BAL","b":13,"r":50},{"n":"Quinshon Judkins","p":"RB","t":4,"tl":"Tier 4","o":51.0,"s":"","w":"Rounds 2-4","tm":"CLE","b":11,"r":51},{"n":"Colston Loveland","p":"TE","t":2,"tl":"Tier 2","o":52.0,"s":"","w":"Rounds 4-5","tm":"CHI","b":10,"r":52},{"n":"Bucky Irving","p":"RB","t":5,"tl":"Tier 5","o":53.0,"s":"","w":"Rounds 5-7","tm":"TB","b":10,"r":53},{"n":"Drake Maye","p":"QB","t":2,"tl":"Tier 2","o":54.0,"s":"","w":"Rounds 4-6","tm":"NE","b":11,"r":54},{"n":"Tyler Warren","p":"TE","t":2,"tl":"Tier 2","o":55.0,"s":"","w":"Rounds 4-5","tm":"IND","b":13,"r":55},{"n":"Joe Burrow","p":"QB","t":2,"tl":"Tier 2","o":56.0,"s":"","w":"Rounds 4-6","tm":"CIN","b":6,"r":56},{"n":"Tucker Kraft","p":"TE","t":3,"tl":"Tier 3","o":57.0,"s":"up","w":"Rounds 6-8","tm":"GB","b":11,"r":57,"val":1,"vsrc":"ESPN"},{"n":"David Montgomery","p":"RB","t":5,"tl":"Tier 5","o":58.0,"s":"","w":"Rounds 5-7","tm":"HOU","b":8,"r":58},{"n":"Parker Washington","p":"WR","t":5,"tl":"Tier 5","o":59.0,"s":"up","w":"Rounds 5-7","tm":"JAX","b":7,"r":59},{"n":"Jalen Hurts","p":"QB","t":2,"tl":"Tier 2","o":60.0,"s":"","w":"Rounds 4-6","tm":"PHI","b":10,"r":60},{"n":"TreVeyon Henderson","p":"RB","t":5,"tl":"Tier 5","o":61.0,"s":"","w":"Best at 6.09 or later","tm":"NE","b":11,"r":61,"ov":1,"osrc":"Sleeper","note":"Near 50/50 split if pass protection holds; higher ceiling but less secure third-down role."},{"n":"Jayden Daniels","p":"QB","t":2,"tl":"Tier 2","o":62.0,"s":"","w":"Rounds 4-6","tm":"WAS","b":7,"r":62},{"n":"Bhayshul Tuten","p":"RB","t":5,"tl":"Tier 5","o":63.0,"s":"q","w":"Rounds 5-7","tm":"JAX","b":7,"r":63},{"n":"Rhamondre Stevenson","p":"RB","t":5,"tl":"Tier 5","o":64.0,"s":"","w":"Rounds 5-7","tm":"NE","b":11,"r":64,"note":"Near 50/50 split; safer pass-protection/high-value-touch role and better cost-adjusted value if cheaper."},{"n":"Rico Dowdle","p":"RB","t":5,"tl":"Tier 5","o":65.0,"s":"up","w":"Rounds 5-7","tm":"PIT","b":9,"r":65,"sl":true},{"n":"Jaylen Warren","p":"RB","t":5,"tl":"Tier 5","o":66.0,"s":"q","w":"Rounds 5-7","tm":"PIT","b":9,"r":66},{"n":"Terry McLaurin","p":"WR","t":5,"tl":"Tier 5","o":67.0,"s":"","w":"Rounds 5-7","tm":"WAS","b":7,"r":67},{"n":"Justin Herbert","p":"QB","t":3,"tl":"Tier 3","o":68.0,"s":"","w":"Rounds 6-8","tm":"LAC","b":7,"r":68},{"n":"Tony Pollard","p":"RB","t":6,"tl":"Tier 6","o":69.0,"s":"","w":"Rounds 6-9","tm":"TEN","b":9,"r":69},{"n":"Sam LaPorta","p":"TE","t":3,"tl":"Tier 3","o":70.0,"s":"","w":"Rounds 6-8","tm":"DET","b":6,"r":70},{"n":"D.J. Moore","p":"WR","t":5,"tl":"Tier 5","o":71.0,"s":"","w":"Rounds 5-7","tm":"BUF","b":7,"r":71},{"n":"Rome Odunze","p":"WR","t":5,"tl":"Tier 5","o":72.0,"s":"up","w":"Rounds 5-7","tm":"CHI","b":10,"r":72},{"n":"Trevor Lawrence","p":"QB","t":3,"tl":"Tier 3","o":73.0,"s":"","w":"Rounds 6-8","tm":"JAX","b":7,"r":73},{"n":"Stefon Diggs","p":"WR","t":5,"tl":"Tier 5","o":74.0,"s":"new","w":"Rounds 5-7","tm":"WAS","b":7,"r":74},{"n":"Harold Fannin Jr.","p":"TE","t":3,"tl":"Tier 3","o":75.0,"s":"","w":"Rounds 6-8","tm":"CLE","b":11,"r":75},{"n":"George Kittle","p":"TE","t":4,"tl":"Tier 4","o":76.0,"s":"pup","w":"Rounds 8-10","tm":"SF","b":8,"r":76},{"n":"Kyle Pitts","p":"TE","t":4,"tl":"Tier 4","o":77.0,"s":"","w":"Rounds 8-10","tm":"ATL","b":11,"r":77},{"n":"Travis Kelce","p":"TE","t":4,"tl":"Tier 4","o":78.0,"s":"","w":"Rounds 8-10","tm":"KC","b":5,"r":78},{"n":"Mark Andrews","p":"TE","t":5,"tl":"Tier 5","o":79.0,"s":"","w":"Rounds 10-13","tm":"BAL","b":13,"r":79},{"n":"Dalton Kincaid","p":"TE","t":5,"tl":"Tier 5","o":80.0,"s":"","w":"Rounds 10-13","tm":"BUF","b":7,"r":80},{"n":"Dallas Goedert","p":"TE","t":5,"tl":"Tier 5","o":81.0,"s":"","w":"Rounds 10-13","tm":"PHI","b":10,"r":81},{"n":"Brenton Strange","p":"TE","t":5,"tl":"Tier 5","o":82.0,"s":"","w":"Rounds 10-13","tm":"JAX","b":7,"r":82},{"n":"Jake Ferguson","p":"TE","t":5,"tl":"Tier 5","o":83.0,"s":"","w":"Rounds 10-13","tm":"DAL","b":14,"r":83},{"n":"Isaiah Likely","p":"TE","t":5,"tl":"Tier 5","o":84.0,"s":"","w":"Rounds 10-13","tm":"NYG","b":8,"r":84},{"n":"Hunter Henry","p":"TE","t":5,"tl":"Tier 5","o":85.0,"s":"","w":"Rounds 10-13","tm":"NE","b":11,"r":85},{"n":"Jadarian Price","p":"RB","t":6,"tl":"Tier 6","o":86.0,"s":"q","w":"Rounds 6-9","tm":"SEA","b":11,"r":86},{"n":"Carnell Tate","p":"WR","t":6,"tl":"Tier 6","o":87.0,"s":"","w":"Rounds 7-10","tm":"TEN","b":9,"r":87},{"n":"Myles Garrett","p":"DL","t":1,"tl":"Tier 1","o":88.0,"s":"q","w":"Rounds 7-9","tm":"LAR","b":11,"r":88},{"n":"Brian Thomas Jr.","p":"WR","t":6,"tl":"Tier 6","o":89.0,"s":"","w":"Rounds 7-10","tm":"JAX","b":7,"r":89},{"n":"Chuba Hubbard","p":"RB","t":6,"tl":"Tier 6","o":90.0,"s":"down","w":"Rounds 6-9","tm":"CAR","b":5,"r":90},{"n":"Maxx Crosby","p":"DL","t":1,"tl":"Tier 1","o":91.0,"s":"","w":"Rounds 7-9","tm":"LV","b":13,"r":91},{"n":"Michael Wilson","p":"WR","t":6,"tl":"Tier 6","o":92.0,"s":"up","w":"Rounds 7-10","tm":"ARI","b":14,"r":92},{"n":"Dak Prescott","p":"QB","t":3,"tl":"Tier 3","o":93.0,"s":"up","w":"Rounds 6-8","tm":"DAL","b":14,"r":93},{"n":"Aidan Hutchinson","p":"DL","t":1,"tl":"Tier 1","o":94.0,"s":"","w":"Rounds 7-9","tm":"DET","b":6,"r":94},{"n":"J.K. Dobbins","p":"RB","t":6,"tl":"Tier 6","o":95.0,"s":"q","w":"Rounds 6-9","tm":"DEN","b":10,"r":95},{"n":"DK Metcalf","p":"WR","t":6,"tl":"Tier 6","o":96.0,"s":"","w":"Rounds 7-10","tm":"PIT","b":9,"r":96},{"n":"Kenneth Gainwell","p":"RB","t":6,"tl":"Tier 6","o":97.0,"s":"","w":"Rounds 6-9","tm":"TB","b":10,"r":97,"sl":1,"sn":"Passing-down role plus strong Bucky Irving contingency upside."},{"n":"Brian Burns","p":"DL","t":1,"tl":"Tier 1","o":98.0,"s":"q","w":"Rounds 7-9","tm":"NYG","b":8,"r":98},{"n":"Caleb Williams","p":"QB","t":3,"tl":"Tier 3","o":99.0,"s":"up","w":"Rounds 6-8","tm":"CHI","b":10,"r":99},{"n":"Will Anderson Jr.","p":"DL","t":1,"tl":"Tier 1","o":100.0,"s":"","w":"Rounds 7-9","tm":"HOU","b":8,"r":100},{"n":"Jonathon Brooks","p":"RB","t":6,"tl":"Tier 6","o":101.0,"s":"up","w":"Rounds 6-9","tm":"CAR","b":5,"r":101,"sl":1,"sn":"Post-ACL upside with a path to Carolina lead-back work."},{"n":"RJ Harvey","p":"RB","t":6,"tl":"Tier 6","o":102.0,"s":"up","w":"Rounds 6-9","tm":"DEN","b":10,"r":102},{"n":"Jeffery Simmons","p":"DL","t":1,"tl":"Tier 1","o":103.0,"s":"","w":"Rounds 7-9","tm":"TEN","b":9,"r":103},{"n":"Josh Downs","p":"WR","t":6,"tl":"Tier 6","o":104.0,"s":"up","w":"Rounds 7-10","tm":"IND","b":13,"r":104},{"n":"Aaron Jones","p":"RB","t":6,"tl":"Tier 6","o":105.0,"s":"down","w":"Rounds 6-9","tm":"MIN","b":6,"r":105},{"n":"Nick Bosa","p":"DL","t":2,"tl":"Tier 2","o":106.0,"s":"q","w":"Rounds 8-10","tm":"SF","b":8,"r":106},{"n":"Patrick Mahomes","p":"QB","t":4,"tl":"Tier 4","o":107.0,"s":"","w":"Rounds 9-12","tm":"KC","b":5,"r":107},{"n":"Jaxson Dart","p":"QB","t":4,"tl":"Tier 4","o":108.0,"s":"","w":"Rounds 9-12","tm":"NYG","b":8,"r":108},{"n":"Jordyn Brooks","p":"LB","t":1,"tl":"Tier 1","o":109.0,"s":"","w":"Rounds 9-11","tm":"MIA","b":6,"r":109},{"n":"Romeo Doubs","p":"WR","t":6,"tl":"Tier 6","o":110.0,"s":"up","w":"Rounds 7-10","tm":"NE","b":11,"r":110},{"n":"Blake Cashman","p":"LB","t":1,"tl":"Tier 1","o":111.0,"s":"","w":"Rounds 9-11","tm":"MIN","b":6,"r":111},{"n":"Blake Corum","p":"RB","t":7,"tl":"Tier 7","o":112.0,"s":"","w":"Rounds 8-11","tm":"LAR","b":11,"r":112},{"n":"Brock Purdy","p":"QB","t":4,"tl":"Tier 4","o":113.0,"s":"","w":"Rounds 9-12","tm":"SF","b":8,"r":113},{"n":"Jack Campbell","p":"LB","t":1,"tl":"Tier 1","o":114.0,"s":"","w":"Rounds 9-11","tm":"DET","b":6,"r":114},{"n":"Quentin Johnston","p":"WR","t":7,"tl":"Tier 7","o":115.0,"s":"q","w":"Rounds 9-13","tm":"LAC","b":7,"r":115},{"n":"Matthew Stafford","p":"QB","t":4,"tl":"Tier 4","o":116.0,"s":"down","w":"Rounds 9-12","tm":"LAR","b":11,"r":116},{"n":"Chris Godwin","p":"WR","t":7,"tl":"Tier 7","o":117.0,"s":"","w":"Rounds 9-13","tm":"TB","b":10,"r":117,"val":1,"vsrc":"ESPN"},{"n":"Fred Warner","p":"LB","t":1,"tl":"Tier 1","o":118.0,"s":"","w":"Rounds 9-11","tm":"SF","b":8,"r":118},{"n":"Marvin Harrison Jr.","p":"WR","t":7,"tl":"Tier 7","o":119.0,"s":"","w":"Rounds 9-13","tm":"ARI","b":14,"r":119},{"n":"Wan'Dale Robinson","p":"WR","t":7,"tl":"Tier 7","o":120.0,"s":"up","w":"Rounds 9-13","tm":"TEN","b":9,"r":120},{"n":"Michael Pittman Jr.","p":"WR","t":7,"tl":"Tier 7","o":121.0,"s":"","w":"Rounds 9-13","tm":"PIT","b":9,"r":121},{"n":"Jayden Reed","p":"WR","t":7,"tl":"Tier 7","o":122.0,"s":"q","w":"Rounds 9-13","tm":"GB","b":11,"r":122},{"n":"Bo Nix","p":"QB","t":4,"tl":"Tier 4","o":123.0,"s":"up","w":"Rounds 9-12","tm":"DEN","b":10,"r":123},{"n":"Rachaad White","p":"RB","t":7,"tl":"Tier 7","o":124.0,"s":"","w":"Rounds 8-11","tm":"WAS","b":7,"r":124},{"n":"Courtland Sutton","p":"WR","t":7,"tl":"Tier 7","o":125.0,"s":"down","w":"Rounds 9-13","tm":"DEN","b":10,"r":125},{"n":"Kyler Murray","p":"QB","t":4,"tl":"Tier 4","o":126.0,"s":"up","w":"Rounds 9-12","tm":"MIN","b":6,"r":126},{"n":"Jacory Croskey-Merritt","p":"RB","t":7,"tl":"Tier 7","o":127.0,"s":"up","w":"Rounds 8-11","tm":"WAS","b":7,"r":127},{"n":"Deebo Samuel","p":"WR","t":7,"tl":"Tier 7","o":128.0,"s":"up","w":"Rounds 9-13","tm":"SF","b":8,"r":128},{"n":"Jakobi Meyers","p":"WR","t":7,"tl":"Tier 7","o":129.0,"s":"","w":"Rounds 9-13","tm":"JAX","b":7,"r":129},{"n":"Jared Goff","p":"QB","t":4,"tl":"Tier 4","o":130.0,"s":"","w":"Rounds 9-12","tm":"DET","b":6,"r":130},{"n":"Jordan Addison","p":"WR","t":7,"tl":"Tier 7","o":131.0,"s":"","w":"Rounds 9-13","tm":"MIN","b":6,"r":131},{"n":"Jordan Mason","p":"RB","t":7,"tl":"Tier 7","o":132.0,"s":"up","w":"Rounds 8-11","tm":"MIN","b":6,"r":132,"sl":1,"sn":"Efficient runner with starter upside behind Aaron Jones."},{"n":"Kyle Monangai","p":"RB","t":7,"tl":"Tier 7","o":133.0,"s":"q","w":"Rounds 10-12","tm":"CHI","b":10,"r":133,"sl":1,"sn":"Late-season 1B role; RB1/2 upside if Swift misses time.","note":"Hyperextended knee; expected to miss multiple weeks. Tier 7 talent/role, discount-only until practicing."},{"n":"Khalil Shakir","p":"WR","t":7,"tl":"Tier 7","o":134.0,"s":"","w":"Rounds 9-13","tm":"BUF","b":7,"r":134},{"n":"Alec Pierce","p":"WR","t":8,"tl":"Tier 8","o":135.0,"s":"pup","w":"Late rounds","tm":"IND","b":13,"r":135},{"n":"Tyjae Spears","p":"RB","t":7,"tl":"Tier 7","o":136.0,"s":"","w":"Rounds 8-11","tm":"TEN","b":9,"r":136},{"n":"Danielle Hunter","p":"DL","t":2,"tl":"Tier 2","o":137.0,"s":"","w":"Rounds 8-10","tm":"HOU","b":8,"r":137},{"n":"Jordan Love","p":"QB","t":4,"tl":"Tier 4","o":138.0,"s":"","w":"Rounds 9-12","tm":"GB","b":11,"r":138},{"n":"Nick Bolton","p":"LB","t":1,"tl":"Tier 1","o":139.0,"s":"","w":"Rounds 9-11","tm":"KC","b":5,"r":139},{"n":"Matthew Golden","p":"WR","t":8,"tl":"Tier 8","o":140.0,"s":"up","w":"Late rounds","tm":"GB","b":11,"r":140,"sl":1,"sn":"Cheap explosive upside in an unsettled Packers WR room."},{"n":"Andrew Van Ginkel","p":"DL","t":2,"tl":"Tier 2","o":141.0,"s":"","w":"Rounds 8-10","tm":"MIN","b":6,"r":141,"sl":false,"v":""},{"n":"Foyesade Oluokun","p":"LB","t":1,"tl":"Tier 1","o":142.0,"s":"","w":"Rounds 9-11","tm":"JAX","b":7,"r":142},{"n":"Mason Taylor","p":"TE","t":6,"tl":"Tier 6","o":143.0,"s":"new","w":"Final rounds / waivers","tm":"NYJ","b":13,"r":143},{"n":"Jayden Higgins","p":"WR","t":7,"tl":"Tier 7","o":144.0,"s":"up","w":"Rounds 9-13","tm":"HOU","b":8,"r":144},{"n":"Cedric Gray","p":"LB","t":1,"tl":"Tier 1","o":145.0,"s":"","w":"Rounds 9-11","tm":"TEN","b":9,"r":145},{"n":"Kyle Hamilton","p":"DB","t":1,"tl":"Tier 1","o":146.0,"s":"","w":"Rounds 11+","tm":"BAL","b":13,"r":146},{"n":"Woody Marks","p":"RB","t":7,"tl":"Tier 7","o":147.0,"s":"","w":"Rounds 8-11","tm":"HOU","b":8,"r":147},{"n":"Juwan Johnson","p":"TE","t":6,"tl":"Tier 6","o":148.0,"s":"","w":"Final rounds / waivers","tm":"NO","b":8,"r":148},{"n":"Carson Schwesinger","p":"LB","t":1,"tl":"Tier 1","o":149.0,"s":"","w":"Rounds 9-11","tm":"CLE","b":11,"r":149},{"n":"T.J. Watt","p":"DL","t":2,"tl":"Tier 2","o":150.0,"s":"new","w":"Rounds 8-10","tm":"PIT","b":9,"r":150},{"n":"Jalen Coker","p":"WR","t":7,"tl":"Tier 7","o":151.0,"s":"up","w":"Rounds 9-13","tm":"CAR","b":5,"r":151},{"n":"Chigoziem Okonkwo","p":"TE","t":6,"tl":"Tier 6","o":152.0,"s":"down","w":"Final rounds / waivers","tm":"WAS","b":7,"r":152},{"n":"Tykee Smith","p":"DB","t":1,"tl":"Tier 1","o":153.0,"s":"","w":"Rounds 11+","tm":"TB","b":10,"r":153},{"n":"Baker Mayfield","p":"QB","t":4,"tl":"Tier 4","o":154.0,"s":"","w":"Rounds 9-12","tm":"TB","b":10,"r":154},{"n":"Ernest Jones IV","p":"LB","t":2,"tl":"Tier 2","o":155.0,"s":"","w":"Rounds 10-12","tm":"SEA","b":11,"r":155},{"n":"Travis Hunter","p":"DB","t":1,"tl":"Tier 1","o":156.0,"s":"new","w":"Rounds 11+","tm":"JAX","b":7,"r":156},{"n":"Jake Tonges","p":"TE","t":6,"tl":"Tier 6","o":157.0,"s":"new","w":"Final rounds / waivers","tm":"SF","b":8,"r":157},{"n":"Nate Landman","p":"LB","t":2,"tl":"Tier 2","o":158.0,"s":"","w":"Rounds 10-12","tm":"LAR","b":11,"r":158},{"n":"Dallas Turner","p":"DL","t":2,"tl":"Tier 2","o":159.0,"s":"","w":"Rounds 8-10","tm":"MIN","b":6,"r":159},{"n":"Derwin James Jr.","p":"DB","t":1,"tl":"Tier 1","o":160.0,"s":"","w":"Rounds 11+","tm":"LAC","b":7,"r":160},{"n":"KC Concepcion","p":"WR","t":8,"tl":"Tier 8","o":161.0,"s":"up","w":"Rounds 12-16","tm":"CLE","b":11,"r":161,"sl":1,"sn":"First-team flashes in an unsettled Browns WR room."},{"n":"Jamien Sherwood","p":"LB","t":2,"tl":"Tier 2","o":162.0,"s":"","w":"Rounds 10-12","tm":"NYJ","b":13,"r":162},{"n":"T.J. Hockenson","p":"TE","t":6,"tl":"Tier 6","o":163.0,"s":"","w":"Final rounds / waivers","tm":"MIN","b":6,"r":163},{"n":"Isiah Pacheco","p":"RB","t":7,"tl":"Tier 7","o":164.0,"s":"q","w":"Rounds 8-11","tm":"DET","b":6,"r":164,"val":1,"vsrc":"Sleeper"},{"n":"Quentin Lake","p":"DB","t":1,"tl":"Tier 1","o":165.0,"s":"","w":"Rounds 11+","tm":"LAR","b":11,"r":165},{"n":"Jalen McMillan","p":"WR","t":8,"tl":"Tier 8","o":166.0,"s":"q","w":"Late rounds","tm":"TB","b":10,"r":166},{"n":"C.J. Stroud","p":"QB","t":5,"tl":"Tier 5","o":167.0,"s":"","w":"Late rounds / waivers","tm":"HOU","b":8,"r":167},{"n":"Dalton Schultz","p":"TE","t":6,"tl":"Tier 6","o":168.0,"s":"","w":"Final rounds / waivers","tm":"HOU","b":8,"r":168},{"n":"Nakobe Dean","p":"LB","t":2,"tl":"Tier 2","o":169.0,"s":"new","w":"Rounds 10-12","tm":"LV","b":13,"r":169},{"n":"Tuli Tuipulotu","p":"DL","t":2,"tl":"Tier 2","o":170.0,"s":"","w":"Rounds 8-10","tm":"LAC","b":7,"r":170},{"n":"Kamari Lassiter","p":"DB","t":1,"tl":"Tier 1","o":171.0,"s":"new","w":"Rounds 11+","tm":"HOU","b":8,"r":171},{"n":"Byron Young","p":"DL","t":3,"tl":"Tier 3","o":172.0,"s":"","w":"Rounds 10+","tm":"LAR","b":11,"r":172},{"n":"Quay Walker","p":"LB","t":2,"tl":"Tier 2","o":173.0,"s":"","w":"Rounds 10-12","tm":"LV","b":13,"r":173},{"n":"Oronde Gadsden","p":"TE","t":6,"tl":"Tier 6","o":174.0,"s":"","w":"Final rounds / waivers","tm":"LAC","b":7,"r":174},{"n":"Nick Emmanwori","p":"DB","t":1,"tl":"Tier 1","o":175.0,"s":"pup","w":"Rounds 11+","tm":"SEA","b":11,"r":175},{"n":"Xavier Worthy","p":"WR","t":8,"tl":"Tier 8","o":176.0,"s":"q","w":"Late rounds","tm":"KC","b":5,"r":176},{"n":"Alex Highsmith","p":"DL","t":3,"tl":"Tier 3","o":177.0,"s":"","w":"Rounds 10+","tm":"PIT","b":9,"r":177,"sl":false,"v":""},{"n":"Tyler Shough","p":"QB","t":5,"tl":"Tier 5","o":178.0,"s":"","w":"Late rounds / waivers","tm":"NO","b":8,"r":178},{"n":"Alex Singleton","p":"LB","t":2,"tl":"Tier 2","o":179.0,"s":"","w":"Rounds 10-12","tm":"DEN","b":10,"r":179},{"n":"Nik Bonitto","p":"DL","t":3,"tl":"Tier 3","o":180.0,"s":"","w":"Rounds 10+","tm":"DEN","b":10,"r":180},{"n":"Chris Rodriguez","p":"RB","t":8,"tl":"Tier 8","o":181.0,"s":"q","w":"Rounds 10-15","tm":"JAX","b":7,"r":181,"sl":true,"sn":"Early-down contender with a real path to leading Jacksonville in carries.","note":"Recovering from offseason left-foot surgery; cautious camp ramp-up."},{"n":"Jeremy Chinn","p":"DB","t":1,"tl":"Tier 1","o":182.0,"s":"","w":"Rounds 11+","tm":"LV","b":13,"r":182},{"n":"Jared Verse","p":"DL","t":3,"tl":"Tier 3","o":183.0,"s":"","w":"Rounds 10+","tm":"CLE","b":11,"r":183},{"n":"Tremaine Edmunds","p":"LB","t":3,"tl":"Tier 3","o":184.0,"s":"","w":"Rounds 11+","tm":"NYG","b":14,"r":184,"sl":false,"v":""},{"n":"Chase Young","p":"DL","t":3,"tl":"Tier 3","o":185.0,"s":"","w":"Rounds 10+","tm":"NO","b":8,"r":185,"sl":false,"v":""},{"n":"Tyrone Tracy","p":"RB","t":8,"tl":"Tier 8","o":186.0,"s":"","w":"Rounds 10-15","tm":"NYG","b":8,"r":186},{"n":"Sam Darnold","p":"QB","t":5,"tl":"Tier 5","o":187.0,"s":"","w":"Late rounds / waivers","tm":"SEA","b":11,"r":187},{"n":"Talanoa Hufanga","p":"DB","t":2,"tl":"Tier 2","o":188.0,"s":"","w":"Rounds 11+","tm":"DEN","b":10,"r":188},{"n":"Alvin Kamara","p":"RB","t":8,"tl":"Tier 8","o":189.0,"s":"","w":"Rounds 10-15","tm":"NO","b":8,"r":189},{"n":"Rashid Shaheed","p":"WR","t":8,"tl":"Tier 8","o":190.0,"s":"","w":"Late rounds","tm":"SEA","b":11,"r":190},{"n":"De'Zhaun Stribling","p":"WR","t":8,"tl":"Tier 8","o":191.0,"s":"up","w":"Late rounds","tm":"SF","b":8,"r":191,"sl":1,"sn":"Second-round rookie with strong camp and preseason production; immediate role upside in San Francisco."},{"n":"Roquan Smith","p":"LB","t":3,"tl":"Tier 3","o":192.0,"s":"","w":"Rounds 11+","tm":"BAL","b":13,"r":192},{"n":"Montez Sweat","p":"DL","t":3,"tl":"Tier 3","o":193.0,"s":"","w":"Rounds 10+","tm":"CHI","b":5,"r":193,"sl":false,"v":""},{"n":"DeForest Buckner","p":"DL","t":4,"tl":"Tier 4","o":194.0,"s":"up","w":"Rounds 10+","tm":"IND","b":13,"r":194},{"n":"Kamren Curl","p":"DB","t":2,"tl":"Tier 2","o":195.0,"s":"","w":"Rounds 11+","tm":"LAR","b":11,"r":195},{"n":"Zach Charbonnet","p":"RB","t":8,"tl":"Tier 8","o":196.0,"s":"pup","w":"Rounds 10-15","tm":"SEA","b":11,"r":196},{"n":"Malik Willis","p":"QB","t":5,"tl":"Tier 5","o":197.0,"s":"","w":"Late rounds / waivers","tm":"MIA","b":6,"r":197},{"n":"Trey Hendrickson","p":"DL","t":4,"tl":"Tier 4","o":198.0,"s":"","w":"Rounds 10+","tm":"BAL","b":13,"r":198},{"n":"Robert Spillane","p":"LB","t":3,"tl":"Tier 3","o":199.0,"s":"","w":"Rounds 11+","tm":"NE","b":11,"r":199},{"n":"Makai Lemon","p":"WR","t":9,"tl":"Tier 9","o":200.0,"s":"down","w":"Waivers / final picks","tm":"PHI","b":10,"r":200},{"n":"Nick Cross","p":"DB","t":2,"tl":"Tier 2","o":201.0,"s":"","w":"Rounds 11+","tm":"WAS","b":7,"r":201},{"n":"Tyler Allgeier","p":"RB","t":8,"tl":"Tier 8","o":202.0,"s":"","w":"Rounds 10-15","tm":"ARI","b":14,"r":202},{"n":"T.J. Edwards","p":"LB","t":3,"tl":"Tier 3","o":203.0,"s":"","w":"Rounds 11+","tm":"CHI","b":7,"r":203,"sl":false,"v":""},{"n":"Daniel Jones","p":"QB","t":5,"tl":"Tier 5","o":204.0,"s":"q","w":"Late rounds / waivers","tm":"IND","b":13,"r":204},{"n":"Budda Baker","p":"DB","t":2,"tl":"Tier 2","o":205.0,"s":"","w":"Rounds 11+","tm":"ARI","b":14,"r":205},{"n":"Brian Robinson","p":"RB","t":8,"tl":"Tier 8","o":206.0,"s":"","w":"Rounds 10-15","tm":"ATL","b":11,"r":206},{"n":"Zachariah Branch","p":"WR","t":8,"tl":"Tier 8","o":207.0,"s":"up","w":"Late rounds","tm":"ATL","b":11,"sl":1,"r":207,"sn":"Camp breakout with a path to immediate Atlanta snaps."},{"n":"Chamarri Conner","p":"DB","t":2,"tl":"Tier 2","o":208.0,"s":"","w":"Rounds 11+","tm":"KC","b":5,"r":208},{"n":"Demario Davis","p":"LB","t":3,"tl":"Tier 3","o":209.0,"s":"","w":"Rounds 11+","tm":"NYJ","b":9,"r":209,"sl":false,"v":""},{"n":"Keaton Mitchell","p":"RB","t":8,"tl":"Tier 8","o":210.0,"s":"","w":"Rounds 10-15","tm":"LAC","b":7,"r":210,"sl":1,"sn":"Elite speed; competing for the RB2 role with strong contingent upside."},{"n":"Jordyn Tyson","p":"WR","t":8,"tl":"Tier 8","o":211.0,"s":"out","w":"Rounds 14-16 / IR stash","tm":"NO","b":8,"r":211,"note":"Expected to miss roughly two months. Two IR slots make him a viable late-round stash if ESPN grants IR eligibility."},{"n":"Jonah Coleman","p":"RB","t":8,"tl":"Tier 8","o":212.0,"s":"up","w":"Rounds 10-15","tm":"DEN","b":10,"sl":1,"r":212,"sn":"Goal-line and receiving upside in an unsettled Denver backfield."},{"n":"MarShawn Lloyd","p":"RB","t":8,"tl":"Tier 8","o":213.0,"s":"up","w":"Rounds 10-15","tm":"GB","b":11,"sl":1,"r":213,"sn":"Explosive Jacobs backup with huge contingent upside."},{"n":"Tank Bigsby","p":"RB","t":8,"tl":"Tier 8","o":214.0,"s":"up","w":"Rounds 10-15","tm":"PHI","b":10,"r":214,"sl":1,"sn":"Saquon handcuff with a growing complementary role."},{"n":"Jaydon Blue","p":"RB","t":8,"tl":"Tier 8","o":215.0,"s":"new","w":"Rounds 10-15","tm":"DAL","b":14,"r":215},{"n":"Xavier McKinney","p":"DB","t":2,"tl":"Tier 2","o":216.0,"s":"","w":"Rounds 11+","tm":"GB","b":11,"r":216,"sl":false,"v":""},{"n":"Zack Baun","p":"LB","t":3,"tl":"Tier 3","o":217.0,"s":"up","w":"Rounds 11+","tm":"PHI","b":10,"r":217},{"n":"Demond Claiborne","p":"RB","t":9,"tl":"Tier 9","o":218.0,"s":"","w":"Final rounds","tm":"MIN","b":6,"sl":1,"r":218,"sn":"4.37 speed; RB3 stash behind veteran backs."},{"n":"Jalyx Hunt","p":"DL","t":4,"tl":"Tier 4","o":219.0,"s":"up","w":"Rounds 10+","tm":"PHI","b":10,"r":219},{"n":"Jordan Battle","p":"DB","t":2,"tl":"Tier 2","o":220.0,"s":"","w":"Rounds 11+","tm":"CIN","b":6,"r":220},{"n":"Demarcus Robinson","p":"WR","t":9,"tl":"Tier 9","o":221.0,"s":"new","w":"Waivers / final picks","tm":"SF","b":8,"r":221},{"n":"Barrett Carter","p":"LB","t":4,"tl":"Tier 4","o":222.0,"s":"","w":"Rounds 11+","tm":"CIN","b":10,"r":222,"sl":false,"v":""},{"n":"Kenyon Sadiq","p":"TE","t":6,"tl":"Tier 6","o":223.0,"s":"down","w":"Final rounds / waivers","tm":"NYJ","b":13,"r":223},{"n":"AJ Barner","p":"TE","t":6,"tl":"Tier 6","o":224.0,"s":"up","w":"Final rounds / waivers","tm":"SEA","b":11,"sl":1,"r":224,"sn":"Primary TE with a cheap path to TE1 volume if the role holds."},{"n":"Devon Witherspoon","p":"DB","t":2,"tl":"Tier 2","o":225.0,"s":"new","w":"Rounds 11+","tm":"SEA","b":11,"r":225},{"n":"Devin Bush","p":"LB","t":4,"tl":"Tier 4","o":226.0,"s":"","w":"Rounds 11+","tm":"CHI","b":5,"r":226,"sl":false,"v":""},{"n":"Darius Cooper","p":"WR","t":9,"tl":"Tier 9","o":227.0,"s":"up","w":"Waivers / final picks","tm":"PHI","b":10,"r":227},{"n":"Pat Bryant","p":"WR","t":9,"tl":"Tier 9","o":228.0,"s":"up","w":"Waivers / final picks","tm":"DEN","b":10,"r":228},{"n":"Malachi Fields","p":"WR","t":9,"tl":"Tier 9","o":229.0,"s":"up","w":"Waivers / final picks","tm":"NYG","b":8,"r":229},{"n":"Greg Dulcich","p":"TE","t":6,"tl":"Tier 6","o":230.0,"s":"","w":"Final rounds / waivers","tm":"MIA","b":6,"r":230,"sl":1,"sn":"Starting TE candidate with a real chance to be one of Miami's top targets."},{"n":"Jalen Nailor","p":"WR","t":9,"tl":"Tier 9","o":231.0,"s":"up","w":"Waivers / final picks","tm":"LV","b":13,"sl":1,"r":231,"sn":"Cheap path to becoming Las Vegas\u2019 top wide receiver."},{"n":"Terrance Ferguson","p":"TE","t":6,"tl":"Tier 6","o":232.0,"s":"up","w":"Final rounds / waivers","tm":"LAR","b":11,"r":232},{"n":"Jalen Pitre","p":"DB","t":2,"tl":"Tier 2","o":233.0,"s":"","w":"Rounds 11+","tm":"HOU","b":8,"r":233},{"n":"Mack Wilson Sr.","p":"LB","t":4,"tl":"Tier 4","o":234.0,"s":"","w":"Rounds 11+","tm":"ARI","b":8,"r":234,"sl":false,"v":""},{"n":"Tre Tucker","p":"WR","t":9,"tl":"Tier 9","o":235.0,"s":"","w":"Waivers / final picks","tm":"LV","b":13,"r":235},{"n":"Deshon Elliott","p":"DB","t":2,"tl":"Tier 2","o":236.0,"s":"","w":"Rounds 11+","tm":"PIT","b":9,"r":236},{"n":"Gunnar Helm","p":"TE","t":6,"tl":"Tier 6","o":237.0,"s":"","w":"Final rounds / waivers","tm":"TEN","b":9,"r":237},{"n":"Azeez Al-Shaair","p":"LB","t":4,"tl":"Tier 4","o":238.0,"s":"","w":"Rounds 11+","tm":"HOU","b":8,"r":238,"sl":false,"v":""},{"n":"Cooper DeJean","p":"DB","t":3,"tl":"Tier 3","o":239.0,"s":"q","w":"Final rounds / waivers","tm":"PHI","b":10,"r":239},{"n":"Adonai Mitchell","p":"WR","t":9,"tl":"Tier 9","o":240.0,"s":"","w":"Waivers / final picks","tm":"NYJ","b":13,"r":240},{"n":"DeMarvion Overshown","p":"LB","t":4,"tl":"Tier 4","o":241.0,"s":"new","w":"Rounds 11+","tm":"DAL","b":14,"r":241},{"n":"Pat Freiermuth","p":"TE","t":6,"tl":"Tier 6","o":242.0,"s":"","w":"Final rounds / waivers","tm":"PIT","b":9,"r":242},{"n":"Jonathan Greenard","p":"DL","t":4,"tl":"Tier 4","o":243.0,"s":"down","w":"Rounds 10+","tm":"PHI","b":10,"r":243},{"n":"Trent McDuffie","p":"DB","t":3,"tl":"Tier 3","o":244.0,"s":"","w":"Final rounds / waivers","tm":"LAR","b":11,"r":244,"sl":false,"v":""},{"n":"Daiyan Henley","p":"LB","t":4,"tl":"Tier 4","o":245.0,"s":"","w":"Rounds 11+","tm":"LAC","b":7,"r":245},{"n":"Tyson Campbell","p":"DB","t":3,"tl":"Tier 3","o":246.0,"s":"","w":"Final rounds / waivers","tm":"CLE","b":11,"r":246,"sl":false,"v":""},{"n":"Micah Parsons","p":"DL","t":5,"tl":"Tier 5","o":247.0,"s":"pup","w":"Rounds 10+","tm":"GB","b":11,"r":247},{"n":"Tyrel Dodson","p":"LB","t":4,"tl":"Tier 4","o":248.0,"s":"down","w":"Rounds 11+","tm":"MIA","b":6,"r":248},{"n":"Sonny Styles","p":"LB","t":4,"tl":"Tier 4","o":249.0,"s":"new","w":"Rounds 11+","tm":"WAS","b":7,"r":249},{"n":"Christian Gonzalez","p":"DB","t":3,"tl":"Tier 3","o":250.0,"s":"","w":"Final rounds / waivers","tm":"NE","b":11,"r":250,"sl":false,"v":""},{"n":"Mykel Williams","p":"DL","t":5,"tl":"Tier 5","o":251.0,"s":"pup","w":"Rounds 10+","tm":"SF","b":8,"r":251},{"n":"Jauan Jennings","p":"WR","t":9,"tl":"Tier 9","o":252.0,"s":"","w":"Waivers / final picks","tm":"MIN","b":6,"r":252},{"n":"Paulson Adebo","p":"DB","t":3,"tl":"Tier 3","o":253.0,"s":"","w":"Final rounds / waivers","tm":"NYG","b":8,"r":253,"sl":false,"v":""},{"n":"CJ Allen","p":"LB","t":4,"tl":"Tier 4","o":254.0,"s":"pup","w":"Rounds 11+","tm":"IND","b":13,"r":254,"note":"PUP with calf injury; wait for activation/practice."},{"n":"Denzel Boston","p":"WR","t":9,"tl":"Tier 9","o":255.0,"s":"up","w":"Waivers / final picks","tm":"CLE","b":11,"r":255,"sl":1,"sn":"Big-bodied rookie pushing for immediate Browns snaps."},{"n":"Jessie Bates III","p":"DB","t":3,"tl":"Tier 3","o":256.0,"s":"up","w":"Final rounds / waivers","tm":"ATL","b":11,"r":256},{"n":"Tre'von Moehrig","p":"DB","t":3,"tl":"Tier 3","o":257.0,"s":"","w":"Final rounds / waivers","tm":"CAR","b":5,"r":257},{"n":"Arvell Reese","p":"LB","t":5,"tl":"Tier 5","o":258.0,"s":"up","w":"Rounds 11+","tm":"NYG","b":8,"r":258},{"n":"Josiah Trotter","p":"LB","t":5,"tl":"Tier 5","o":259.0,"s":"new","w":"Rounds 11+","tm":"TB","b":10,"r":259},{"n":"Anthony Hill Jr.","p":"LB","t":5,"tl":"Tier 5","o":260.0,"s":"new","w":"Rounds 11+","tm":"TEN","b":9,"r":260},{"n":"Devin White","p":"LB","t":5,"tl":"Tier 5","o":261.0,"s":"new","w":"Rounds 11+","tm":"DET","b":6,"r":261},{"n":"Brandon Aubrey","p":"K","t":1,"tl":"Tier 1","o":262.0,"s":"","w":"Final round only","tm":"DAL","b":14,"r":262},{"n":"Cameron Dicker","p":"K","t":1,"tl":"Tier 1","o":263.0,"s":"","w":"Final round only","tm":"LAC","b":7,"r":263},{"n":"Ka'imi Fairbairn","p":"K","t":2,"tl":"Tier 2","o":264.0,"s":"","w":"Final round","tm":"HOU","b":8,"r":264},{"n":"Jason Myers","p":"K","t":2,"tl":"Tier 2","o":265.0,"s":"","w":"Final round","tm":"SEA","b":8,"r":265,"sl":false,"v":""},{"n":"Cam Little","p":"K","t":2,"tl":"Tier 2","o":266.0,"s":"","w":"Final round","tm":"JAX","b":8,"r":266,"sl":false,"v":""},{"n":"Tyler Loop","p":"K","t":2,"tl":"Tier 2","o":267.0,"s":"","w":"Final round","tm":"BAL","b":13,"r":267},{"n":"Will Reichard","p":"K","t":2,"tl":"Tier 2","o":268.0,"s":"","w":"Final round","tm":"MIN","b":6,"r":268},{"n":"Chase McLaughlin","p":"K","t":2,"tl":"Tier 2","o":269.0,"s":"","w":"Final round","tm":"TB","b":10,"r":269},{"n":"Jake Bates","p":"K","t":2,"tl":"Tier 2","o":270.0,"s":"","w":"Final round","tm":"DET","b":6,"r":270},{"n":"Harrison Butker","p":"K","t":2,"tl":"Tier 2","o":271.0,"s":"","w":"Final round","tm":"KC","b":5,"r":271},{"n":"Evan McPherson","p":"K","t":3,"tl":"Tier 3","o":272.0,"s":"","w":"Final round / waivers","tm":"CIN","b":6,"r":272},{"n":"Jake Elliott","p":"K","t":3,"tl":"Tier 3","o":273.0,"s":"","w":"Final round / waivers","tm":"PHI","b":10,"r":273},{"n":"Vita Vea","p":"DL","t":5,"tl":"Tier 5","o":274.0,"s":"q","w":"Rounds 10+","tm":"TB","b":10,"r":274},{"n":"Jacob Rodriguez","p":"LB","t":5,"tl":"Tier 5","o":275.0,"s":"new","w":"Rounds 11+","tm":"MIA","b":6,"r":275},{"n":"Kaleb Elarms-Orr","p":"LB","t":5,"tl":"Tier 5","o":276.0,"s":"up","w":"Rounds 11+","tm":"BUF","b":7,"r":276},{"n":"Jaishawn Barham","p":"LB","t":5,"tl":"Tier 5","o":277.0,"s":"new","w":"Rounds 11+","tm":"DAL","b":14,"r":277},{"n":"Edgerrin Cooper","p":"LB","t":2,"tl":"Tier 2","o":278.0,"s":"","w":"Rounds 9-11","tm":"GB","b":11,"r":278},{"n":"Frankie Luvu","p":"LB","t":2,"tl":"Tier 2","o":279.0,"s":"new","w":"Rounds 9-11","tm":"WAS","b":7,"r":279},{"n":"Zaire Franklin","p":"LB","t":3,"tl":"Tier 3","o":280.0,"s":"","w":"Rounds 11+","tm":"GB","b":11,"r":280},{"n":"Drake Thomas","p":"LB","t":4,"tl":"Tier 4","o":281.0,"s":"down","w":"Rounds 11+","tm":"SEA","b":11,"r":281},{"n":"Josh Hines-Allen","p":"DL","t":2,"tl":"Tier 2","o":282.0,"s":"","w":"Rounds 7-10","tm":"JAX","b":7,"r":282},{"n":"Abdul Carter","p":"DL","t":3,"tl":"Tier 3","o":283.0,"s":"down","w":"Rounds 10+","tm":"NYG","b":8,"r":283},{"n":"Josh Sweat","p":"DL","t":3,"tl":"Tier 3","o":284.0,"s":"","w":"Rounds 10+","tm":"ARI","b":14,"r":284},{"n":"Dillon Thieneman","p":"DB","t":4,"tl":"Tier 4","o":285.0,"s":"new","w":"Final rounds / waivers","tm":"CHI","b":10,"r":285},{"n":"Kevin Winston Jr.","p":"DB","t":4,"tl":"Tier 4","o":286.0,"s":"","w":"Final rounds / waivers","tm":"TEN","b":9,"r":286},{"n":"Brian Branch","p":"DB","t":4,"tl":"Tier 4","o":287.0,"s":"pup","w":"Final rounds / waivers","tm":"DET","b":6,"r":287},{"n":"Kerby Joseph","p":"DB","t":4,"tl":"Tier 4","o":288.0,"s":"pup","w":"Final rounds / waivers","tm":"DET","b":6,"r":288},{"n":"Antoine Winfield Jr.","p":"DB","t":4,"tl":"Tier 4","o":289.0,"s":"","w":"Final rounds / waivers","tm":"TB","b":10,"r":289}];
 
 // Positional ranks are derived from the current overall board order.
 // This keeps RB1 / WR12 / etc. synchronized whenever BOARD_DATA changes.
@@ -3810,8 +4101,45 @@ const PICK_WINDOWS = {
 };
 const PERSONAL_WATCH_TARGETS = new Set([
   'Jonathon Brooks',
-  'Chris Rodriguez Jr.',
-  'Keaton Mitchell'
+  'Tyler Allgeier',
+  'Jadarian Price',
+  'Chris Rodriguez',
+  'Keaton Mitchell',
+  'Trevor Lawrence',
+  'Patrick Mahomes',
+  'Dak Prescott',
+  'Bo Nix',
+  'Jaxson Dart',
+  'Jayden Reed',
+  'Josh Downs',
+  'Jalen Coker',
+  'KC Concepcion',
+  'Denzel Boston',
+  'Mark Andrews',
+  'Dalton Kincaid',
+  'AJ Barner',
+  'Terrance Ferguson',
+  'Greg Dulcich',
+  'Myles Garrett',
+  'Maxx Crosby',
+  'Aidan Hutchinson',
+  'Brian Burns',
+  'Will Anderson Jr.',
+  'Jordyn Brooks',
+  'Blake Cashman',
+  'Fred Warner',
+  'Jack Campbell',
+  'Nick Bolton',
+  'Kyle Hamilton',
+  'Tykee Smith',
+  'Travis Hunter',
+  'Derwin James Jr.',
+  'Quentin Lake'
+]);
+const INJURY_WATCH_TARGETS = new Set([
+  'Jeremiyah Love',
+  'Jordyn Tyson',
+  'Kyle Monangai'
 ]);
 const PICK_WINDOWS_BY_PLAYER = new Map();
 Object.entries(PICK_WINDOWS).forEach(([pick, players]) => players.forEach(player => {
@@ -4147,7 +4475,7 @@ function renderBoard(){
       const windows = PICK_WINDOWS_BY_PLAYER.get(p.n) || [];
       const nextMineLabel = nextMine === null ? '' : (() => { const x = pickLabel(nextMine); return x.round + '.' + String(x.inRound).padStart(2,'0'); })();
       const isCurrentWindow = windows.includes(nextMineLabel);
-      const cls = (st.favorite ? ' fav' : (st.avoid ? ' avd' : '')) + (windows.length ? ' pick-window' : '') + (isCurrentWindow ? ' current-window' : '') + (PERSONAL_WATCH_TARGETS.has(p.n) ? ' watch-target' : '');
+      const cls = (st.favorite ? ' fav' : (st.avoid ? ' avd' : '')) + (windows.length ? ' pick-window' : '') + (isCurrentWindow ? ' current-window' : '') + (PERSONAL_WATCH_TARGETS.has(p.n) ? ' watch-target' : '') + (INJURY_WATCH_TARGETS.has(p.n) ? ' major-injury-watch' : '');
       const rankPick = pickLabel(p.r);
       const rankPickText = rankPick.round + '.' + String(rankPick.inRound).padStart(2,'0');
       return '<div class="avail-row' + cls + '">' +
