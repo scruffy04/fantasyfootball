@@ -1300,52 +1300,36 @@ details.changes,
 }
 
 
-/* ===== Neutral UI chrome — Aug 24 =====
-   Reduce blue-on-blue blending while preserving meaningful position/status colors. */
-:root{
-  --bg:#080B0F;
-  --surface:#111418;
-  --surface-2:#181C21;
-  --line:#343A42;
-  --muted:#9AA3AE;
-}
+/* ===== Neutral UI chrome — SAFE/NARROW override =====
+   Only neutralizes non-semantic app surfaces. Player rows, controls,
+   position colors, target colors, and draft-window styling remain intact. */
 
 html,
 body{
   background:#080B0F !important;
 }
 
-body{
-  color:#F2F4F7;
-}
-
-header,
-nav,
-.topbar,
-.sticky-top,
-.app-header{
+header{
   background:#0B0E12 !important;
   border-color:#343A42 !important;
 }
 
+/* Outer cards/panels only */
 .panel,
 .tier-card,
-details.changes,
-#BOARD .panel,
-.board-grid .panel{
+details.changes{
   background:#111418 !important;
   border-color:#343A42 !important;
 }
 
-.tier-head,
-.onclock,
-.draft-window,
-.section-title,
-.panel>h3{
+/* Panel headers / structural surfaces */
+.panel > h3,
+.section-title{
   background:#181C21 !important;
   border-color:#343A42 !important;
 }
 
+/* Neutral separators only — do not override row backgrounds/display */
 .avail-row,
 li.player-row,
 .slot,
@@ -1354,55 +1338,78 @@ li.player-row,
   border-color:#2A3037 !important;
 }
 
-/* Inactive controls should feel neutral, not blue. */
-.pos-filter .chip:not(.active),
-.pos-filter button:not(.active),
-button.chip:not(.active),
-.pos-filter button{
-  background:#181C21;
-  border-color:#343A42;
-  color:#D9DEE5;
+/* Ensure rendered player content remains visible */
+#available .avail-row{
+  visibility:visible !important;
+  opacity:1;
+}
+#available .avail-name{
+  color:#F2F4F7;
+}
+#available .avail-meta{
+  color:#9AA3AE;
 }
 
-/* Keep active filters intentionally distinct. */
-.pos-filter .chip.active,
-.pos-filter button.active{
-  background:#2B6DA6 !important;
-  border-color:#4C8CC2 !important;
-  color:#FFFFFF !important;
+
+/* ===== Visual polish — Aug 24 ===== */
+
+/* Strategy targets: preserve subtle fill, strengthen only the border signal. */
+li.player-row[data-strategy-target]{
+  box-shadow:inset 0 0 0 1px rgba(93,205,112,.52) !important;
+}
+li.player-row[data-strategy-target]:hover{
+  box-shadow:inset 0 0 0 1px rgba(108,224,126,.68) !important;
+}
+.avail-row.strategy-target{
+  box-shadow:inset 0 0 0 1px rgba(93,205,112,.48) !important;
+}
+.avail-row.strategy-target:hover{
+  box-shadow:inset 0 0 0 1px rgba(108,224,126,.62) !important;
 }
 
-/* Search / input surfaces */
-input,
-.search-box,
-#search,
-#search-player{
-  background:#0F1318 !important;
-  border-color:#343A42 !important;
-  color:#F2F4F7 !important;
+/* Tier cards: soften the heavy neutral top edge a bit. */
+article.tier-card{
+  border-top-color:#2C333B !important;
 }
 
-/* Generic buttons neutral unless they have a semantic color already. */
-.btn:not(.danger),
-.take:not(.me){
-  background:#181C21;
-  border-color:#343A42;
-  color:#E4E8ED;
+/* Notes: slightly quieter/denser on desktop only. */
+@media (min-width:800px){
+  .note,
+  .player-note,
+  li.player-row .note,
+  .sleeper-reason{
+    color:#8190A2 !important;
+    font-size:10.5px !important;
+    line-height:1.30 !important;
+  }
 }
 
-/* Keep "Me" as green semantic action. */
-.take.me{
-  background:#15211A !important;
-  border-color:#286A36 !important;
-  color:#8ED49A !important;
+/* Tier scarcity hierarchy. */
+.scarcity-row .scarcity-critical{
+  color:#E0525C !important;
+  font-weight:900;
+}
+.scarcity-row .scarcity-low{
+  color:#D6A23E !important;
+  font-weight:850;
+}
+.scarcity-row .scarcity-normal{
+  color:#8995A3 !important;
+  font-weight:750;
 }
 
-/* Preserve blue draft-window semantics, but make surrounding UI neutral. */
-.avail-row.pick-window{
-  background:rgba(38,79,116,.20) !important;
+/* Priority Watch: emphasize only the top two names in each group. */
+.priority-watch-list li{
+  font-weight:500 !important;
 }
-.avail-row.pick-window.current-window{
-  background:rgba(38,79,116,.34) !important;
+.priority-watch-list li:nth-child(-n+2),
+.priority-watch-list li:nth-child(-n+2) strong{
+  font-weight:850 !important;
+  color:#F1F4F8 !important;
+}
+.priority-watch-list li:nth-child(n+3),
+.priority-watch-list li:nth-child(n+3) strong{
+  color:#A8B1BD !important;
 }
 
 </style>
@@ -2404,8 +2411,9 @@ function renderBoard(){
     if(!left.length){ rows.push('<div class="scarcity-row"><span>' + pos + '</span><span>board empty</span></div>'); return; }
     const t = left[0].t;
     const n = left.filter(p => p.t === t).length;
+    const scarcityClass = n === 1 ? 'scarcity-critical' : (n === 2 ? 'scarcity-low' : 'scarcity-normal');
     rows.push('<div class="scarcity-row"><span><b>' + pos + '</b> Tier ' + t + '</span>' +
-      '<span class="' + (n <= 2 ? 'count-warn' : '') + '">' + n + ' left</span></div>');
+      '<span class="' + scarcityClass + '">' + n + ' left</span></div>');
   });
   document.getElementById('scarcity').innerHTML = rows.join('');
 
