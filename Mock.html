@@ -188,6 +188,20 @@
 .pick.pos-DB .pick-name,.pick.pos-DB .pick-meta{color:#ecff8a}
 .pick.pos-LB .pick-name{color:#f4f6f7}
 
+
+/* ===== v7 richer IDP pressure ===== */
+.idpstat .tierline{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:9px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.idpstat .tierline b{color:#dce3ea}
+.idpstat .tierline.t1 b{color:#f2f5f8}
+.idpstat .tierline.t2 b{color:#aeb9c5}
+
 </style>
 </head>
 <body>
@@ -208,7 +222,7 @@
   <div class="body">
     <div class="idpbox" id="idpbox"></div>
     <div class="alertbar" id="idpalert">Watching IDP tiers…</div>
-    <p class="note"><b>IDP Pressure</b> tracks how many Tier 1 players remain at LB, DL and DB. Amber means the tier is thinning; red means the premium tier is nearly gone.</p>
+    <p class="note"><b>IDP Pressure</b> now shows both Tier 1 and Tier 2 depth. Tier 1 disappearing is not automatically a panic signal if Tier 2 is still deep; red means the premium depth across both tiers is getting thin.</p>
   </div>
 </div>
 </div>
@@ -469,40 +483,59 @@ function renderRecent(){const a=picks.slice(-10).reverse();document.getElementBy
 function renderIDP(){
   const s=draftedSet();
 
-  function tier1Count(pos){
-    return BOARD_DATA.filter(p=>p.p===pos&&!s.has(p.n)&&p.t===1).length;
+  function count(pos,tier){
+    return BOARD_DATA.filter(p=>p.p===pos&&!s.has(p.n)&&Number(p.t)===Number(tier)).length;
   }
-  function cls(n){
-    if(n<=1) return 'critical';
-    if(n<=2) return 'warn';
+  function cls(t1,t2){
+    if(t1===0 && t2<=2) return 'critical';
+    if(t1===0 || t1===1 || t2<=3) return 'warn';
     return 'safe';
   }
-  function st(pos){
-    const n=tier1Count(pos);
-    return '<div class="idpstat '+cls(n)+'"><strong>'+n+'</strong><span>'+pos+' Tier 1 left</span></div>';
+  function card(pos){
+    const t1=count(pos,1),t2=count(pos,2);
+    return '<div class="idpstat '+cls(t1,t2)+'">'+
+      '<strong>'+t1+'</strong>'+
+      '<span>'+pos+' Tier 1 left</span>'+
+      '<div class="tierline t1"><span>Tier 1</span><b>'+t1+'</b></div>'+
+      '<div class="tierline t2"><span>Tier 2</span><b>'+t2+'</b></div>'+
+    '</div>';
   }
 
-  const lb=tier1Count('LB'), dl=tier1Count('DL'), db=tier1Count('DB');
-  document.getElementById('idpbox').innerHTML=st('LB')+st('DL')+st('DB');
+  const data={
+    LB:{t1:count('LB',1),t2:count('LB',2)},
+    DL:{t1:count('DL',1),t2:count('DL',2)},
+    DB:{t1:count('DB',1),t2:count('DB',2)}
+  };
+
+  document.getElementById('idpbox').innerHTML=card('LB')+card('DL')+card('DB');
 
   const alertEl=document.getElementById('idpalert');
-  const round=nextPickNo()>TEAMS*ROUNDS?ROUNDS:pickInfo(nextPickNo()).round;
-
-  const critical=[];
-  const warning=[];
-  if(lb<=1) critical.push('LB'); else if(lb<=2) warning.push('LB');
-  if(dl<=1) critical.push('DL'); else if(dl<=2) warning.push('DL');
-  if(db<=1) critical.push('DB'); else if(db<=2) warning.push('DB');
-
   alertEl.className='alertbar';
-  if(critical.length){
-    alertEl.classList.add('critical');
-    alertEl.textContent='Tier cliff: '+critical.join(' / ')+' has only '+critical.map(p=>tier1Count(p)).join(' / ')+' Tier 1 left.';
-  }else if(warning.length){
-    alertEl.classList.add('warn');
-    alertEl.textContent='IDP run forming: '+warning.join(' / ')+' Tier 1 is thinning.';
+
+  const round=nextPickNo()>TEAMS*ROUNDS?ROUNDS:pickInfo(nextPickNo()).round;
+  const messages=[];
+  let severity='safe';
+
+  Object.entries(data).forEach(([pos,d])=>{
+    if(d.t1===0 && d.t2<=2){
+      severity='critical';
+      messages.push(pos+' premium depth is nearly gone ('+d.t2+' Tier 2 left)');
+    }else if(d.t1===0 && d.t2>2){
+      if(severity!=='critical') severity='warn';
+      messages.push(pos+' Tier 1 gone, but '+d.t2+' Tier 2 remain');
+    }else if(d.t1===1){
+      if(severity!=='critical') severity='warn';
+      messages.push(pos+' has 1 Tier 1 left');
+    }
+  });
+
+  if(messages.length){
+    alertEl.classList.add(severity==='critical'?'critical':'warn');
+    alertEl.textContent=(severity==='critical'?'IDP urgency: ':'IDP watch: ')+messages.join(' · ')+'.';
+  }else if(round>=9){
+    alertEl.textContent='You can still wait if offense offers clear value, but start comparing Tier 2 IDPs against RB5/WR5/QB2 types.';
   }else if(round>=7){
-    alertEl.textContent='IDP window is open. Watch for elite LB/DL value before the Tier 1 run.';
+    alertEl.textContent='IDP window is open. Watch elite LB/DL value, but there is no forced move yet.';
   }else{
     alertEl.textContent='No IDP urgency yet. Keep building offense unless elite value falls.';
   }
