@@ -144,6 +144,80 @@
   .top5-hint{font-size:8px;padding:4px 7px}
 }
 
+/* ===== v11 best-by-position snapshot ===== */
+.position-leaders{
+  padding:8px 9px;
+  border-bottom:1px solid var(--line);
+  background:#0f1419;
+}
+.position-leaders-title{
+  font-size:9px;
+  font-weight:900;
+  color:#93a0ae;
+  text-transform:uppercase;
+  letter-spacing:.055em;
+  margin-bottom:6px;
+}
+.position-leaders-row{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:5px;
+}
+.position-leader{
+  min-width:0;
+  border:1px solid #303a45;
+  background:#151b22;
+  color:var(--text);
+  border-radius:7px;
+  padding:6px 7px;
+  text-align:left;
+}
+.position-leader:hover{background:#1a222b;border-color:#455363}
+.position-leader .leader-pos{
+  display:block;
+  font-size:8px;
+  font-weight:950;
+  color:#8997a6;
+  margin-bottom:2px;
+}
+.position-leader .leader-name{
+  display:block;
+  font-size:10px;
+  font-weight:850;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.position-leader .leader-rank{
+  display:block;
+  margin-top:2px;
+  font-size:7.5px;
+  color:#758292;
+}
+.position-leader.active{
+  border-color:#4c8cc2;
+  box-shadow:0 0 0 1px rgba(76,140,194,.22) inset;
+}
+
+@media(max-width:720px){
+  .position-leaders{padding:6px 7px}
+  .position-leaders-title{font-size:8px;margin-bottom:5px}
+  .position-leaders-row{
+    display:flex;
+    overflow-x:auto;
+    gap:4px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .position-leaders-row::-webkit-scrollbar{display:none}
+  .position-leader{
+    flex:0 0 116px;
+    padding:5px 6px;
+  }
+  .position-leader .leader-name{font-size:9px}
+  .position-leader .leader-rank{font-size:7px}
+}
+
 
 /* ===== v5 IDP warnings + roster completion ===== */
 .idpstat.safe{border-color:#2f5d3a;background:#101a13}
@@ -342,10 +416,10 @@
 <body>
 <div class="app">
 <div class="top"><div class="titlebar"><h1>Draft Practice — Pick 1.04</h1><div class="sub">12-team snake · 17 rounds · our rankings + IDP tiers</div><div class="turn" id="turn">Loading…</div></div>
-<div class="controls"><button class="btn primary" id="start">New Mock</button><button class="btn" id="undo">Undo</button><button class="btn" id="bots">Run bots to my pick</button><button class="btn danger" id="reset">Reset</button><button class="btn primary" id="analyze" style="display:none">Analyze My Team</button></div></div>
+<div class="controls"><button class="btn primary" id="start">New Mock</button><button class="btn" id="undo">Undo</button><button class="btn" id="bots">Run bots to my pick</button><button class="btn danger" id="reset">Reset</button><button class="btn primary" id="analyze" style="display:none">Analyze My Team</button><button class="btn" id="exportdraft" style="display:none">Export Full Draft</button></div></div>
 <div class="layout">
 <div class="left"><div class="panel"><h2>Draft room</h2><div class="draft-room-scroll"><div class="team-heads" id="teamheads"></div><div class="draft-grid" id="draftgrid"></div></div></div><div class="panel" style="margin-top:12px"><h2>Recent picks</h2><div class="body recent" id="recent"></div></div></div>
-<div class="center panel"><h2>Top available <span id="availcount" style="float:right;color:var(--muted);font-weight:600"></span></h2><div class="filters" id="filters"></div><div class="top5-hint">Showing the top 5 available. Tap a position to see that position’s top 5.</div><div class="board-scroll" id="available"></div></div>
+<div class="center panel"><h2>Top available <span id="availcount" style="float:right;color:var(--muted);font-weight:600"></span></h2><div class="filters" id="filters"></div><div class="top5-hint">Showing the top 5 available. Tap a position to see that position’s top 5.</div><div class="position-leaders" id="positionleaders"></div><div class="board-scroll" id="available"></div></div>
 <div class="right">
 <div class="panel">
   <h2>Your roster</h2>
@@ -487,7 +561,21 @@ function newMock(){
   createBotProfiles();
   runBots();
 }function resetMock(){picks=[];filter='ALL';document.getElementById('analysispanel').style.display='none';render()}function undo(){if(!picks.length)return;let i=-1;for(let j=picks.length-1;j>=0;j--)if(picks[j].mine){i=j;break}if(i>=0)picks=picks.slice(0,i);else picks.pop();runBots()}
-function renderTurn(){const e=document.getElementById('turn'),n=nextPickNo();if(n>TEAMS*ROUNDS){e.textContent='Draft complete';document.getElementById('analyze').style.display='inline-block';return} document.getElementById('analyze').style.display='none';const x=pickInfo(n);e.textContent=isUserTurn()?'YOUR PICK · '+x.label:'Round '+x.round+' · Pick '+x.inRound}
+function renderTurn(){
+  const e=document.getElementById('turn'),n=nextPickNo();
+  const analyzeBtn=document.getElementById('analyze');
+  const exportBtn=document.getElementById('exportdraft');
+  if(n>TEAMS*ROUNDS){
+    e.textContent='Draft complete';
+    analyzeBtn.style.display='inline-block';
+    exportBtn.style.display='inline-block';
+    return;
+  }
+  analyzeBtn.style.display='none';
+  exportBtn.style.display='none';
+  const x=pickInfo(n);
+  e.textContent=isUserTurn()?'YOUR PICK · '+x.label:'Round '+x.round+' · Pick '+x.inRound;
+}
 function pickNumberForRoundSlot(round,slot){
   const inRound=round%2===1?slot:(TEAMS+1-slot);
   return (round-1)*TEAMS+inRound;
@@ -509,7 +597,33 @@ function renderGrid(){
     const s=i+1;if(s===USER_SLOT)return '<div class="team-head you">YOU</div>'; const bp=BOT_PROFILES[s]||{source:'Our',strategy:'balanced'}; return '<div class="team-head"><div>Team '+s+'</div><small>'+bp.source+' · '+strategyLabel(bp.strategy)+'</small></div>';
   }).join('');
 }
-function renderFilters(){const e=document.getElementById('filters');e.innerHTML=POS.map(p=>'<button class="chip '+(filter===p?'active':'')+'" data-f="'+p+'">'+p+'</button>').join('');e.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;renderAvailable();renderFilters()})}
+function renderFilters(){const e=document.getElementById('filters');e.innerHTML=POS.map(p=>'<button class="chip '+(filter===p?'active':'')+'" data-f="'+p+'">'+p+'</button>').join('');e.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;renderAvailable();renderFilters();renderPositionLeaders()})}
+function renderPositionLeaders(){
+  const positions=['QB','RB','WR','TE','LB','DL','DB'];
+  const left=playersLeft();
+  const e=document.getElementById('positionleaders');
+  const leaders=positions.map(pos=>left.find(p=>p.p===pos)).filter(Boolean);
+
+  e.innerHTML=
+    '<div class="position-leaders-title">Best by position</div>'+
+    '<div class="position-leaders-row">'+
+      leaders.map(p=>
+        '<button class="position-leader '+(filter===p.p?'active':'')+'" data-leader-pos="'+p.p+'" title="Show top 5 '+p.p+'">'+
+          '<span class="leader-pos">'+p.p+'</span>'+
+          '<span class="leader-name">'+p.n+'</span>'+
+          '<span class="leader-rank">'+POSR.get(p.n)+' · #'+p.o+' overall · Tier '+p.t+'</span>'+
+        '</button>'
+      ).join('')+
+    '</div>';
+
+  e.querySelectorAll('[data-leader-pos]').forEach(b=>b.onclick=()=>{
+    filter=b.dataset.leaderPos;
+    renderFilters();
+    renderAvailable();
+    renderPositionLeaders();
+    document.getElementById('available').scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+}
 function badges(p){const b=[];if(p.s==='q')b.push('<span class="badge watch">WATCH</span>');if(p.s==='pup')b.push('<span class="badge watch">PUP</span>');if(p.val)b.push('<span class="badge value">VALUE</span>');if(p.gt)b.push('<span class="badge target">TARGET</span>');if(p.sl===1||p.sl===true)b.push('<span class="badge sleeper">SLEEPER</span>');return b.join('')}
 function renderAvailable(){const all=playersLeft(),pool=all.filter(p=>filter==='ALL'||p.p===filter).slice(0,5);document.getElementById('availcount').textContent='Top '+pool.length+(filter==='ALL'?' overall':' '+filter);const e=document.getElementById('available');e.innerHTML=pool.map(p=>'<div class="player"><div class="rank">#'+p.o+'</div><div class="pos '+p.p+'">'+POSR.get(p.n)+'</div><div><div class="pname">'+p.n+'</div><div class="pmeta">'+(p.tm||'')+' · Tier '+p.t+(p.w?' · '+p.w:'')+'</div><div class="badges">'+badges(p)+'</div></div><button class="draftbtn" data-draft="'+encodeURIComponent(p.n)+'" '+(!isUserTurn()?'disabled style="opacity:.35"':'')+'>Draft</button></div>').join('');e.querySelectorAll('[data-draft]').forEach(b=>b.onclick=()=>userDraft(decodeURIComponent(b.dataset.draft)))}
 function renderRoster(){
@@ -585,6 +699,82 @@ function renderIDP(){
     alertEl.textContent='No IDP urgency yet. Keep building offense unless elite value falls.';
   }
 }
+
+function exportFullDraft(){
+  if(picks.length<TEAMS*ROUNDS){
+    alert('Finish the draft before exporting the full board.');
+    return;
+  }
+
+  const lines=[];
+  lines.push('FANTASY FOOTBALL MOCK DRAFT EXPORT');
+  lines.push('12-team snake · Pick 1.04 · 17 rounds · IDP');
+  lines.push('Generated: '+new Date().toLocaleString());
+  lines.push('');
+  lines.push('=== FULL DRAFT BOARD ===');
+
+  for(let round=1;round<=ROUNDS;round++){
+    lines.push('');
+    lines.push('ROUND '+round);
+    for(let slot=1;slot<=TEAMS;slot++){
+      const no=pickNumberForRoundSlot(round,slot);
+      const pk=picks[no-1];
+      if(!pk) continue;
+      const p=BOARD_DATA.find(x=>x.n===pk.n);
+      const teamLabel=slot===USER_SLOT?'YOU':'Team '+slot;
+      const boardRank=p ? '#'+p.o : 'n/a';
+      const posRank=p ? (POSR.get(p.n)||p.p) : pk.p;
+      const tier=p ? 'Tier '+p.t : '';
+      lines.push(
+        pk.label+' | '+teamLabel+' | '+pk.n+' | '+pk.p+
+        ' | '+posRank+' | Board '+boardRank+(tier?' | '+tier:'')
+      );
+    }
+  }
+
+  lines.push('');
+  lines.push('=== YOUR ROSTER ===');
+  rosterAssignments(USER_SLOT).forEach(([slot,name])=>{
+    if(name){
+      const p=BOARD_DATA.find(x=>x.n===name);
+      const pick=teamPicks(USER_SLOT).find(x=>x.n===name);
+      lines.push(
+        slot+' | '+name+' | '+(p?p.p:'')+
+        (pick?' | Pick '+pick.label:'')+
+        (p?' | '+(POSR.get(name)||'')+' | Board #'+p.o+' | Tier '+p.t:'')
+      );
+    }else{
+      lines.push(slot+' | open');
+    }
+  });
+
+  lines.push('');
+  lines.push('=== BOT PROFILES ===');
+  for(let slot=1;slot<=TEAMS;slot++){
+    if(slot===USER_SLOT) continue;
+    const bp=BOT_PROFILES[slot];
+    if(bp) lines.push('Team '+slot+' | '+bp.source+' | '+strategyLabel(bp.strategy));
+  }
+
+  lines.push('');
+  lines.push('=== NOTES FOR ANALYSIS ===');
+  lines.push('Use the full board above to evaluate not only roster quality, but also opportunity cost at each of my picks:');
+  lines.push('- Which better players were available when I picked?');
+  lines.push('- Where did I pass on positional tier cliffs or unusually strong value?');
+  lines.push('- Were any QB/TE/IDP/bench picks unnecessary given what remained later?');
+  lines.push('- Which picks were strong process even if the final roster outcome was good?');
+
+  const blob=new Blob([lines.join('\\n')],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='mock-draft-full-board-'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
 function analyzeDraft(){
   const my=teamPicks(USER_SLOT);
   if(my.length<ROUNDS)return;
@@ -841,6 +1031,6 @@ function analyzeDraft(){
   document.getElementById('analysispanel').style.display='block';
   document.getElementById('analysispanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
-function render(){renderTurn();renderGrid();renderFilters();renderAvailable();renderRoster();renderRecent();renderIDP()}
-document.getElementById('start').onclick=newMock;document.getElementById('reset').onclick=resetMock;document.getElementById('undo').onclick=undo;document.getElementById('bots').onclick=runBots;document.getElementById('analyze').onclick=analyzeDraft;newMock();
+function render(){renderTurn();renderGrid();renderFilters();renderPositionLeaders();renderAvailable();renderRoster();renderRecent();renderIDP()}
+document.getElementById('start').onclick=newMock;document.getElementById('reset').onclick=resetMock;document.getElementById('undo').onclick=undo;document.getElementById('bots').onclick=runBots;document.getElementById('analyze').onclick=analyzeDraft;document.getElementById('exportdraft').onclick=exportFullDraft;newMock();
 </script></body></html>
