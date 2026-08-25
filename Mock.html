@@ -455,19 +455,186 @@ function renderIDP(){
   }
 }
 function analyzeDraft(){
-  const my=teamPicks(USER_SLOT);if(my.length<ROUNDS)return;
-  const players=my.map(pk=>({pk,p:BOARD_DATA.find(x=>x.n===pk.n)})).filter(x=>x.p),pros=[],cons=[],values=[];let score=82;
-  players.forEach(({pk,p})=>{const diff=pk.pick-(Number(p.o)||pk.pick);if(diff>=18){values.push(p.n+' was a strong board value at '+pk.label+' ('+diff+' picks after our rank).');score+=1.5}else if(diff<=-24){cons.push(p.n+' was taken '+Math.abs(diff)+' picks ahead of our board rank.');score-=2}});
-  const c={QB:0,RB:0,WR:0,TE:0,LB:0,DL:0,DB:0,K:0};players.forEach(x=>c[x.p.p]=(c[x.p.p]||0)+1);
-  if(c.RB>=4&&c.WR>=4){pros.push('Strong FLEX depth: '+c.RB+' RBs and '+c.WR+' WRs.');score+=3}if(c.RB<4){cons.push('RB depth is thin for a two-FLEX build.');score-=3}if(c.WR<4){cons.push('WR depth is thin for a two-FLEX build.');score-=3}
-  if(c.QB===1)pros.push('Efficient 1-QB construction — no unnecessary QB2 cost.');if(c.QB>1){cons.push('Used '+c.QB+' roster spots on QB in a 1-QB league.');score-=2}if(c.TE===1)pros.push('Efficient TE allocation with one starter.');if(c.TE>2){cons.push('Heavy TE investment ('+c.TE+' TEs) may have cost FLEX/IDP depth.');score-=2}if(c.K===1)pros.push('Kicker slot filled without wasting multiple roster spots.');
-  const idps=players.filter(x=>['LB','DL','DB'].includes(x.p.p)),firstIdp=idps.length?Math.min(...idps.map(x=>x.pk.round)):99,topTier=idps.filter(x=>Number(x.p.t)===1).length,tier2=idps.filter(x=>Number(x.p.t)===2).length;
-  if(firstIdp>=7&&firstIdp<=10){pros.push('IDP pivot timing was healthy: first defender in Round '+firstIdp+'.');score+=3}else if(firstIdp>11){cons.push('IDP attack started late (Round '+firstIdp+'), increasing tier-cliff risk.');score-=4}else if(firstIdp<7){cons.push('IDP investment started very early in Round '+firstIdp+'; verify the offensive opportunity cost.');score-=2}
-  if(topTier>=1){pros.push('Secured '+topTier+' Tier 1 IDP starter'+(topTier>1?'s':'')+'.');score+=3}else if(tier2>=3){pros.push('Missed Tier 1 IDP, but built three Tier 2 defenders — a viable recovery.');score+=1}else{cons.push('Defensive starters lack a Tier 1 anchor and may be vulnerable to replacement-value loss.');score-=3}
-  const risky=players.filter(x=>['q','pup','out'].includes(x.p.s));if(risky.length>=4){cons.push('Roster carries '+risky.length+' active injury/WATCH flags; downside is concentrated.');score-=3}else if(risky.length<=2)pros.push('Injury exposure is reasonably controlled.');
-  score=Math.max(60,Math.min(98,Math.round(score)));const grade=score>=94?'A+':score>=90?'A':score>=87?'A-':score>=84?'B+':score>=80?'B':score>=77?'B-':score>=73?'C+':'C';if(!values.length)values.push('No extreme values/reaches stood out versus our current board.');if(!pros.length)pros.push('Roster is balanced enough to compete without one glaring construction flaw.');if(!cons.length)cons.push('No major construction flaws detected.');
-  document.getElementById('analysisbody').innerHTML='<div class="analysis-grade"><div class="grade-circle">'+grade+'</div><div><b>'+score+'/100</b><div class="note">Compared with our board ranks, tiers, roster construction and IDP timing.</div></div></div><div class="analysis-grid"><div class="analysis-card good"><h3>Pros</h3><ul>'+pros.slice(0,7).map(x=>'<li>'+x+'</li>').join('')+'</ul></div><div class="analysis-card warn"><h3>Concerns</h3><ul>'+cons.slice(0,7).map(x=>'<li>'+x+'</li>').join('')+'</ul></div><div class="analysis-card"><h3>Value & Draft Decisions</h3><ul>'+values.slice(0,8).map(x=>'<li>'+x+'</li>').join('')+'</ul></div></div>';
-  document.getElementById('analysispanel').style.display='block';document.getElementById('analysispanel').scrollIntoView({behavior:'smooth',block:'start'});
+  const my=teamPicks(USER_SLOT);
+  if(my.length<ROUNDS)return;
+
+  const players=my.map(pk=>({pk,p:BOARD_DATA.find(x=>x.n===pk.n)})).filter(x=>x.p);
+  const pros=[],cons=[],values=[],neutral=[];
+  let score=82;
+
+  const c={QB:0,RB:0,WR:0,TE:0,LB:0,DL:0,DB:0,K:0};
+  players.forEach(x=>c[x.p.p]=(c[x.p.p]||0)+1);
+
+  const byPos={};
+  ['QB','RB','WR','TE','LB','DL','DB','K'].forEach(pos=>{
+    byPos[pos]=players.filter(x=>x.p.p===pos);
+  });
+
+  players.forEach(({pk,p})=>{
+    const diff=pk.pick-(Number(p.o)||pk.pick);
+
+    if(p.p==='K'){
+      if(pk.round>=15){
+        neutral.push(p.n+' was taken in Round '+pk.round+' to fill the required kicker slot — appropriate roster construction.');
+      }else if(pk.round<=13){
+        cons.push(p.n+' was drafted earlier than necessary for a kicker.');
+        score-=2;
+      }
+      return;
+    }
+
+    if(p.p==='QB' && byPos.QB.length>1 && byPos.QB[0].pk.pick!==pk.pick){
+      if(pk.round>=14 && diff>=15){
+        neutral.push(p.n+' was excellent board value at '+pk.label+', but as QB2 behind '+byPos.QB[0].p.n+' it was a luxury pick rather than a major roster gain.');
+      }else if(pk.round<=11){
+        cons.push('QB2 '+p.n+' cost meaningful draft capital in a 1-QB league.');
+        score-=2;
+      }else{
+        neutral.push(p.n+' was a low-cost QB2; limited marginal value, but not a damaging pick.');
+      }
+      return;
+    }
+
+    if(p.p==='TE' && byPos.TE.length>1 && byPos.TE[0].pk.pick!==pk.pick){
+      if(pk.round>=14 && diff>=15){
+        neutral.push(p.n+' was a discounted TE2 dart; fine at the price, though not essential.');
+      }else if(pk.round<=11){
+        cons.push('TE2 '+p.n+' used meaningful capital that could have gone to FLEX/IDP depth.');
+        score-=2;
+      }
+      return;
+    }
+
+    if(diff>=18){
+      values.push(p.n+' was a strong board value at '+pk.label+' ('+diff+' picks after our rank).');
+      score+=1.5;
+    }else if(diff<=-24){
+      cons.push(p.n+' was taken '+Math.abs(diff)+' picks ahead of our board rank.');
+      score-=2;
+    }
+  });
+
+  if(c.RB>=4&&c.WR>=4){
+    pros.push('Strong FLEX depth: '+c.RB+' RBs and '+c.WR+' WRs.');
+    score+=3;
+  }
+  if(c.RB<4){
+    cons.push('RB depth is thin for a two-FLEX build.');
+    score-=3;
+  }
+  if(c.WR<4){
+    cons.push('WR depth is thin for a two-FLEX build.');
+    score-=3;
+  }
+
+  if(c.QB===1){
+    pros.push('Efficient 1-QB construction — no unnecessary QB2 cost.');
+  }else if(c.QB===2){
+    const qb2=byPos.QB[1];
+    if(qb2 && qb2.pk.round>=14){
+      neutral.push('Two QBs were drafted, but QB2 came late enough that the opportunity cost was small.');
+    }else{
+      cons.push('Used 2 roster spots on QB in a 1-QB league.');
+      score-=2;
+    }
+  }else if(c.QB>2){
+    cons.push('Heavy QB allocation ('+c.QB+' QBs) in a 1-QB league.');
+    score-=4;
+  }
+
+  if(c.TE===1){
+    pros.push('Efficient TE allocation with one starter.');
+  }else if(c.TE===2){
+    const te2=byPos.TE[1];
+    if(te2 && te2.pk.round>=14){
+      neutral.push('TE2 was a cheap late upside swing rather than a costly roster-construction choice.');
+    }else{
+      cons.push('Second TE used meaningful roster capital.');
+      score-=1.5;
+    }
+  }else if(c.TE>2){
+    cons.push('Heavy TE investment ('+c.TE+' TEs) may have cost FLEX/IDP depth.');
+    score-=2;
+  }
+
+  if(c.K===1){
+    const k=byPos.K[0];
+    if(k && k.pk.round>=15){
+      pros.push('Kicker was filled late, which is ideal roster construction.');
+      score+=1;
+    }else{
+      neutral.push('Kicker slot was filled; later is generally better.');
+    }
+  }
+
+  const idps=players.filter(x=>['LB','DL','DB'].includes(x.p.p));
+  const firstIdp=idps.length?Math.min(...idps.map(x=>x.pk.round)):99;
+  const topTier=idps.filter(x=>Number(x.p.t)===1).length;
+  const tier2=idps.filter(x=>Number(x.p.t)===2).length;
+
+  if(firstIdp>=7&&firstIdp<=10){
+    pros.push('IDP pivot timing was healthy: first defender in Round '+firstIdp+'.');
+    score+=3;
+  }else if(firstIdp>11){
+    cons.push('IDP attack started late (Round '+firstIdp+'), increasing tier-cliff risk.');
+    score-=4;
+  }else if(firstIdp<7){
+    cons.push('IDP investment started very early in Round '+firstIdp+'; verify the offensive opportunity cost.');
+    score-=2;
+  }
+
+  if(topTier>=1){
+    pros.push('Secured '+topTier+' Tier 1 IDP starter'+(topTier>1?'s':'')+'.');
+    score+=3;
+  }else if(tier2>=3){
+    pros.push('Missed Tier 1 IDP, but built three Tier 2 defenders — a viable recovery.');
+    score+=1;
+  }else{
+    cons.push('Defensive starters lack a Tier 1 anchor and may be vulnerable to replacement-value loss.');
+    score-=3;
+  }
+
+  const dl=idps.find(x=>x.p.p==='DL');
+  const lb=idps.find(x=>x.p.p==='LB');
+  const db=idps.find(x=>x.p.p==='DB');
+  if(dl&&Number(dl.p.t)<=2)pros.push('DL slot landed inside the premium two-tier window ('+dl.p.n+').');
+  if(lb&&Number(lb.p.t)<=2)pros.push('LB slot retained strong tackle-volume tier value ('+lb.p.n+').');
+  if(db&&Number(db.p.t)>=3)neutral.push('DB came from a deeper tier; acceptable if the pick was late because DB depth is broader.');
+
+  const risky=players.filter(x=>['q','pup','out'].includes(x.p.s));
+  if(risky.length>=4){
+    cons.push('Roster carries '+risky.length+' active injury/WATCH flags; downside is somewhat concentrated.');
+    score-=3;
+  }else if(risky.length<=2){
+    pros.push('Injury exposure is reasonably controlled.');
+  }
+
+  const bench=rosterAssignments(USER_SLOT)
+    .filter(([s,n])=>s.startsWith('BN')&&n)
+    .map(([s,n])=>BOARD_DATA.find(p=>p.n===n))
+    .filter(Boolean);
+  const benchSkill=bench.filter(p=>['RB','WR','TE'].includes(p.p)).length;
+  if(benchSkill>=4)pros.push('Bench is mostly devoted to upside skill-position depth.');
+
+  score=Math.max(60,Math.min(98,Math.round(score)));
+  const grade=score>=94?'A+':score>=90?'A':score>=87?'A-':score>=84?'B+':score>=80?'B':score>=77?'B-':score>=73?'C+':'C';
+
+  if(!values.length)values.push('No extreme values/reaches stood out versus our current board.');
+  if(!pros.length)pros.push('Roster is balanced enough to compete without one glaring construction flaw.');
+  if(!cons.length)cons.push('No major construction flaws detected.');
+  if(neutral.length) values.push(...neutral);
+
+  const body=document.getElementById('analysisbody');
+  body.innerHTML=
+    '<div class="analysis-grade"><div class="grade-circle">'+grade+'</div><div><b>'+score+'/100</b><div class="note">Compared with our board ranks, tiers, roster construction and IDP timing.</div></div></div>'+
+    '<div class="analysis-grid">'+
+      '<div class="analysis-card good"><h3>Pros</h3><ul>'+pros.slice(0,8).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+      '<div class="analysis-card warn"><h3>Concerns</h3><ul>'+cons.slice(0,8).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+      '<div class="analysis-card"><h3>Value & Context</h3><ul>'+values.slice(0,10).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+    '</div>';
+
+  document.getElementById('analysispanel').style.display='block';
+  document.getElementById('analysispanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function render(){renderTurn();renderGrid();renderFilters();renderAvailable();renderRoster();renderRecent();renderIDP()}
 document.getElementById('start').onclick=newMock;document.getElementById('reset').onclick=resetMock;document.getElementById('undo').onclick=undo;document.getElementById('bots').onclick=runBots;document.getElementById('analyze').onclick=analyzeDraft;newMock();
