@@ -460,15 +460,21 @@ function analyzeDraft(){
 
   const players=my.map(pk=>({pk,p:BOARD_DATA.find(x=>x.n===pk.n)})).filter(x=>x.p);
   const pros=[],cons=[],values=[],neutral=[];
-  let score=82;
+  let score=80;
 
   const c={QB:0,RB:0,WR:0,TE:0,LB:0,DL:0,DB:0,K:0};
   players.forEach(x=>c[x.p.p]=(c[x.p.p]||0)+1);
 
   const byPos={};
   ['QB','RB','WR','TE','LB','DL','DB','K'].forEach(pos=>{
-    byPos[pos]=players.filter(x=>x.p.p===pos);
+    byPos[pos]=players.filter(x=>x.p.p===pos).sort((a,b)=>(a.p.o||9999)-(b.p.o||9999));
   });
+
+  function rankOf(pos,idx=0){
+    const x=byPos[pos][idx];
+    if(!x) return 9999;
+    return Number(String(POSR.get(x.p.n)||'').replace(pos,'')) || 9999;
+  }
 
   players.forEach(({pk,p})=>{
     const diff=pk.pick-(Number(p.o)||pk.pick);
@@ -507,16 +513,80 @@ function analyzeDraft(){
 
     if(diff>=18){
       values.push(p.n+' was a strong board value at '+pk.label+' ('+diff+' picks after our rank).');
-      score+=1.5;
+      score+=1;
     }else if(diff<=-24){
       cons.push(p.n+' was taken '+Math.abs(diff)+' picks ahead of our board rank.');
       score-=2;
     }
   });
 
-  if(c.RB>=4&&c.WR>=4){
-    pros.push('Strong FLEX depth: '+c.RB+' RBs and '+c.WR+' WRs.');
+  // Starter quality: now a major part of the grade.
+  const qb1Rank=rankOf('QB',0);
+  if(qb1Rank<=5){
+    pros.push('QB1 is a real weekly advantage ('+byPos.QB[0].p.n+').');
+    score+=5;
+  }else if(qb1Rank<=10){
+    pros.push('QB1 is a solid starter ('+byPos.QB[0].p.n+').');
+    score+=2;
+  }else if(qb1Rank<=15){
+    neutral.push('QB1 is usable but not a positional advantage ('+byPos.QB[0].p.n+').');
+    score-=1;
+  }else{
+    cons.push('QB1 is a clear weakness for a 6-point passing-TD league ('+(byPos.QB[0]?byPos.QB[0].p.n:'none')+').');
+    score-=6;
+  }
+
+  const wr1=rankOf('WR',0), wr2=rankOf('WR',1), wr3=rankOf('WR',2);
+  if(wr1<=12 && wr2<=24){
+    pros.push('Strong top-end WR foundation with two top-24 level starters.');
+    score+=6;
+  }else if(wr1<=15 && wr2<=30){
+    pros.push('WR starters are solid, though not dominant.');
     score+=3;
+  }else{
+    cons.push('WR starting quality is below the level we want in a two-WR/two-FLEX format.');
+    score-=6;
+  }
+
+  if(wr3<=36){
+    pros.push('WR3/FLEX depth is strong enough to support weekly lineup flexibility.');
+    score+=2;
+  }else if(wr3>50){
+    cons.push('WR depth exists in quantity, but WR3 quality is weak.');
+    score-=2;
+  }
+
+  const rb1=rankOf('RB',0), rb2=rankOf('RB',1), rb3=rankOf('RB',2);
+  if(rb1<=10 && rb2<=24){
+    pros.push('RB room has a strong anchor plus a credible RB2.');
+    score+=4;
+  }else if(rb1<=18 && rb2<=30){
+    pros.push('RB starters are serviceable and supported by depth.');
+    score+=2;
+  }else{
+    cons.push('RB starting quality is thin relative to the format.');
+    score-=4;
+  }
+
+  if(rb3<=36){
+    pros.push('RB3/FLEX depth is useful.');
+    score+=1;
+  }
+
+  const te1=rankOf('TE',0);
+  if(te1<=5){
+    pros.push('TE provides a real positional edge.');
+    score+=3;
+  }else if(te1<=12){
+    neutral.push('TE is a viable starter without requiring premium capital.');
+  }else{
+    cons.push('TE is a lower-end starter; roster needs stronger advantages elsewhere.');
+    score-=2;
+  }
+
+  if(c.RB>=4&&c.WR>=4){
+    pros.push('Good FLEX depth in raw roster volume.');
+    score+=1;
   }
   if(c.RB<4){
     cons.push('RB depth is thin for a two-FLEX build.');
@@ -527,12 +597,21 @@ function analyzeDraft(){
     score-=3;
   }
 
+  if(c.RB>=5 && wr2>30){
+    cons.push('Roster invested heavily in RB depth while WR2 quality remained weak.');
+    score-=4;
+  }
+  if(c.WR>=6 && rb2>30){
+    cons.push('Roster accumulated WR depth while RB2 quality remained weak.');
+    score-=3;
+  }
+
   if(c.QB===1){
-    pros.push('Efficient 1-QB construction — no unnecessary QB2 cost.');
+    pros.push('Efficient 1-QB roster allocation.');
   }else if(c.QB===2){
     const qb2=byPos.QB[1];
     if(qb2 && qb2.pk.round>=14){
-      neutral.push('Two QBs were drafted, but QB2 came late enough that the opportunity cost was small.');
+      neutral.push('QB2 came late enough that the opportunity cost was small.');
     }else{
       cons.push('Used 2 roster spots on QB in a 1-QB league.');
       score-=2;
@@ -583,12 +662,14 @@ function analyzeDraft(){
     score-=2;
   }
 
-  if(topTier>=1){
-    pros.push('Secured '+topTier+' Tier 1 IDP starter'+(topTier>1?'s':'')+'.');
-    score+=3;
+  if(topTier>=2){
+    pros.push('Secured '+topTier+' Tier 1 IDP starters.');
+    score+=4;
+  }else if(topTier===1){
+    pros.push('Secured one Tier 1 IDP anchor.');
+    score+=2;
   }else if(tier2>=3){
-    pros.push('Missed Tier 1 IDP, but built three Tier 2 defenders — a viable recovery.');
-    score+=1;
+    neutral.push('Missed Tier 1 IDP, but built three Tier 2 defenders — a viable recovery.');
   }else{
     cons.push('Defensive starters lack a Tier 1 anchor and may be vulnerable to replacement-value loss.');
     score-=3;
@@ -609,28 +690,21 @@ function analyzeDraft(){
     pros.push('Injury exposure is reasonably controlled.');
   }
 
-  const bench=rosterAssignments(USER_SLOT)
-    .filter(([s,n])=>s.startsWith('BN')&&n)
-    .map(([s,n])=>BOARD_DATA.find(p=>p.n===n))
-    .filter(Boolean);
-  const benchSkill=bench.filter(p=>['RB','WR','TE'].includes(p.p)).length;
-  if(benchSkill>=4)pros.push('Bench is mostly devoted to upside skill-position depth.');
-
-  score=Math.max(60,Math.min(98,Math.round(score)));
-  const grade=score>=94?'A+':score>=90?'A':score>=87?'A-':score>=84?'B+':score>=80?'B':score>=77?'B-':score>=73?'C+':'C';
+  score=Math.max(55,Math.min(98,Math.round(score)));
+  const grade=score>=94?'A+':score>=90?'A':score>=87?'A-':score>=84?'B+':score>=80?'B':score>=77?'B-':score>=73?'C+':score>=69?'C':'C-';
 
   if(!values.length)values.push('No extreme values/reaches stood out versus our current board.');
-  if(!pros.length)pros.push('Roster is balanced enough to compete without one glaring construction flaw.');
+  if(!pros.length)pros.push('Roster has enough balance to remain competitive.');
   if(!cons.length)cons.push('No major construction flaws detected.');
   if(neutral.length) values.push(...neutral);
 
   const body=document.getElementById('analysisbody');
   body.innerHTML=
-    '<div class="analysis-grade"><div class="grade-circle">'+grade+'</div><div><b>'+score+'/100</b><div class="note">Compared with our board ranks, tiers, roster construction and IDP timing.</div></div></div>'+
+    '<div class="analysis-grade"><div class="grade-circle">'+grade+'</div><div><b>'+score+'/100</b><div class="note">Compared with our board ranks, starter quality, roster construction and IDP timing.</div></div></div>'+
     '<div class="analysis-grid">'+
-      '<div class="analysis-card good"><h3>Pros</h3><ul>'+pros.slice(0,8).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
-      '<div class="analysis-card warn"><h3>Concerns</h3><ul>'+cons.slice(0,8).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
-      '<div class="analysis-card"><h3>Value & Context</h3><ul>'+values.slice(0,10).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+      '<div class="analysis-card good"><h3>Pros</h3><ul>'+pros.slice(0,10).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+      '<div class="analysis-card warn"><h3>Concerns</h3><ul>'+cons.slice(0,10).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+      '<div class="analysis-card"><h3>Value & Context</h3><ul>'+values.slice(0,12).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
     '</div>';
 
   document.getElementById('analysispanel').style.display='block';
