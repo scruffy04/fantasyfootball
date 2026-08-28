@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" name="viewport"/>
 <title>2026 Fantasy Football Draft Cheat Sheet</title>
 <style>
 :root{
@@ -1803,6 +1803,14 @@ body.mock-hub-mode #mock-hub{
   .intel-tab{min-height:36px;font-size:10px;padding:5px 6px}
 }
 
+
+/* ===== iPad accidental zoom lock — Aug 28 =====
+   Preserve normal scrolling while preventing pinch-zoom gestures in the draft UI. */
+html, body{
+  touch-action:pan-x pan-y;
+  -webkit-text-size-adjust:100%;
+}
+
 </style>
 </head>
 <body>
@@ -3052,6 +3060,14 @@ BOARD_DATA.forEach(p => {
 saveDraft();
 
 applyFilters();
+
+
+// ===== iPad accidental zoom lock =====
+// Safari can ignore viewport zoom restrictions for accessibility, so also block
+// its native pinch gesture events while preserving ordinary one-finger scrolling.
+['gesturestart','gesturechange','gestureend'].forEach(type => {
+  document.addEventListener(type, event => event.preventDefault(), { passive:false });
+});
 
 </script>
 </body>
