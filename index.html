@@ -69,6 +69,14 @@ li.player-row{padding:7px 0;border-bottom:1px solid #f0f2f5} li.player-row:last-
 label{cursor:pointer}
 .draft-check{flex:1;display:flex;gap:8px;align-items:center;min-width:0}
 .player-name{font-size:15px}
+
+.rookie-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;margin-left:5px;border:1px solid #8aa4bf;border-radius:50%;
+  font-size:10px;font-weight:900;line-height:1;color:#d7e8f7;background:#17314a;
+  vertical-align:1px;flex:0 0 auto;
+}
+.avail-name .rookie-mark{margin-left:5px;vertical-align:1px}
 input:checked + .player-name{text-decoration:line-through;color:#9aa4b2}
 .player-actions{display:flex;gap:6px;flex:0 0 auto}
 .icon-btn{width:30px;height:30px;border:1px solid #d7dde5;border-radius:50%;background:#fff;cursor:pointer;font-weight:800;line-height:1}
@@ -1508,6 +1516,50 @@ body.mock-hub-mode #mock-hub{
   }
 }
 
+
+
+/* v34 tier-row layout hardening: keep long player names readable at every card width */
+.player-row .row-main{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:
+    "player actions"
+    "meta actions";
+  column-gap:8px;
+  row-gap:6px;
+  align-items:start;
+}
+.player-row .draft-check{
+  grid-area:player;
+  min-width:0;
+  width:100%;
+  align-items:flex-start;
+}
+.player-row .player-name{
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:normal;
+  word-break:normal;
+  line-height:1.25;
+}
+.player-row .player-meta{
+  grid-area:meta;
+  min-width:0;
+  justify-content:flex-start;
+  padding-left:28px;
+}
+.player-row .player-actions{
+  grid-area:actions;
+  align-self:start;
+}
+/* Never sacrifice the player name to badges. Badges wrap on their own line instead. */
+.player-row .team,
+.player-row .badge{
+  position:static;
+  max-width:100%;
+}
+
 </style>
 </head>
 <body>
@@ -2107,6 +2159,9 @@ function escapeHTML(v){
     .replace(/'/g,'&#39;');
 }
 
+const ROOKIE_2026 = new Set(["Jeremiyah Love", "Jadarian Price", "Carnell Tate", "Makai Lemon", "De'Zhaun Stribling", "Mike Washington Jr.", "KC Concepcion", "Ja'Kobi Lane", "Sonny Styles", "Kenyon Sadiq", "Jonah Coleman", "Jordyn Tyson", "Arvell Reese", "Denzel Boston", "Zachariah Branch", "Cyrus Allen", "Josiah Trotter", "Anthony Hill Jr.", "Caleb Douglas", "Jacob Rodriguez", "Kaleb Elarms-Orr", "Jaishawn Barham", "Malachi Fields", "Demond Claiborne", "Dillon Thieneman"]);
+function rookieMark(p){ return ROOKIE_2026.has(p.n) ? '<span class="rookie-mark" title="2026 Rookie" aria-label="2026 Rookie">R</span>' : ''; }
+
 function tierBadges(p){
   const b = [];
   const seen = new Set();
@@ -2138,7 +2193,7 @@ function tierRowHTML(p){
   return '<li ' + attrs.join(' ') + '>' +
     '<div class="row-main">' +
       '<label class="draft-check"><input class="drafted" type="checkbox"/> ' +
-        '<span class="player-name">' + escapeHTML(p.n) + '</span></label>' +
+        '<span class="player-name">' + escapeHTML(p.n) + rookieMark(p) + '</span></label>' +
       '<div class="player-meta">' +
         '<span class="team' + (p.tm ? '' : ' team-unk') + '"' +
           (p.b ? ' title="Bye week ' + escapeHTML(p.b) + '"' : '') + '>' +
@@ -2548,7 +2603,7 @@ function renderBoard(){
         '<span class="rk"><span class="overall-rk">' + overallRank + '</span><span class="round-pick">' + rankPickText + '</span></span>' +
         '<span class="pos-tag pos-' + p.p + '" title="' + p.p + ' positional rank">' + (POS_RANK.get(p.n) || p.p) + '</span>' +
           ((['DL','LB','DB'].includes(p.p) && IDP_PROJ.has(p.n)) ? '<span class="idp-proj" title="ESPN 2026 projected fantasy points">' + Number(IDP_PROJ.get(p.n)).toFixed(1) + '</span>' : '') +
-        '<span class="avail-player"><span class="avail-name">' + (st.favorite ? '&#9733; ' : '') + p.n + '</span>' +
+        '<span class="avail-player"><span class="avail-name">' + (st.favorite ? '&#9733; ' : '') + escapeHTML(p.n) + rookieMark(p) + '</span>' +
           (p.sn ? '<span class="sleeper-reason">' + p.sn + '</span>' : '') + '</span>' +
         (windows.length ? '<span class="avail-pick-window" title="Personal candidate for your ' + windows.join(' / ') + ' pick window">' + windows.join(' / ') + '</span>' : '') +
         (p.sl ? '<span class="avail-sleeper" title="' + (p.sn || 'Late-round player with outsized upside at current cost') + '">SLEEPER</span>' : '') +
