@@ -1560,6 +1560,249 @@ body.mock-hub-mode #mock-hub{
   max-width:100%;
 }
 
+
+
+/* ===== iPad / tablet draft-day optimization — Aug 28 ===== */
+.tablet-intel-tabs{
+  display:none;
+  gap:5px;
+  flex-wrap:wrap;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0d1218;
+}
+.intel-tab{
+  flex:1 1 64px;
+  min-height:38px;
+  border:1px solid #303945;
+  border-radius:8px;
+  background:#171d24;
+  color:#aeb9c6;
+  font:inherit;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+.intel-tab.active{
+  border-color:#5aa2ea;
+  background:#17304a;
+  color:#eaf4ff;
+  box-shadow:inset 0 0 0 1px rgba(90,162,234,.18);
+}
+.priority-watch-list li.taken-target,
+.priority-watch-list li.taken-target strong{
+  color:#e0525c !important;
+  text-decoration:line-through;
+  text-decoration-thickness:1.5px;
+  text-decoration-color:#e0525c;
+  opacity:.88;
+}
+.priority-watch-list li.taken-target::marker{
+  color:#e0525c;
+}
+
+/* Keep the full three-column cockpit for true desktop widths only. */
+@media (min-width:1100px) and (max-width:1399px){
+  #BOARD .board-grid{
+    grid-template-columns:minmax(0,2.12fr) minmax(285px,1fr) !important;
+    gap:12px;
+  }
+  .draft-center-col{
+    grid-column:1 !important;
+    grid-row:1 / span 3 !important;
+  }
+  .draft-right-rail{
+    grid-column:2 !important;
+    grid-row:1 !important;
+  }
+  .draft-left-rail{
+    grid-column:2 !important;
+    grid-row:2 !important;
+    display:flex !important;
+    flex-direction:column;
+    gap:12px;
+  }
+}
+
+/* Tablet landscape: Best Available owns roughly two thirds of the screen. */
+@media (min-width:800px) and (max-width:1399px) and (orientation:landscape){
+  .tablet-intel-tabs{display:flex}
+  .tablet-intel-tabs .intel-tab[data-intel="roster"]{display:none}
+  #BOARD .roster-panel{display:block !important}
+  #BOARD .scarcity-panel,
+  #BOARD .pick-log-panel,
+  #BOARD .priority-watch-panel,
+  #BOARD .health-watch-panel{display:none !important}
+  #BOARD[data-intel="scarcity"] .scarcity-panel{display:block !important}
+  #BOARD[data-intel="log"] .pick-log-panel{display:block !important}
+  #BOARD[data-intel="priority"] .priority-watch-panel{display:block !important}
+  #BOARD[data-intel="health"] .health-watch-panel{display:block !important}
+
+  body.draft-mode nav{display:none}
+  body.draft-mode #BOARD > .section-title{display:none}
+  body.draft-mode #BOARD > .panel{
+    position:sticky;
+    top:0;
+    z-index:30;
+    margin-bottom:9px;
+    border-radius:0 0 11px 11px;
+    box-shadow:0 8px 22px rgba(0,0,0,.34);
+  }
+  body.draft-mode #BOARD > .panel .panel-body{display:none}
+  body.draft-mode #BOARD .pick-window-key,
+  body.draft-mode #BOARD .strategy-target-key{display:none}
+  body.draft-mode #BOARD .draft-center-col > .panel{overflow:visible}
+  body.draft-mode #BOARD #available{max-height:none;overflow:visible}
+  body.draft-mode #BOARD .pos-filter{
+    position:sticky;
+    top:68px;
+    z-index:24;
+    background:#111418;
+    border:1px solid #2a3037;
+    border-left:0;
+    border-right:0;
+    box-shadow:0 5px 14px rgba(0,0,0,.26);
+  }
+  #BOARD .take{
+    min-height:40px;
+    min-width:58px;
+    padding:7px 9px;
+  }
+  #BOARD .take:not(.me){font-weight:850}
+}
+
+/* Keep roster + one intelligence panel visible together in landscape. */
+@media (min-width:800px) and (max-width:1399px) and (orientation:landscape){
+  #BOARD .roster-panel .panel-body{
+    max-height:265px;
+    overflow:auto;
+  }
+  #BOARD .roster-panel .slot{padding:4px 0;font-size:11.5px}
+  #BOARD .roster-panel .slot-label{width:45px}
+  #BOARD .priority-watch-panel .panel-body,
+  #BOARD .health-watch-panel .panel-body,
+  #BOARD .scarcity-panel .panel-body,
+  #BOARD .pick-log-panel .panel-body{
+    max-height:320px;
+    overflow:auto;
+  }
+}
+
+/* iPad portrait + phone: draft-first single column with on-demand intelligence. */
+@media (max-width:1100px) and (orientation:portrait), (max-width:799px){
+  #BOARD .board-grid{grid-template-columns:1fr !important;gap:9px}
+  .draft-center-col{order:1 !important;grid-column:1 !important;grid-row:auto !important}
+  .draft-right-rail{order:2 !important;grid-column:1 !important;grid-row:auto !important}
+  .draft-left-rail{order:3 !important;grid-column:1 !important;grid-row:auto !important;display:flex !important;flex-direction:column;gap:9px}
+  .tablet-intel-tabs{display:flex;position:sticky;top:0;z-index:23}
+
+  #BOARD .roster-panel,
+  #BOARD .scarcity-panel,
+  #BOARD .pick-log-panel,
+  #BOARD .priority-watch-panel,
+  #BOARD .health-watch-panel{display:none !important}
+  #BOARD[data-intel="roster"] .roster-panel{display:block !important}
+  #BOARD[data-intel="scarcity"] .scarcity-panel{display:block !important}
+  #BOARD[data-intel="log"] .pick-log-panel{display:block !important}
+  #BOARD[data-intel="priority"] .priority-watch-panel{display:block !important}
+  #BOARD[data-intel="health"] .health-watch-panel{display:block !important}
+
+  body.draft-mode nav{display:none}
+  body.draft-mode #BOARD > .section-title{display:none}
+  body.draft-mode #BOARD > .panel{
+    position:sticky;
+    top:0;
+    z-index:30;
+    margin-bottom:7px;
+    border-radius:0 0 10px 10px;
+    box-shadow:0 7px 20px rgba(0,0,0,.34);
+  }
+  body.draft-mode #BOARD > .panel .panel-body{display:none}
+  body.draft-mode #BOARD .pick-window-key,
+  body.draft-mode #BOARD .strategy-target-key{display:none}
+  body.draft-mode #BOARD .draft-center-col > .panel{overflow:visible}
+  body.draft-mode #BOARD #available{max-height:none;overflow:visible}
+  body.draft-mode #BOARD .pos-filter{
+    position:sticky;
+    top:68px;
+    z-index:24;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scrollbar-width:none;
+    background:#111418;
+    box-shadow:0 5px 14px rgba(0,0,0,.26);
+  }
+  body.draft-mode #BOARD .pos-filter::-webkit-scrollbar{display:none}
+  body.draft-mode #BOARD .chip{flex:0 0 auto;min-height:38px;padding:7px 12px}
+  body.draft-mode #BOARD .onclock{padding:10px 12px}
+  body.draft-mode #BOARD .onclock .pick-big{font-size:21px}
+  body.draft-mode #BOARD .onclock .who{font-size:11.5px}
+  body.draft-mode #BOARD .next-pick-callout{font-size:10.5px;padding:6px 8px}
+  #BOARD .take{min-height:42px;min-width:60px;padding:7px 9px}
+  #BOARD .take:not(.me){font-weight:900}
+}
+
+/* Portrait intelligence is a bottom dock + dismissible drawer, so it is always reachable. */
+@media (max-width:1100px) and (orientation:portrait), (max-width:799px){
+  .tablet-intel-tabs{
+    position:fixed !important;
+    top:auto !important;
+    left:14px;
+    right:14px;
+    bottom:max(10px, env(safe-area-inset-bottom));
+    z-index:60;
+    padding:6px;
+    background:rgba(13,18,24,.97);
+    box-shadow:0 10px 30px rgba(0,0,0,.46);
+    backdrop-filter:blur(8px);
+  }
+  body.draft-mode #BOARD #available{padding-bottom:86px}
+
+  #BOARD[data-intel="roster"] .roster-panel,
+  #BOARD[data-intel="scarcity"] .scarcity-panel,
+  #BOARD[data-intel="log"] .pick-log-panel,
+  #BOARD[data-intel="priority"] .priority-watch-panel,
+  #BOARD[data-intel="health"] .health-watch-panel{
+    position:fixed;
+    left:14px;
+    right:14px;
+    bottom:66px;
+    z-index:58;
+    max-height:min(58vh,620px);
+    overflow:auto !important;
+    margin:0 !important;
+    border-color:#3a4655 !important;
+    box-shadow:0 16px 44px rgba(0,0,0,.58);
+  }
+  #BOARD[data-intel="roster"] .roster-panel > h3,
+  #BOARD[data-intel="scarcity"] .scarcity-panel > h3,
+  #BOARD[data-intel="log"] .pick-log-panel > h3,
+  #BOARD[data-intel="priority"] .priority-watch-panel > h3,
+  #BOARD[data-intel="health"] .health-watch-panel > h3{
+    position:sticky;
+    top:0;
+    z-index:2;
+  }
+  #BOARD[data-intel="roster"] .roster-panel .panel-body,
+  #BOARD[data-intel="scarcity"] .scarcity-panel .panel-body,
+  #BOARD[data-intel="log"] .pick-log-panel .panel-body,
+  #BOARD[data-intel="priority"] .priority-watch-panel .panel-body,
+  #BOARD[data-intel="health"] .health-watch-panel .panel-body{
+    max-height:none;
+  }
+}
+
+/* Extra phone compression without sacrificing player tap targets. */
+@media (max-width:699px){
+  body.draft-mode header{display:none}
+  body.draft-mode main{padding:0 6px 24px}
+  body.draft-mode #BOARD{margin:0 auto}
+  body.draft-mode #BOARD .pos-filter{top:62px}
+  .tablet-intel-tabs{border-radius:8px;padding:5px;gap:4px}
+  .intel-tab{min-height:36px;font-size:10px;padding:5px 6px}
+}
+
 </style>
 </head>
 <body>
@@ -1629,10 +1872,10 @@ phone, another browser or a fresh session, save a backup here and load it there.
 </div>
 </div>
 </div>
-<div class="board-grid"><div class="draft-left-rail"><div class="panel">
+<div class="board-grid"><div class="draft-left-rail"><div class="panel scarcity-panel">
 <h3>Tier scarcity</h3>
 <div class="panel-body scarcity" id="scarcity"></div>
-</div><div class="panel">
+</div><div class="panel pick-log-panel">
 <h3>Pick log</h3>
 <div class="panel-body" id="log"></div>
 </div></div><div class="draft-center-col"><div class="panel">
@@ -1651,9 +1894,15 @@ phone, another browser or a fresh session, save a backup here and load it there.
 <button class="chip" data-bpos="K">K</button>
 </div>
 <div id="available"></div>
-</div></div><div class="draft-right-rail"><div class="panel">
+</div></div><div class="draft-right-rail"><div class="panel roster-panel">
 <h3>Your roster</h3>
 <div class="panel-body" id="roster"></div>
+</div><div class="tablet-intel-tabs" id="tablet-intel-tabs" aria-label="Draft intelligence panels">
+<button class="intel-tab" type="button" data-intel="roster">Roster</button>
+<button class="intel-tab" type="button" data-intel="scarcity">Scarcity</button>
+<button class="intel-tab" type="button" data-intel="priority">Targets</button>
+<button class="intel-tab" type="button" data-intel="health">Health</button>
+<button class="intel-tab" type="button" data-intel="log">Log</button>
 </div><div class="panel priority-watch-panel"><h3>Priority Watch</h3><div class="panel-body"><div class="priority-watch-group"><h4>Late-RB</h4><ol class="priority-watch-list"><li><strong>Jonathon Brooks</strong></li><li><strong>Tyler Allgeier</strong></li><li>Jadarian Price</li><li>Jacory Croskey-Merritt</li><li>Chris Rodriguez</li><li>Keaton Mitchell</li></ol></div><div class="priority-watch-group"><h4>QB</h4><ol class="priority-watch-list"><li><strong>Trevor Lawrence</strong></li><li><strong>Patrick Mahomes</strong></li><li>Dak Prescott</li><li>Bo Nix</li><li>Jaxson Dart</li></ol></div><div class="priority-watch-group"><h4>WR</h4><ol class="priority-watch-list"><li><strong>Jayden Reed</strong></li><li><strong>Josh Downs</strong></li><li>Alec Pierce</li><li>Jalen Coker</li><li>KC Concepcion</li><li>Denzel Boston</li><li>Cyrus Allen</li></ol></div><div class="priority-watch-group"><h4>TE</h4><ol class="priority-watch-list"><li><strong>Mark Andrews</strong></li><li><strong>Isaiah Likely</strong></li><li>Dalton Kincaid</li><li>AJ Barner</li><li>Terrance Ferguson</li><li>Greg Dulcich</li></ol></div><div class="priority-watch-group"><h4>DL</h4><ol class="priority-watch-list"><li><strong>Myles Garrett</strong></li><li><strong>Maxx Crosby</strong></li><li>Aidan Hutchinson</li><li>Brian Burns</li><li>Will Anderson Jr.</li></ol></div><div class="priority-watch-group"><h4>LB</h4><ol class="priority-watch-list"><li><strong>Jack Campbell</strong></li><li><strong>Jordyn Brooks</strong></li><li>Blake Cashman</li><li>Fred Warner</li><li>Nick Bolton</li></ol></div><div class="priority-watch-group"><h4>DB</h4><ol class="priority-watch-list"><li><strong>Kyle Hamilton</strong></li><li><strong>Tykee Smith</strong></li><li>Travis Hunter</li><li>Derwin James Jr.</li><li>Quentin Lake</li></ol></div><p class="priority-watch-note">Subtle blue-gray outline = personal target to notice. Rankings and tiers are unchanged.</p></div></div><div class="panel health-watch-panel">
 <h3>Health Watch</h3>
 <div class="panel-body">
@@ -2304,6 +2553,34 @@ const searchClear = document.getElementById('search-clear');
 const searchCount = document.getElementById('search-count');
 const emptyMsg    = document.getElementById('empty-msg');
 const boardSec    = document.getElementById('BOARD');
+
+/* Tablet Draft Intelligence tabs */
+function compactPortraitView(){
+  return ((window.matchMedia && window.matchMedia('(max-width:1100px) and (orientation:portrait)').matches) || window.innerWidth < 800);
+}
+let tabletIntel = compactPortraitView() ? 'none' : 'priority';
+function setTabletIntel(key){
+  tabletIntel = key;
+  boardSec.dataset.intel = key;
+  document.querySelectorAll('.intel-tab').forEach(b => b.classList.toggle('active', b.dataset.intel === key));
+}
+function toggleTabletIntel(key){
+  if(compactPortraitView() && tabletIntel === key) setTabletIntel('none');
+  else setTabletIntel(key);
+}
+document.querySelectorAll('.intel-tab').forEach(b => b.addEventListener('click', () => toggleTabletIntel(b.dataset.intel)));
+setTabletIntel(tabletIntel);
+let wasCompactPortrait = compactPortraitView();
+window.addEventListener('resize', () => {
+  const nowCompactPortrait = compactPortraitView();
+  if(nowCompactPortrait !== wasCompactPortrait){
+    setTabletIntel(nowCompactPortrait ? 'none' : 'priority');
+    wasCompactPortrait = nowCompactPortrait;
+  }else if(!nowCompactPortrait && tabletIntel === 'roster'){
+    setTabletIntel('priority');
+  }
+});
+
 let activePos = 'ALL';
 
 function applyFilters(){
@@ -2546,10 +2823,22 @@ function buildRoster(){
   return { slots, bench };
 }
 
+
+function updatePriorityWatch(taken){
+  const aliases = { 'Chris Rodriguez': 'Chris Rodriguez Jr.' };
+  document.querySelectorAll('.priority-watch-list li').forEach(li => {
+    const shown = li.textContent.trim();
+    const player = aliases[shown] || shown;
+    li.classList.toggle('taken-target', taken.has(player));
+    li.setAttribute('aria-label', shown + (taken.has(player) ? ' — taken' : ' — available'));
+  });
+}
+
 function renderBoard(){
   updateTierCounts();
   if(!boardSec.classList.contains('show')) return;
   const taken = takenSet();
+  updatePriorityWatch(taken);
   const pickNo = draft.picks.length + 1;
   const { round, inRound } = pickLabel(pickNo);
   const onClock = teamOnClock(pickNo);
